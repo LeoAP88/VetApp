@@ -1,0 +1,7 @@
+#footer{
+    height: 30px;
+    width: 100%;
+    background-color: var(--neutral-900);
+    margin-top: auto;
+    color: var(--neutral-300);
+}

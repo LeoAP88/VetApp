@@ -1,0 +1,23 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    padding: 2px 0px;
+    width: 100%;
+    height: 6vh;
+    background-color: var(--neutral-900);
+}
+
+.nav-link{
+    text-decoration: none;
+    color: white;
+}
+
+.nav-item {
+    margin: 0 10px;
+}
+
+.nav-link-section{
+    margin-right: 10px;
+}

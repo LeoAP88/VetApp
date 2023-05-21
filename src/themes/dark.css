@@ -1,0 +1,51 @@
+#app.dark {
+    --theme-background-color: #121212;
+    /*Material Design Cool Grey neutral palette*/
+    --neutral-50: #f5f7fa;
+    --neutral-100: #e4e7eb;
+    --neutral-200: #cbd2d9;
+    --neutral-300: #9aa5b1;
+    --neutral-400: #7b8794;
+    --neutral-500: #616e7c;
+    --neutral-600: #52606d;
+    --neutral-700: #3e4c59;
+    --neutral-800: #323f4b;
+    --neutral-900: #1f2933;
+    
+    /*Material Design Secondary Color Palette*/
+    --primary-bold: #1C255F;
+    --primary-bolder: #26327E;
+    --primary: #303f9f;
+    --primary-lighter: #4E5BB1;
+    --primary-light: #727DC5;
+
+    --secondary-bold:#717171;
+    --secondary-bolder:#979797;
+    --secondary-lighter:#CACACA;
+    --secondary-light:#D7D7D7;
+    --secondary: #bdbdbd;
+
+    --confirm-light: #4AB9AE;
+    --confirm-lighter: #20A194;
+    --confirm: #00897b;
+    --confirm-bolder: #006E63;
+    --confirm-bold: #00534A;
+
+    --warning-light:#727DC5;
+    --warning-lighter:#4E5BB1;
+    --warning: #303f9f;
+    --warning-bolder:#26327E;
+    --warning-bold:#1C255F;
+
+    --remove-light:#DD7373;
+    --remove-lighter:#D24C4C;
+    --remove: #c62828;
+    --remove-bolder:#9F2020;
+    --remove-bold:#771818;
+
+    --help-light: #9D7ED4;
+    --help-lighter: #825AC6;
+    --help: #673ab7;
+    --help-bolder: #542F93;
+    --help-bold: #3F236E;
+}

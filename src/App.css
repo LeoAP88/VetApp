@@ -1,0 +1,8 @@
+#app{
+  height: 100%;
+  background-color: var(--theme-background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+

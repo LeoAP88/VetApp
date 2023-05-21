@@ -1,4 +1,5 @@
 import "./SignUp.css"
+import {Link} from "react-router-dom"
 
 const SignUp = () => {
     return(
@@ -28,7 +29,7 @@ const SignUp = () => {
               </div>
               <input name="submit" className="signIn" type="Submit" value="Sign Up"></input>
               <div class="signup_link">
-                  Have an Account ? <a href="loginForm.php">Login Here</a>
+                  Have an Account ? <Link to={"/login"}>Login Here</Link>
               </div>
           </form>
       </div>

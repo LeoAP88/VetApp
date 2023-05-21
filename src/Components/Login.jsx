@@ -1,4 +1,5 @@
 import "./Login.css"
+import {Link} from "react-router-dom"
 
 const Login = () => {
     return(
@@ -24,8 +25,8 @@ const Login = () => {
                     <hr></hr>
                     <div class="pie-form">
                         <a href="#">¿Perdiste tu contraseña?</a>
-                        <a href="#">¿No tienes Cuenta? Registrate</a>
-                        <a href="#">« Volver</a>
+                        <Link to={"/register"}>¿No tienes Cuenta? Registrate</Link>
+                        <Link to={"/"}>« Volver</Link>
                     </div>
                 </div>
             </div>

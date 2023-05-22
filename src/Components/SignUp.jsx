@@ -1,35 +1,42 @@
 import "./SignUp.css"
 import {Link} from "react-router-dom"
+import "firebase/auth"
+import {auth} from "./firebaseConfig/firebase"
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {useState} from "react"
+
 
 const SignUp = () => {
+    const auth = getAuth();
+
+    const [email,setEmail]=useState("");
+    const [password,setPassword]=useState("");
+
+    const submit= ()=>{
+        createUserWithEmailAndPassword(auth,email,password)
+    }
+
+
     return(
         <div class="container">
       <div class="center">
-          <h1>Register</h1>
+          <h1>Registrarse</h1>
           <form method="POST" action="">
               <div class="txt_field">
-                  <input type="text" name="name" required></input>
-                  <span></span>
-                  <label>Name</label>
-              </div>
-              <div class="txt_field">
-                  <input type="email" name="email" required></input>
+                  <input type="email" name="email" required onChange={(e) =>setEmail(e.target.value)}></input>
                   <span></span>
                   <label>Email</label>
               </div>
               <div class="txt_field">
-                  <input type="password" name="password" required></input>
+                  <input type="password" name="password" required onChange={(e) =>setPassword(e.target.value)}></input>
                   <span></span>
                   <label>Password</label>
               </div>
-              <div class="txt_field">
-                  <input type="password" name="cpassword" required></input>
-                  <span></span>
-                  <label>Confirm Password</label>
-              </div>
-              <input name="submit" className="signIn" type="Submit" value="Sign Up"></input>
+              <Link to={"/"}>
+              <button type="submit" title="Registrarse" name="Registrarse" onClick={submit}>Registrarse</button>
+              </Link>
               <div class="signup_link">
-                  Have an Account ? <Link to={"/login"}>Login Here</Link>
+                  ¿Ya tenes una cuenta? <Link to={"/Login"}>Ingresá acá</Link>
               </div>
           </form>
       </div>

@@ -9,6 +9,13 @@ import './index.css'
 import Inicio from './Components/Inicio.jsx';
 import Login from './Components/Login.jsx';
 import Registro from './Components/Registro.jsx';
+import QuienesSomos from './Components/QuienesSomos.jsx';
+import MisMascotas from './Components/MisMascotas.jsx';
+import Tienda from './Components/Tienda.jsx';
+import Adopciones from './Components/Adopciones.jsx';
+import Turnos from './Components/Turnos.jsx';
+import Consultas from './Components/Consultas.jsx';
+
 
 //creamos el router que determina las rutas y que elementos renderizan
 const router = createBrowserRouter([
@@ -22,8 +29,8 @@ const router = createBrowserRouter([
         element: <Inicio/>
       },
       {
-        path: "section",
-        element: <h1>Section</h1>
+        path: "consultas",
+        element: <Consultas/>
       },
       {
         path: "login",
@@ -32,6 +39,26 @@ const router = createBrowserRouter([
       {
         path:"register",
         element: <Registro/>
+      },
+      {
+        path: "quienesSomos",
+        element: <QuienesSomos/>
+      },
+      {
+        path: "misMascotas",
+        element: <MisMascotas/>
+      },
+      {
+        path: "tienda",
+        element: <Tienda/>
+      },
+      {
+        path: "adopciones",
+        element: <Adopciones/>
+      },
+      {
+        path: "turnos",
+        element: <Turnos/>
       }
     ]
   }

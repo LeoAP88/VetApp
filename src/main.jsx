@@ -6,9 +6,9 @@ import {
 } from "react-router-dom";
 import App from './App.jsx'
 import './index.css'
-import Home from './Components/Home.jsx';
+import Inicio from './Components/Inicio.jsx';
 import Login from './Components/Login.jsx';
-import SignUp from './Components/SignUp.jsx';
+import Registro from './Components/Registro.jsx';
 
 //creamos el router que determina las rutas y que elementos renderizan
 const router = createBrowserRouter([
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     children:[
       {
         index:true, // la prop index indica que la ruta se renderiza por default con la url padre ("/")
-        element: <Home/>
+        element: <Inicio/>
       },
       {
         path: "section",
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path:"register",
-        element: <SignUp/>
+        element: <Registro/>
       }
     ]
   }

@@ -1,11 +1,11 @@
-import "./Home.css"
+import "./Inicio.css"
 import { IoCalendarSharp, CgLogIn, MdAppRegistration, AiFillQuestionCircle } from 'react-icons/all';
 import {Link} from "react-router-dom"
 
 const Home = () => {
     return(
         <>
-        <div id='home'>
+        <div id='inicio'>
             YOU ARE HOME
             Info basica de la empresa(el tipico quienes somos).
             Derivacion a otras secciones:sacar turnos, hacer consultas, 
@@ -26,7 +26,7 @@ const Home = () => {
 
             <Link to={"/register"}>
             <div>
-                <h2> <MdAppRegistration/> Registrarse/SignUp</h2>
+                <h2> <MdAppRegistration/> Registrarse</h2>
             </div>
             </Link>
 

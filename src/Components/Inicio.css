@@ -1,4 +1,26 @@
-#inicio{
+#inicio {
     background-color: var(--theme-background-color);
     color: var(--neutral-100);
+}
+
+.PanelesInicio {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-self: center;
+    width: 50%;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.Link {
+    text-decoration: none;
+    color: black;
+}
+
+.LinksContainer {
+    background-color: rgb(190, 239, 222);
+    border-radius: 5px;
+    padding: 5px;
+    width: 250px;
 }

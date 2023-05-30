@@ -11,8 +11,8 @@ const Login = () => {
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
 
-    const submit= ()=>{
-        signInWithEmailAndPassword(auth,email,password);
+    const submit= async ()=>{
+       await signInWithEmailAndPassword(auth,email,password);
         console.log("Ingreso correcto")
     }
     return(

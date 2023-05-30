@@ -1,6 +1,6 @@
 const QuienesSomos = () => {
     return(
-        <div>Hola</div>
+        <div>Quienes somos</div>
     )
 }
 export default QuienesSomos;

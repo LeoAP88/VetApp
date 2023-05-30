@@ -1,6 +1,6 @@
 const MisMascotas = () => {
     return(
-        <div>Hola</div>
+        <div>Mis mascotas</div>
     )
 }
 export default MisMascotas

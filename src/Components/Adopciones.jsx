@@ -5,13 +5,12 @@ const Adopciones=() =>{
     return(
         <>
         <div>Adopciones</div>
-        
-        </>
-        /*<Link to={"formularioDeAdopciones"}>
+        <Link to={"/adopciones/formulario"}>
         <div>
             <button type="button">Formulario de Adopción</button>
         </div>
-        </Link>*/
+        </Link>
+        </>
     )
 }
 export default Adopciones;

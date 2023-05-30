@@ -15,6 +15,7 @@ import Tienda from './Components/Tienda.jsx';
 import Adopciones from './Components/Adopciones.jsx';
 import Turnos from './Components/Turnos.jsx';
 import Consultas from './Components/Consultas.jsx';
+import FormularioDeAdopciones from './Components/FormularioDeAdopciones.jsx';
 
 
 //creamos el router que determina las rutas y que elementos renderizan
@@ -54,7 +55,13 @@ const router = createBrowserRouter([
       },
       {
         path: "adopciones",
-        element: <Adopciones/>
+        element: <Adopciones/>,
+        children:[
+          {
+            path: "adopciones/formulario",
+            element: <FormularioDeAdopciones/>
+          }
+        ]
       },
       {
         path: "turnos",

@@ -4,6 +4,7 @@ import ToggleSwitch from "./ToggleSwitch";
 import {BsInstagram, BsFacebook,CgProfile, MdOutlineLocalGroceryStore} from 'react-icons/all';
 
 const NavBar = ({ onThemeChange }) => {
+
     return (
         <nav className="navbar" id="navbar">
             <div className="nav-link-section">
@@ -16,8 +17,9 @@ const NavBar = ({ onThemeChange }) => {
                 <Link to="/tienda" className="nav-link nav-item">Tienda</Link>
                 <Link to="/adopciones" className="nav-link nav-item">Adopciones</Link>
                 <Link to="/turnos" className="nav-link nav-item">Turnos</Link>
-                <Link to="/" className="nav-link nav-item"><CgProfile/></Link>
+                <Link to="/perfil" className="nav-link nav-item"><CgProfile/></Link>
                 <Link to="/" className="nav-link nav-item"><MdOutlineLocalGroceryStore/></Link>
+                <Link to="/signOut" className="nav-link nav-item">Cerrar Sesión</Link>
                 <a href="https://www.instagram.com/" target="_blank" style={{color: "white", paddingRight:"10px"}}><BsInstagram /></a>
                 <a href="https://es-la.facebook.com/" target="_blank" style={{color: "white", paddingRight:"10px"}}><BsFacebook /></a>
             </div>

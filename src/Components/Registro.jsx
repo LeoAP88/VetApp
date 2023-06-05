@@ -1,13 +1,14 @@
 import "./Registro.css"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { getAuth, createUserWithEmailAndPassword} from "firebase/auth";
 import { useState } from "react";
 import {db} from "../Components/firebaseConfig/firebase.jsx"
 import {collection, doc, setDoc} from "firebase/firestore";
 
 
-const Registro = (datosCliente) => {
+const Registro = () => {
     const auth = getAuth();
+    const navigate = useNavigate();;
     const clientesCollection = collection(db,"Clientes");
 
     const [email, setEmail] = useState("");
@@ -31,6 +32,7 @@ const Registro = (datosCliente) => {
             .catch(error => {
                 console.log('Something went wrong with added user to firestore: ', error);
             })
+            navigate("/");
         })
         //we need to catch the whole sign up process if it fails too.
         .catch(error => {

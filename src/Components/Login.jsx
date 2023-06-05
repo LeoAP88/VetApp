@@ -1,33 +1,40 @@
 import "./Login.css"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import {useState} from "react"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import "firebase/auth"
 import {auth} from "./firebaseConfig/firebase"
 
+
 const Login = () => {
+
+    const navigate = useNavigate();
+
     const auth = getAuth();
 
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
 
-    const submit= async ()=>{
-       await signInWithEmailAndPassword(auth,email,password);
-        console.log("Ingreso correcto")
+    const submit= () =>{
+        e.preventDefault();
+        signInWithEmailAndPassword(auth, email, password).catch((error) =>
+        console.log(error)
+      );
+      navigate("/");
     }
     return(
         <div id="contenedor">
 
             <div id="contenedorcentrado">
                 <div id="login">
-                    <form id="loginform">
-                        <label for="email">Email</label>
+                    <form id="loginform" onSubmit={submit}>
+                        <label htmlFor="email">Email</label>
                         <input id="usuario" type="text" name="email" placeholder="email" required onChange={(e) =>setEmail(e.target.value)}></input>
 
-                        <label for="password">Contraseña</label>
+                        <label htmlFor="password">Contraseña</label>
                         <input id="password" type="password" placeholder="Contraseña" name="password" required onChange={(e) =>setPassword(e.target.value)}></input>
                         <Link to={"/"}>
-                        <button type="submit" title="Ingresar" name="Ingresar" onClick={submit}>Ingresar</button>
+                        <button type="submit" title="Ingresar" name="Ingresar">Ingresar</button>
                         </Link>
                     </form>
 

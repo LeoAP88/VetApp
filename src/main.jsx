@@ -4,6 +4,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { AuthProvider } from "./Components/AuthProvider.jsx";
 import App from './App.jsx'
 import './index.css'
 import Inicio from './Components/Inicio.jsx';
@@ -16,6 +17,8 @@ import Adopciones from './Components/Adopciones.jsx';
 import Turnos from './Components/Turnos.jsx';
 import Consultas from './Components/Consultas.jsx';
 import FormularioDeAdopciones from './Components/FormularioDeAdopciones.jsx';
+import Perfil from './Components/Perfil.jsx';
+import SignOut from './Components/SignOut.jsx';
 
 
 //creamos el router que determina las rutas y que elementos renderizan
@@ -38,6 +41,10 @@ const router = createBrowserRouter([
         element: <Login/>
       },
       {
+        path: "signOut",
+        element: <SignOut/>
+      },
+      {
         path:"register",
         element: <Registro/>
       },
@@ -50,18 +57,20 @@ const router = createBrowserRouter([
         element: <MisMascotas/>
       },
       {
+        path: "perfil",
+        element: <Perfil/>
+      },
+      {
         path: "tienda",
         element: <Tienda/>
       },
       {
         path: "adopciones",
-        element: <Adopciones/>,
-        children:[
-          {
-            path: "adopciones/formulario",
-            element: <FormularioDeAdopciones/>
-          }
-        ]
+        element: <Adopciones/>
+      },
+      {
+        path: "formulario",
+        element: <FormularioDeAdopciones/>
       },
       {
         path: "turnos",
@@ -74,6 +83,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
 // el elemento RouterProvider utiliza el router para renderizar nuestras rutas.
   
-    <RouterProvider router={router}></RouterProvider>
+    <AuthProvider><RouterProvider router={router}></RouterProvider> </AuthProvider>
   ,
 )

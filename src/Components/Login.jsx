@@ -15,27 +15,25 @@ const Login = () => {
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
 
-    const submit= () =>{
-        e.preventDefault();
-        signInWithEmailAndPassword(auth, email, password).catch((error) =>
-        console.log(error)
-      );
-      navigate("/");
+    const loginSubmit= () =>{
+        signInWithEmailAndPassword(auth, email, password);
+        console.log("Ingreso correcto");
+        navigate("/");
     }
     return(
         <div id="contenedor">
 
             <div id="contenedorcentrado">
                 <div id="login">
-                    <form id="loginform" onSubmit={submit}>
+                    <form id="loginform" onSubmit={loginSubmit}>
                         <label htmlFor="email">Email</label>
                         <input id="usuario" type="text" name="email" placeholder="email" required onChange={(e) =>setEmail(e.target.value)}></input>
 
                         <label htmlFor="password">Contraseña</label>
                         <input id="password" type="password" placeholder="Contraseña" name="password" required onChange={(e) =>setPassword(e.target.value)}></input>
-                        <Link to={"/"}>
-                        <button type="submit" title="Ingresar" name="Ingresar">Ingresar</button>
-                        </Link>
+                        
+                        <button type="button" onClick={loginSubmit}>Ingresar</button>
+                        
                     </form>
 
                 </div>

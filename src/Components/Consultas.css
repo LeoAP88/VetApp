@@ -1,0 +1,49 @@
+.form_container {
+    display: flex;
+    justify-content: center;
+
+}
+
+.consultas_form {
+    background-color: #5f6769;
+    color: #dfcdc3;
+    width: 50%;
+}
+
+.form-control {
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 2px;
+    font-size: 1.1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 1.3rem;
+}
+
+.btn-consulta {
+    font-family: 'Overpass', sans-serif;
+    font-size: 110%;
+    color: #1b262c;
+    width: 20%;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: none;
+
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+
+    background-color: #dfcdc3;
+
+    margin-top: 10px;
+}
+
+textarea {
+    resize: none;
+    height: 150px;
+}

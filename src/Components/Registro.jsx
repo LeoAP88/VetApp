@@ -1,15 +1,15 @@
 import "./Registro.css"
 import { Link, useNavigate } from "react-router-dom"
-import { getAuth, createUserWithEmailAndPassword} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import {db} from "../Components/firebaseConfig/firebase.jsx"
-import {collection, doc, setDoc} from "firebase/firestore";
+import { db } from "../Components/firebaseConfig/firebase.jsx"
+import { collection, doc, setDoc } from "firebase/firestore";
 
 
 const Registro = () => {
     const auth = getAuth();
     const navigate = useNavigate();;
-    const clientesCollection = collection(db,"Clientes");
+    const clientesCollection = collection(db, "Clientes");
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -18,34 +18,34 @@ const Registro = () => {
 
     const submit = () => {
         createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            //Once the user creation has happened successfully, we can add the currentUser into firestore
-            //with the appropriate details.
-            const user = userCredential.user;
-            console.log(user);
-            setDoc(doc(db,"Clientes",user.uid),{
-                Nombre: nombre,
-                Apellido: apellido,
-                Email: email,
+            .then((userCredential) => {
+                //Once the user creation has happened successfully, we can add the currentUser into firestore
+                //with the appropriate details.
+                const user = userCredential.user;
+                console.log(user);
+                setDoc(doc(db, "Clientes", user.uid), {
+                    Nombre: nombre,
+                    Apellido: apellido,
+                    Email: email,
+                })
+                    //ensure we catch any errors at this stage to advise us if something does go wrong
+                    .catch(error => {
+                        console.log('Something went wrong with added user to firestore: ', error);
+                    })
+                navigate("/");
             })
-            //ensure we catch any errors at this stage to advise us if something does go wrong
+            //we need to catch the whole sign up process if it fails too.
             .catch(error => {
-                console.log('Something went wrong with added user to firestore: ', error);
+                console.log('Something went wrong with sign up: ', error);
             })
-            navigate("/");
-        })
-        //we need to catch the whole sign up process if it fails too.
-        .catch(error => {
-            console.log('Something went wrong with sign up: ', error);
-        })
-        
+
     }
 
 
     return (
         <div className="container">
             <div className="center">
-                <h1>Registrarse</h1>
+                <h1 className="Titulo_registro">Registro</h1>
                 <form method="POST" action="">
                     <div className="txt_field">
                         <input type="email" name="email" required onChange={(e) => setEmail(e.target.value)}></input>
@@ -68,7 +68,7 @@ const Registro = () => {
                         <label>Apellido</label>
                     </div>
                     <Link to={"/"}>
-                        <button type="submit" title="Registrarse" name="Registrarse" onClick={submit}>Registrarse</button>
+                        <button className="btn-registro" type="submit" title="Registrarse" name="Registrarse" onClick={submit}>Registrarse</button>
                     </Link>
                     <div className="signup_link">
                         ¿Ya tenes una cuenta? <Link to={"/Login"}>Ingresá acá</Link>

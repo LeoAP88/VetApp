@@ -1,7 +1,8 @@
 #footer{
-    height: 105px;
+    height: 115px;
     width: 100%;
-    background-color: var(--neutral-900);
+    background-color: black;
     margin-top: auto;
-    color: var(--neutral-300);
+    color: white;
+    padding-bottom: 10px;
 }

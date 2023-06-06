@@ -1,3 +1,4 @@
+
 .PanelesInicio {
     display: flex;
     flex-flow: row wrap;
@@ -22,11 +23,11 @@
 
 .img {
     width: 100%;
-    height: 700px;
+    height: 1000px;
     background-repeat: no-repeat;
     background-size: cover;
     background-image: linear-gradient(to bottom, #ff000000, rgb(63, 62, 62)), url(/img.jpg);
-    background-position: 10% 42%;
+    background-position: 10% 45%;
     display: block;
     color: white;
     text-align: left;
@@ -35,4 +36,28 @@
     margin-top: 250px;
     padding-left: 100px;
     font-size: 1.3rem;
+    width: 50%;
+    height: 500px;
+}
+
+.especialidades {
+    display: flex;
+    margin: 100px;
+    margin-top: 0px;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.int {
+    padding: 30px;
+}
+
+.esp {
+    padding: 30px;
+    
+}
+
+.cirugia {
+    padding: 30px;
 }

@@ -1,18 +1,35 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./NavBar.css"
 import { BsInstagram, BsFacebook, CgProfile, MdOutlineLocalGroceryStore, GiHospitalCross } from 'react-icons/all';
 
-const NavBar = () => {
+const LogInLinks = ({isUserLoggedIn}) => {
+    if(!isUserLoggedIn){
+        return(
+            <>
+                <NavLink to="/login" className="nav-link nav-item">Ingresar</NavLink>
+                <NavLink to="/register" className="nav-link nav-item"><button className="registrate">Registrate</button></NavLink>
+            </>
+        );
+    }else{
+        return(
+            <NavLink to="/signOut" className="nav-link nav-item">SignOut</NavLink>
+        );
+    }
+}
+
+const NavBar = ({isUserLoggedIn}) => {
 
     return (
         <nav className="navbar" id="navbar">
             <div className="nav-link-section">
-                <Link to="/" className="nav-link nav-item"><GiHospitalCross className="logo" /></Link>
-                <Link to="/quienesSomos" className="nav-link nav-item">Quiénes Somos</Link>
+            {/* NavLink agrega por defecto la clase active cuando el path esta activo. 
+            Con la prop end le indicamos que matchee solo el path especificado, y no los paths hijos*/}
+                <NavLink to="/" className="nav-link nav-item" end><GiHospitalCross className="logo"/></NavLink>
+                <NavLink to="/quienesSomos" className="nav-link nav-item">Quiénes Somos</NavLink>
                 {/* <Link to="/" className="nav-link nav-item">Inicio</Link> */}
-                <Link to="/consultas" className="nav-link nav-item">Consultas</Link>
-                <Link to="/login" className="nav-link nav-item">Ingresar</Link>
-                <Link to="/register" className="nav-link nav-item"><button className="registrate">Registrate</button></Link>
+                <NavLink to="/consultas" className="nav-link nav-item">Consultas</NavLink>
+
+                <LogInLinks isUserLoggedIn={isUserLoggedIn}></LogInLinks>
 
                 {/* <Link to="/misMascotas" className="nav-link nav-item">Mis Mascotas</Link>
                 <Link to="/tienda" className="nav-link nav-item">Tienda</Link>

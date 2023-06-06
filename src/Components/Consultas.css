@@ -46,6 +46,7 @@
 }
 
 .form-control {
+    font-family: inherit;
     width: 100%;
     border: 1px solid black;
     border-radius: 10px;

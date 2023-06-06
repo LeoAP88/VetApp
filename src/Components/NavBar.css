@@ -21,6 +21,10 @@
     font-size: 40px;
 }
 
+.active {
+    text-decoration: underline;
+}
+
 .registrate {
     color: purple;
     border-radius: 30px;
@@ -32,5 +36,4 @@
     overflow: hidden;
     outline: none;
     font-weight: bold;
-    
 }

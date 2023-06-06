@@ -1,5 +1,5 @@
 import "./Login.css"
-import {Link, useNavigate} from "react-router-dom"
+import {Link, useNavigate, useOutletContext} from "react-router-dom"
 import {useState} from "react"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import "firebase/auth"
@@ -7,6 +7,8 @@ import {auth} from "./firebaseConfig/firebase"
 
 
 const Login = () => {
+
+    const [logInContext] = useOutletContext();
 
     const navigate = useNavigate();
 
@@ -16,9 +18,15 @@ const Login = () => {
     const [password,setPassword]=useState("");
 
     const loginSubmit= () =>{
-        signInWithEmailAndPassword(auth, email, password);
-        console.log("Ingreso correcto");
-        navigate("/");
+        signInWithEmailAndPassword(auth, email, password)
+            .then(()=>{
+                console.log("Ingreso correcto");
+                logInContext.onSuccessfulLogin();
+                navigate("/");
+            })
+            .catch((error)=>{
+                alert(`Error: ${error.code} - ${error.message}\nHa habido un error!`)
+            })   
     }
     return(
         <div id="contenedor">

@@ -1,9 +1,7 @@
-#app{
-  height: 100%;
+#app {
+  height: 100vh;
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: start;
   overflow: scroll;
 }
-

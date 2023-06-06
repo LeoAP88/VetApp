@@ -1,4 +1,3 @@
-
 .PanelesInicio {
     display: flex;
     flex-flow: row wrap;
@@ -32,6 +31,7 @@
     color: white;
     text-align: left;
 }
+
 .img_text {
     margin-top: 250px;
     padding-left: 100px;
@@ -55,9 +55,26 @@
 
 .esp {
     padding: 30px;
-    
+
 }
 
 .cirugia {
     padding: 30px;
+}
+
+.btn-consulta {
+    font-size: 1rem;
+    color: white;
+    border-radius: 15px;
+    padding: 10px 20px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 2px solid white;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+.btn-consulta:hover {
+    background-color: grey;
 }

@@ -1,17 +1,52 @@
-.form_container {
+.section_consultas {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
 
+.texto-consultas {
+    font-weight: bold;
+}
+
+.container_redes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.container_iconos_redes {
+    display: flex;
+    gap: 20px;
+
+}
+
+.container_texto_redes {
+    display: flex;
+}
+
+.texto_redes {
+    font-size: 1.3rem;
+    align-self: auto;
+}
+
+.icono_redes {
+    color: black;
+    font-size: 1.5rem;
+}
+
+.form_container {
+    width: 50%;
+    /* display: flex;
+    justify-content: center; */
 }
 
 .consultas_form {
-    background-color: #5f6769;
-    color: #dfcdc3;
-    width: 50%;
+    width: 100%;
 }
 
 .form-control {
-    width: 40%;
+    width: 100%;
     border: 1px solid black;
     border-radius: 10px;
     font-size: 1.1rem;
@@ -21,27 +56,28 @@
 .form-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 25px;
     font-size: 1.3rem;
 }
 
+.form-group label {
+    margin-bottom: 10px;
+}
+
 .btn-consulta {
-    font-family: 'Overpass', sans-serif;
-    font-size: 110%;
-    color: #1b262c;
-    width: 20%;
-    padding: 10px;
-    margin-bottom: 30px;
-    border: none;
+    color: black;
+    font-size: 1.2rem;
+    padding: 10px 25px;
+    border: 1px solid rgb(170, 169, 169);
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: white;
 
-    border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px 3px 3px 3px;
-    -webkit-border-radius: 3px 3px 3px 3px;
+}
 
-    background-color: #dfcdc3;
-
-    margin-top: 10px;
+.btn-consulta:hover {
+    background-color: rgb(206, 205, 205);
 }
 
 textarea {

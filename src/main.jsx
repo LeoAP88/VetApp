@@ -25,64 +25,63 @@ import SignOut from './Components/SignOut.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <App />,
     //con children definimos rutas hijo que se renderizaran dentro de las rutas padre.
-    children:[
+    children: [
       {
-        index:true, // la prop index indica que la ruta se renderiza por default con la url padre ("/")
-        element: <Inicio/>
+        index: true, // la prop index indica que la ruta se renderiza por default con la url padre ("/")
+        element: <Inicio />
       },
       {
         path: "consultas",
-        element: <Consultas/>
+        element: <Consultas />
       },
       {
         path: "login",
-        element: <Login/>
+        element: <Login />
       },
       {
         path: "signOut",
-        element: <SignOut/>
+        element: <SignOut />
       },
       {
-        path:"register",
-        element: <Registro/>
+        path: "register",
+        element: <Registro />
       },
       {
         path: "quienesSomos",
-        element: <QuienesSomos/>
+        element: <QuienesSomos />
       },
       {
         path: "misMascotas",
-        element: <MisMascotas/>
+        element: <MisMascotas />
       },
       {
         path: "perfil",
-        element: <Perfil/>
+        element: <Perfil />
       },
       {
         path: "tienda",
-        element: <Tienda/>
+        element: <Tienda />
       },
       {
         path: "adopciones",
-        element: <Adopciones/>
+        element: <Adopciones />
       },
       {
         path: "formulario",
-        element: <FormularioDeAdopciones/>
+        element: <FormularioDeAdopciones />
       },
       {
         path: "turnos",
-        element: <Turnos/>
+        element: <Turnos />
       }
     ]
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-// el elemento RouterProvider utiliza el router para renderizar nuestras rutas.
-  
-    <AuthProvider><RouterProvider router={router}></RouterProvider> </AuthProvider>
-  ,
+  // el elemento RouterProvider utiliza el router para renderizar nuestras rutas.
+
+  <AuthProvider><RouterProvider router={router}></RouterProvider> </AuthProvider>
 )

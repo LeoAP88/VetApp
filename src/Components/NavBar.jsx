@@ -12,7 +12,7 @@ const NavBar = () => {
                 {/* <Link to="/" className="nav-link nav-item">Inicio</Link> */}
                 <Link to="/consultas" className="nav-link nav-item">Consultas</Link>
                 <Link to="/login" className="nav-link nav-item">Ingresar</Link>
-                <Link to="/register" className="nav-link nav-item">Registrate</Link>
+                <Link to="/register" className="nav-link nav-item"><button className="registrate">Registrate</button></Link>
 
                 {/* <Link to="/misMascotas" className="nav-link nav-item">Mis Mascotas</Link>
                 <Link to="/tienda" className="nav-link nav-item">Tienda</Link>

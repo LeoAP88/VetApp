@@ -20,3 +20,17 @@
 .logo {
     font-size: 40px;
 }
+
+.registrate {
+    color: purple;
+    border-radius: 30px;
+    padding: 10px 20px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 3px solid purple;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-weight: bold;
+    
+}

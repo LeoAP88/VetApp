@@ -21,6 +21,7 @@ const Registro = () => {
             .then((userCredential) => {
                 //Once the user creation has happened successfully, we can add the currentUser into firestore
                 //with the appropriate details.
+                console.log(userCredential);
                 const user = userCredential.user;
                 console.log(user);
                 setDoc(doc(db, "Clientes", user.uid), {

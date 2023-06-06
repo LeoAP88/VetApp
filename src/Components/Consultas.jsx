@@ -29,7 +29,7 @@ const Consultas = () => {
                             <input type="email" className="form-control" name='email' id="email" placeholder="Email..." />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="exampleTextarea">Mensaje</label>
+                            <label htmlFor="mensaje">Mensaje</label>
                             <textarea className="form-control" name='mensaje' id="mensaje" rows="3" placeholder="Deja tu mensaje aquí" maxLength={200}></textarea>
                         </div>
                         <button className="btn-consulta" type="submit">Enviar</button>

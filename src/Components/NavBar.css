@@ -20,3 +20,7 @@
 .logo {
     font-size: 40px;
 }
+
+.active {
+    text-decoration: underline;
+}

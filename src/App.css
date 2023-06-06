@@ -1,6 +1,6 @@
 #app{
   height: 100%;
-  background-color: var(--theme-background-color);
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: start;

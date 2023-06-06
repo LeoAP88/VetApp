@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css"
-import ToggleSwitch from "./ToggleSwitch";
 import {BsInstagram, BsFacebook,CgProfile, MdOutlineLocalGroceryStore} from 'react-icons/all';
 
-const NavBar = ({ onThemeChange }) => {
+const NavBar = () => {
 
     return (
         <nav className="navbar" id="navbar">

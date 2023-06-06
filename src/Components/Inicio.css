@@ -62,7 +62,7 @@
     padding: 30px;
 }
 
-.btn-consulta {
+.btn-consulta-inicio {
     font-size: 1rem;
     color: white;
     border-radius: 15px;
@@ -75,6 +75,6 @@
     outline: none;
 }
 
-.btn-consulta:hover {
+.btn-consulta-inicio:hover {
     background-color: grey;
 }

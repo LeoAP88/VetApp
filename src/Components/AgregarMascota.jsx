@@ -9,7 +9,7 @@ import './AgregarMascota.css'
 
 const AgregarMascota = () => {
     const [Nombre, setNombre] = useState("")
-    const [Especie, setEspecie] = useState("")
+    const [Especie, setEspecie] = useState("perro")
     const [Raza, setRaza] = useState("")
     const [Sexo, setSexo] = useState("")
     const [Edad, setEdad] = useState(0)
@@ -32,7 +32,9 @@ const AgregarMascota = () => {
             Edad: Edad
         })
         navigate("/")
+
     }
+
     return (
         <>
             <h1>Agregar Nueva Mascota</h1>
@@ -49,10 +51,6 @@ const AgregarMascota = () => {
                             <option value="gato">gato</option>
                         </select>
                     </div>
-                    {/* <div className="container_campo">
-                        <label htmlFor="especie">Especie</label>
-                        <input type="text" name="especie" required onChange={(e) => setEspecie(e.target.value)}></input>
-                    </div> */}
                     <div className="container_campo">
                         <label htmlFor="raza">Raza</label>
                         <input type="text" name="raza" required onChange={(e) => setRaza(e.target.value)}></input>

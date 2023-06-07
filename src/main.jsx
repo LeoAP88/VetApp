@@ -19,6 +19,7 @@ import Consultas from './Components/Consultas.jsx';
 import FormularioDeAdopciones from './Components/FormularioDeAdopciones.jsx';
 import Perfil from './Components/Perfil.jsx';
 import SignOut from './Components/SignOut.jsx';
+import Crear from './Components/Crear.jsx';
 
 
 //creamos el router que determina las rutas y que elementos renderizan
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: "turnos",
         element: <Turnos />
+      },
+      {
+        path: "crear",
+        element: <Crear />
       }
     ]
   }

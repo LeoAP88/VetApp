@@ -19,7 +19,7 @@ const Inicio = () => {
         <div className="img_text">
           <h1>Cuidamos a tu mascota</h1>
           <p>Somos una clínica veterinaria integral, pioneros en la <br /> atención especilizada para tus mascotas. Agendá ahora <br /> tu consulta.</p>
-          <Link to={"/consultas"}><button className="btn-consulta-inicio">Agendar consulta</button></Link>
+          <Link to={"/turnos"}><button className="btn-consulta-inicio">Agendar consulta</button></Link>
         </div>
       </div>
       <div><h1>Nuestros Servicios:</h1></div>

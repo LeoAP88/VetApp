@@ -14,7 +14,7 @@ const MisMascotas = () => {
         async function getMascotas() {
             const querySnapshot = await getDocs(collection(db, `/Clientes/${uid}/Mascotas`));
             if (querySnapshot.size === 0) {
-                //No hay mascotas
+                return <p>No hay mascotas asociadas</p>;
             } else {
                 console.log(querySnapshot.docs.map(doc => doc.data()))
                 setMascotas(querySnapshot.docs.map(doc => { return { id: doc.id, ...doc.data() } }));

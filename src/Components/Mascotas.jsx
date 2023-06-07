@@ -4,14 +4,14 @@ import { FaDog, FaCat } from 'react-icons/all';
 
 export const Mascotas = ({ mascotas }) => {
 
-    const { Nombre, Especie, Raza , Color, Sexo ,Edad} = mascotas;
+    const { Nombre, Especie, Raza, Color, Sexo, Edad } = mascotas;
 
     return (
         <>
             <div className='Mascota_Container'>
 
                 <div className="Container_Foto_Mascota">
-                    {{ Especie } === 'perro' ? <FaDog /> : <FaCat />}
+                    {Especie === 'perro' ? <FaDog /> : <FaCat />}
                 </div>
                 <div className="Container_DatosMascota">
                     <div className="Campo_Container">

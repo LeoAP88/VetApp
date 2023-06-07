@@ -1,6 +1,6 @@
 import {db} from "./firebaseConfig/firebase"
 import {collection,getDocs} from "firebase/firestore"
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 export default Mascotas = () => {
     const query = collection(db, "Clientes");

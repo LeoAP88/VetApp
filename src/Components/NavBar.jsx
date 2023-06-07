@@ -9,18 +9,18 @@ const LogInLinks = ({isUserLoggedIn}) => {
     if(!isUserLoggedIn){
         return(
             <>
-                <NavLink to="/login" className="nav-link nav-item">Ingresar</NavLink>
-                <NavLink to="/register" className="nav-link nav-item"><button className="registrate">Registrate</button></NavLink>
+                <NavLink to="/login" className="nav-link nav-item"><button id="botonIngresar" className="botonNavNoLogin">Ingresar</button></NavLink>
+                <NavLink to="/register" className="nav-link nav-item"><button id="botonRegistrate" className="botonNavNoLogin">Registrate</button></NavLink>
             </>
         );
     }else{
         return(
             <>
-                <Link to="/misMascotas" className="nav-link nav-item">Mis Mascotas</Link>
-                <Link to="/adopciones" className="nav-link nav-item">Adopciones</Link>
-                <Link to="/turnos" className="nav-link nav-item">Turnos</Link>
-                <NavLink to="/signOut" className="nav-link nav-item">SignOut</NavLink>
-                <Link to="/perfil" className="nav-link nav-item"><CgProfile /></Link>
+                <NavLink to="/misMascotas" className="nav-link nav-item">Mis Mascotas</NavLink>
+                <NavLink to="/adopciones" className="nav-link nav-item">Adopciones</NavLink>
+                <NavLink to="/turnos" className="nav-link nav-item">Turnos</NavLink>
+                <NavLink to="/signOut" className="nav-link nav-item"><button id="botonCerrarSesion" className="botonNavLogin">Cerrar Sesión</button></NavLink>
+                <NavLink to="/perfil" className="nav-link nav-item"><CgProfile /></NavLink>
             </>
         );
     }

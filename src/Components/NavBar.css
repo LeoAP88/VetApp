@@ -25,15 +25,39 @@
     text-decoration: underline;
 }
 
-.registrate {
+.botonNavNoLogin{
     color: purple;
     border-radius: 30px;
-    padding: 10px 20px;
-    background-color: transparent;
-    background-repeat: no-repeat;
+    padding: 10px 20px;  
     border: 3px solid purple;
     cursor: pointer;
     overflow: hidden;
     outline: none;
     font-weight: bold;
+}
+
+#botonRegistrate {
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+
+#botonIngresar{
+    background-color: purple;
+    color: white;
+}
+
+.botonNavLogin{
+    color: green;
+    border-radius: 30px;
+    padding: 10px 20px;  
+    border: 3px solid green;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-weight: bold;
+}
+
+#botonCerrarSesion{
+    background-color: transparent;
+    background-repeat: no-repeat;
 }

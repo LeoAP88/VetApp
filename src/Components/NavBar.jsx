@@ -12,7 +12,13 @@ const LogInLinks = ({isUserLoggedIn}) => {
         );
     }else{
         return(
-            <NavLink to="/signOut" className="nav-link nav-item">SignOut</NavLink>
+            <>
+                <Link to="/misMascotas" className="nav-link nav-item">Mis Mascotas</Link>
+                <Link to="/adopciones" className="nav-link nav-item">Adopciones</Link>
+                <Link to="/turnos" className="nav-link nav-item">Turnos</Link>
+                <NavLink to="/signOut" className="nav-link nav-item">SignOut</NavLink>
+                <Link to="/perfil" className="nav-link nav-item"><CgProfile /></Link>
+            </>
         );
     }
 }
@@ -30,6 +36,8 @@ const NavBar = ({isUserLoggedIn}) => {
                 <NavLink to="/consultas" className="nav-link nav-item">Consultas</NavLink>
 
                 <LogInLinks isUserLoggedIn={isUserLoggedIn}></LogInLinks>
+                <a href="https://www.instagram.com/" target="_blank" style={{ color: "black", paddingRight: "10px" }}><BsInstagram /></a>
+                <a href="https://es-la.facebook.com/" target="_blank" style={{ color: "black", paddingRight: "10px" }}><BsFacebook /></a>
 
                 {/* <Link to="/misMascotas" className="nav-link nav-item">Mis Mascotas</Link>
                 <Link to="/tienda" className="nav-link nav-item">Tienda</Link>

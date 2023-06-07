@@ -8,7 +8,6 @@ import {auth} from "./firebaseConfig/firebase"
 
 const Login = () => {
 
-    const [logInContext] = useOutletContext();
 
     const navigate = useNavigate();
 
@@ -21,7 +20,7 @@ const Login = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then(()=>{
                 console.log("Ingreso correcto");
-                logInContext.onSuccessfulLogin();
+                
                 navigate("/");
             })
             .catch((error)=>{

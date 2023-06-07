@@ -1,8 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import "./NavBar.css"
 import { BsInstagram, BsFacebook, CgProfile, MdOutlineLocalGroceryStore, GiHospitalCross } from 'react-icons/all';
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "./AuthProvider";
 
 const LogInLinks = ({isUserLoggedIn}) => {
+
     if(!isUserLoggedIn){
         return(
             <>
@@ -23,7 +26,12 @@ const LogInLinks = ({isUserLoggedIn}) => {
     }
 }
 
-const NavBar = ({isUserLoggedIn}) => {
+const NavBar = () => {
+
+    const User = useContext(AuthContext);
+    let isUserLoggedIn = User.currentUser !== null;
+    console.log(User.currentUser)
+    console.log(isUserLoggedIn)
 
     return (
         <nav className="navbar" id="navbar">

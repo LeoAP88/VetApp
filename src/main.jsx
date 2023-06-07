@@ -11,7 +11,7 @@ import Inicio from './Components/Inicio.jsx';
 import Login from './Components/Login.jsx';
 import Registro from './Components/Registro.jsx';
 import QuienesSomos from './Components/QuienesSomos.jsx';
-import MisMascotas from './Components/MisMascotas.jsx';
+import MisMascotas from './Components/MascotasContainer.jsx';
 import Tienda from './Components/Tienda.jsx';
 import Adopciones from './Components/Adopciones.jsx';
 import Turnos from './Components/Turnos.jsx';

@@ -1,0 +1,38 @@
+.Mascota_Container {
+    width: 70%;
+    height: 500px;
+    margin-bottom: 25px;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    border: 2px solid black;
+}
+
+.Container_Foto_Mascota {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10rem;
+}
+
+.Container_DatosMascota {
+    width: 50%;
+}
+
+.Campo_Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Titulo_Campo {
+    font-size: 1.1rem;
+}
+
+.Datos_Campo {
+    background-color: rgb(216, 216, 216);
+    width: 50%;
+    border-radius: 5px;
+}

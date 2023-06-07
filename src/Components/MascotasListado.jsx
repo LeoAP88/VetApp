@@ -4,7 +4,7 @@ import {
 } from 'react-spinners'
 import { Mascotas } from './Mascotas';
 import "./MascotasListado.css"
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Mascota = ({ mascotas }) => {
 
@@ -21,10 +21,9 @@ export const Mascota = ({ mascotas }) => {
                     </div>)
                 }
             </div>
+
             <Link to={"/crear"}>
-            <div>
-                <button type="button">Crear</button>
-            </div>
+                <button className='btn-crearMascota' type="button">Añadir mascota</button>
             </Link>
         </>
 

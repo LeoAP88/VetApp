@@ -4,7 +4,7 @@ import { FaDog, FaCat } from 'react-icons/all';
 
 export const Mascotas = ({ mascotas }) => {
 
-    const { Nombre, Especie, Raza, Color, Sexo, Edad } = mascotas;
+    const { Nombre, Especie, Raza, Sexo, Edad } = mascotas;
 
     return (
         <>
@@ -25,10 +25,6 @@ export const Mascotas = ({ mascotas }) => {
                     <div className="Campo_Container">
                         <span className="Titulo_Campo">Raza</span>
                         <p className='Datos_Campo'>{Raza}</p>
-                    </div>
-                    <div className="Campo_Container">
-                        <span className="Titulo_Campo">Color</span>
-                        <p className='Datos_Campo'>{Color}</p>
                     </div>
                     <div className="Campo_Container">
                         <span className="Titulo_Campo">Sexo</span>

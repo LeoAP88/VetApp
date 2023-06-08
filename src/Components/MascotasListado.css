@@ -10,3 +10,20 @@
     display: flex;
     flex-direction: column;
 }
+
+.btn-crearMascota {
+    font-family: 'Overpass', sans-serif;
+    font-size: 1.3rem;
+    color: #1b262c;
+    background-color: #dfcdc3;
+    margin: 20px 0;
+    padding: 25px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px 3px 3px 3px;
+}
+
+.btn-crearMascota:hover {
+    background-color: #3c4245;
+    color: #dfcdc3;
+}

@@ -19,7 +19,7 @@ import Consultas from './Components/Consultas.jsx';
 import FormularioDeAdopciones from './Components/FormularioDeAdopciones.jsx';
 import Perfil from './Components/Perfil.jsx';
 import SignOut from './Components/SignOut.jsx';
-import Crear from './Components/Crear.jsx';
+import Crear from './Components/AgregarMascota.jsx';
 
 
 //creamos el router que determina las rutas y que elementos renderizan

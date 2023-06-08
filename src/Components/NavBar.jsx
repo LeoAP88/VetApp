@@ -30,8 +30,8 @@ const NavBar = () => {
 
     const User = useContext(AuthContext);
     let isUserLoggedIn = User.currentUser !== null;
-    console.log(User.currentUser)
-    console.log(isUserLoggedIn)
+    /* console.log(User.currentUser)
+    console.log(isUserLoggedIn) */
 
     return (
         <nav className="navbar" id="navbar">

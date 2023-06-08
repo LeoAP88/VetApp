@@ -1,4 +1,8 @@
 import "./Inicio.css";
+import { AuthContext } from "./AuthProvider";
+import Login from './Login.jsx';
+import Turnos from './Turnos.jsx';
+import { useContext } from "react";
 
 import {
   IoCalendarSharp,
@@ -13,13 +17,24 @@ import {
 import { Link } from "react-router-dom";
 
 const Inicio = () => {
+/*   const User = useContext(AuthContext);
+  const user = User.currentUser
+
+  const estaLogeado = () => {
+    if (user !== null) {
+      return (<Turnos/>)
+    } else {
+      return (<Login/>)
+    }
+  } */
+
   return (
     <>
       <div className="img">
         <div className="img_text">
           <h1>Cuidamos a tu mascota</h1>
           <p>Somos una clínica veterinaria integral, pioneros en la <br /> atención especilizada para tus mascotas. Agendá ahora <br /> tu consulta.</p>
-          <Link to={"/turnos"}><button className="btn-consulta-inicio">Agendar consulta</button></Link>
+          <button className="btn-consulta-inicio" /* onClick={estaLogeado} */ >Agendar consulta</button>
         </div>
       </div>
       <div><h1>Nuestros Servicios:</h1></div>

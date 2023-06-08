@@ -10,6 +10,7 @@ const Crear = () =>{
 const [Nombre, setNombre] = useState ("") 
 const [Especie, setEspecie] = useState ("")
 const [Raza,setRaza] = useState ("") 
+const [Color,setColor] = useState ("") 
 const [Sexo,setSexo] = useState ("")
 const [Edad,setEdad] = useState (0)
 
@@ -27,6 +28,7 @@ const crearMascota = async(e)=>{
         Nombre:Nombre,
         Especie:Especie,
         Raza:Raza,
+        Color:Color,
         Sexo:Sexo,
         Edad:Edad
     })
@@ -62,6 +64,15 @@ const crearMascota = async(e)=>{
                  <input 
                  value={Raza}
                  onChange={(e)=>setRaza(e.target.value)}
+                 className="form-control"
+                 type="text"/>
+                </div>
+
+                <div className="mb-3">
+                 <label className="form-label">Color</label>   
+                 <input 
+                 value={Color}
+                 onChange={(e)=>setColor(e.target.value)}
                  className="form-control"
                  type="text"/>
                 </div>

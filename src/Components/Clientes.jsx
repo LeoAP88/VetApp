@@ -16,7 +16,6 @@ const Clientes = () => {
       setClientes(
         data.docs.map((doc)=>({...doc.data(),id:doc.id}))
       )
-      console.log(clientes);
     }
 
     useEffect(()=>{
@@ -31,6 +30,7 @@ const Clientes = () => {
                 <table>
                     <thead>
                         <tr>
+                        <th>Id</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Email</th>
@@ -40,21 +40,22 @@ const Clientes = () => {
                     <tbody>
                         {clientes.map((cliente)=>(
                             <tr key={cliente.id}>
+                                <td>{cliente.id}</td>
                                 <td>{cliente.Nombre}</td>
                                 <td>{cliente.Apellido}</td>
                                 <td>{cliente.Email}</td>
+                                <td>
+                                   <Link to={`/perfil/${cliente.id}`}><button>Ver detalles</button></Link>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
-
-            <div>
-                <Link to={"/crear"}>
-                    <button className='btn-crearMascota' type="button">Añadir mascota</button>
-                </Link>
-            </div>
         </div>
+        <Link to={"/crear"}>
+            <button className='btn-crearMascota' type="button">Añadir mascota</button>
+        </Link>
         </>
     )
 }

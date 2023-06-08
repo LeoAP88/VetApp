@@ -1,0 +1,48 @@
+@charset "utf-8";
+.tarjeta{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  border: 1px solid lightgray;
+  box-shadow: 2px 2px 8px 4px #d3d3d3d1;
+  border-radius:15px;
+  font-family: sans-serif;
+  justify-content: center;
+  align-items: center;
+}
+.titulo{
+  font-size: 24px;
+  padding: 10px 10px 0 10px;;
+}
+.cuerpo{
+  padding: 10px;
+}
+.pie{
+  background: rgb(141, 65, 141);
+  border-radius:15px;
+  padding: 10px;
+  text-align:center;
+  margin: 10px;
+}
+.pie a{
+  text-decoration: none;
+  color: white;
+}
+.pie a:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: ""
+}
+
+
+/* var botonAdministrador = document.getElementById('boton-administrador');
+
+if (user.email == 'admin@gmail.com') {
+  botonAdministrador.style.display = 'block'; // Mostrar el botón de administrador
+} else {
+  botonAdministrador.style.display = 'none'; // Ocultar el botón de administrador
+} */

@@ -22,6 +22,7 @@ import SignOut from './Components/SignOut.jsx';
 import Crear from './Components/AgregarMascota.jsx';
 import Clientes from './Components/Clientes.jsx';
 import AgregarAdopcion from './Components/AgregarAdopcion.jsx';
+import Adopcion from './Components/Adopcion.jsx';
 
 
 //creamos el router que determina las rutas y que elementos renderizan
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
         element: <MisMascotas />
       },
       {
-        path: "perfil",
+        path: "perfil/:id",
         element: <Perfil />
       },
       {
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: "agregarAdopcion",
         element: <AgregarAdopcion />
+      },
+      {
+        path: "adopcion/:id",
+        element: <Adopcion />
       },
       {
         path: "turnos",

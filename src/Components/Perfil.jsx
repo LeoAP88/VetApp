@@ -1,21 +1,40 @@
 import { getAuth } from "firebase/auth";
+import { useState, useEffect,useContext } from "react";
+import { useParams } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./firebaseConfig/firebase";
+import { AuthContext } from "./AuthProvider";
 
 const Perfil = () => {
-
+    const [mascotas, setMascotas] = useState([]);
     const auth = getAuth();
-    const user = auth.currentUser;
+    const User = useContext(AuthContext);
+    const uid = User.currentUser?.uid;
+    const { id } = useParams();
 
-    if (user !== null) {
+   
+
+    
+
+  /*   if (user !== null) {
     const displayName = user.displayName;
     const email = user.email;
     const photoURL = user.photoURL;
     const emailVerified = user.emailVerified;
     const uid = user.uid;
-    return (`${email}`)
+    return (`${id}`)
     }
-    
+     */
     return (
         <>
+        <div>
+            <div>
+                <button>{id}</button>
+            </div>
+        </div>
+
+
+
         <div>
         </div>
         {/* <div className="mt-5 text-center">

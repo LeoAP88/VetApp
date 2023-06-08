@@ -56,7 +56,7 @@ const Registro = () => {
                     <div className="txt_field">
                         <input type="password" name="password" required onChange={(e) => setPassword(e.target.value)}></input>
                         <span></span>
-                        <label>Password</label>
+                        <label>Password - (6 caracteres min)</label>
                     </div>
                     <div className="txt_field">
                         <input type="nombre" name="nombre" required onChange={(e) => setNombre(e.target.value)}></input>
@@ -69,7 +69,7 @@ const Registro = () => {
                         <label>Apellido</label>
                     </div>
                     <Link to={"/"}>
-                        <button className="btn-registro" type="submit" title="Registrarse" name="Registrarse" onClick={submit}>Registrarse</button>
+                        <button className="btn-registro" type="submit" title="Registrarse" name="Registrarse" disabled={password.length < 6} onClick={submit}>Registrarse</button>
                     </Link>
                     <div className="signup_link">
                         ¿Ya tenes una cuenta? <Link to={"/Login"}>Ingresá acá</Link>

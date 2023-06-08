@@ -17,16 +17,16 @@ import {
 import { Link } from "react-router-dom";
 
 const Inicio = () => {
-/*   const User = useContext(AuthContext);
-  const user = User.currentUser
-
-  const estaLogeado = () => {
-    if (user !== null) {
-      return (<Turnos/>)
-    } else {
-      return (<Login/>)
-    }
-  } */
+  /*   const User = useContext(AuthContext);
+    const user = User.currentUser
+  
+    const estaLogeado = () => {
+      if (user !== null) {
+        return (<Turnos/>)
+      } else {
+        return (<Login/>)
+      }
+    } */
 
   return (
     <>

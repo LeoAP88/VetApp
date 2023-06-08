@@ -21,6 +21,7 @@ import Perfil from './Components/Perfil.jsx';
 import SignOut from './Components/SignOut.jsx';
 import Crear from './Components/AgregarMascota.jsx';
 import Clientes from './Components/Clientes.jsx';
+import AgregarAdopcion from './Components/AgregarAdopcion.jsx';
 
 
 //creamos el router que determina las rutas y que elementos renderizan
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
       {
         path: "formulario",
         element: <FormularioDeAdopciones />
+      },
+      {
+        path: "agregarAdopcion",
+        element: <AgregarAdopcion />
       },
       {
         path: "turnos",

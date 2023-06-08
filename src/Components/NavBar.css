@@ -1,7 +1,3 @@
-.navbar {
-    width: 100%;
-}
-
 .nav-link-section {
     height: 60px;
     display: flex;
@@ -60,4 +56,15 @@
 #botonCerrarSesion{
     background-color: transparent;
     background-repeat: no-repeat;
+}
+
+.logoBlanco {
+    height: 45px;
+}
+
+.huellitas {
+    display: flex;
+    align-items: center;
+    margin-left: 45px;
+    justify-content: flex-start;
 }

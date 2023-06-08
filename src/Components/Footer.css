@@ -1,8 +1,16 @@
 #footer{
     height: 115px;
-    width: 100%;
     background-color: black;
     margin-top: auto;
     color: white;
     padding-bottom: 10px;
+    display: flex;
+}
+
+
+.huellitasFooter {
+    margin-left: 70px;
+}
+.text {
+    margin-left: 700px;
 }

@@ -21,10 +21,6 @@ export const Mascota = ({ mascotas }) => {
                     </div>)
                 }
             </div>
-
-            <Link to={"/crear"}>
-                <button className='btn-crearMascota' type="button">Añadir mascota</button>
-            </Link>
         </>
 
     )

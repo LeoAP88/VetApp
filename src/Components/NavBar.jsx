@@ -24,6 +24,7 @@ const LogInLinks = ({ isUserLoggedIn }) => {
             <>
                 <NavLink to="/clientes" className="nav-link nav-item">Clientes</NavLink>
                 <NavLink to="/turnos" className="nav-link nav-item">Turnos</NavLink>
+                <NavLink to="/agregarAdopcion" className="nav-link nav-item">Nueva Adopcion</NavLink>
                 <NavLink to="/signOut" className="nav-link nav-item"><button id="botonCerrarSesion" className="botonNavLogin">Cerrar Sesión</button></NavLink>
             </>
         );
@@ -33,7 +34,6 @@ const LogInLinks = ({ isUserLoggedIn }) => {
         return (
             <>
                 <NavLink to="/misMascotas" className="nav-link nav-item">Mis Mascotas</NavLink>
-                <NavLink to="/adopciones" className="nav-link nav-item">Adopciones</NavLink>
                 <NavLink to="/turnos" className="nav-link nav-item">Turnos</NavLink>
                 <NavLink to="/signOut" className="nav-link nav-item"><button id="botonCerrarSesion" className="botonNavLogin">Cerrar Sesión</button></NavLink>
                 <NavLink to="/perfil" className="nav-link nav-item"><CgProfile /></NavLink>
@@ -54,8 +54,13 @@ const NavBar = () => {
             <div className="nav-link-section">
                 {/* NavLink agrega por defecto la clase active cuando el path esta activo. 
             Con la prop end le indicamos que matchee solo el path especificado, y no los paths hijos*/}
+                <div className="huellitas">
+                    <div><img src="../logoBlanco.jpg" alt="" className="logoBlanco"/></div>
+                    <div>huellitas</div>
+                </div>
                 <NavLink to="/" className="nav-link nav-item" end><GiHospitalCross className="logo" /></NavLink>
                 <NavLink to="/quienesSomos" className="nav-link nav-item">Quiénes Somos</NavLink>
+                <NavLink to="/adopciones" className="nav-link nav-item">Adopciones</NavLink>
                 {/* <Link to="/" className="nav-link nav-item">Inicio</Link> */}
                 <NavLink to="/consultas" className="nav-link nav-item">Consultas</NavLink>
 

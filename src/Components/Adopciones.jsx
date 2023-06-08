@@ -5,6 +5,9 @@ const Adopciones=() =>{
     return(
         <>
         <div>Adopciones</div>
+
+        
+
         <Link to={"/formulario"}>
         <div>
             <button type="button">Formulario de Adopción</button>

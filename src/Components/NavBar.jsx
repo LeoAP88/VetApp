@@ -3,18 +3,34 @@ import "./NavBar.css"
 import { BsInstagram, BsFacebook, CgProfile, MdOutlineLocalGroceryStore, GiHospitalCross } from 'react-icons/all';
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthProvider";
+import { getAuth } from "firebase/auth";
 
-const LogInLinks = ({isUserLoggedIn}) => {
+const LogInLinks = ({ isUserLoggedIn }) => {
 
-    if(!isUserLoggedIn){
-        return(
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (!isUserLoggedIn) {
+        return (
             <>
                 <NavLink to="/login" className="nav-link nav-item"><button id="botonIngresar" className="botonNavNoLogin">Ingresar</button></NavLink>
                 <NavLink to="/register" className="nav-link nav-item"><button id="botonRegistrate" className="botonNavNoLogin">Registrate</button></NavLink>
             </>
         );
-    }else{
-        return(
+    }
+
+    else if (isUserLoggedIn && user.email == 'admin@gmail.com') {
+        return (
+            <>
+                <NavLink to="/clientes" className="nav-link nav-item">Clientes</NavLink>
+                <NavLink to="/turnos" className="nav-link nav-item">Turnos</NavLink>
+                <NavLink to="/signOut" className="nav-link nav-item"><button id="botonCerrarSesion" className="botonNavLogin">Cerrar Sesión</button></NavLink>
+            </>
+        );
+    }
+
+    else {
+        return (
             <>
                 <NavLink to="/misMascotas" className="nav-link nav-item">Mis Mascotas</NavLink>
                 <NavLink to="/adopciones" className="nav-link nav-item">Adopciones</NavLink>
@@ -36,9 +52,9 @@ const NavBar = () => {
     return (
         <nav className="navbar" id="navbar">
             <div className="nav-link-section">
-            {/* NavLink agrega por defecto la clase active cuando el path esta activo. 
+                {/* NavLink agrega por defecto la clase active cuando el path esta activo. 
             Con la prop end le indicamos que matchee solo el path especificado, y no los paths hijos*/}
-                <NavLink to="/" className="nav-link nav-item" end><GiHospitalCross className="logo"/></NavLink>
+                <NavLink to="/" className="nav-link nav-item" end><GiHospitalCross className="logo" /></NavLink>
                 <NavLink to="/quienesSomos" className="nav-link nav-item">Quiénes Somos</NavLink>
                 {/* <Link to="/" className="nav-link nav-item">Inicio</Link> */}
                 <NavLink to="/consultas" className="nav-link nav-item">Consultas</NavLink>

@@ -11,7 +11,7 @@ export const Mascotas = ({ mascotas }) => {
             <div className='Mascota_Container'>
 
                 <div className="Container_Foto_Mascota">
-                    {Especie === 'perro' ? <FaDog /> : <FaCat />}
+                    {Especie === 'Perro' ? <FaDog /> : <FaCat />}
                 </div>
                 <div className="Container_DatosMascota">
                     <div className="Campo_Container">

@@ -9,10 +9,10 @@ import './AgregarMascota.css'
 
 const AgregarMascota = () => {
     const [Nombre, setNombre] = useState("")
-    const [Especie, setEspecie] = useState("perro")
+    const [Especie, setEspecie] = useState("Perro")
     const [Raza, setRaza] = useState("")
-    const [Color,setColor] = useState ("")
-    const [Sexo, setSexo] = useState("")
+    const [Color, setColor] = useState("")
+    const [Sexo, setSexo] = useState("Macho")
     const [Edad, setEdad] = useState(0)
 
     const User = useContext(AuthContext);
@@ -29,7 +29,7 @@ const AgregarMascota = () => {
             Nombre: Nombre,
             Especie: Especie,
             Raza: Raza,
-            Color:Color,
+            Color: Color,
             Sexo: Sexo,
             Edad: Edad
         })
@@ -49,8 +49,8 @@ const AgregarMascota = () => {
                     <div className="container_campo_select">
                         <p className="Especie_tag">Especie</p>
                         <select className="select_especie" required name="especie" id="especie" onChange={(e) => setEspecie(e.target.value)}>
-                            <option value="perro">perro</option>
-                            <option value="gato">gato</option>
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
                         </select>
                     </div>
                     <div className="container_campo">
@@ -61,9 +61,12 @@ const AgregarMascota = () => {
                         <label htmlFor="raza">Color</label>
                         <input type="text" name="color" required onChange={(e) => setColor(e.target.value)}></input>
                     </div>
-                    <div className="container_campo">
-                        <label htmlFor="sexo">Sexo</label>
-                        <input type="text" name="sexo" required onChange={(e) => setSexo(e.target.value)}></input>
+                    <div className="container_campo_select">
+                        <p className="Especie_tag">Sexo</p>
+                        <select className="select_especie" required name="sexo" id="sexo" onChange={(e) => setSexo(e.target.value)}>
+                            <option value="Macho">Macho</option>
+                            <option value="Hembra">Hembra</option>
+                        </select>
                     </div>
                     <div className="container_campo">
                         <label htmlFor="edad">Edad</label>

@@ -45,7 +45,7 @@ const Clientes = () => {
                                 <td>{cliente.Apellido}</td>
                                 <td>{cliente.Email}</td>
                                 <td>
-                                   <Link to={`/perfil/${cliente.id}`}><button>Ver detalles</button></Link>
+                                   <Link to={`/misMascotas/${cliente.id}`}><button>Ver Mascotas</button></Link>
                                 </td>
                             </tr>
                         ))}
@@ -53,9 +53,6 @@ const Clientes = () => {
                 </table>
             </div>
         </div>
-        <Link to={"/crear"}>
-            <button className='btn-crearMascota' type="button">Añadir mascota</button>
-        </Link>
         </>
     )
 }

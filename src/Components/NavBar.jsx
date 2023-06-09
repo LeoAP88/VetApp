@@ -9,6 +9,8 @@ const LogInLinks = ({ isUserLoggedIn }) => {
 
     const auth = getAuth();
     const user = auth.currentUser;
+    const User = useContext(AuthContext);
+    const uid = User.currentUser?.uid;
 
     if (!isUserLoggedIn) {
         return (
@@ -32,7 +34,7 @@ const LogInLinks = ({ isUserLoggedIn }) => {
     else {
         return (
             <>
-                <NavLink to="/misMascotas" className="nav-link nav-item">Mis Mascotas</NavLink>
+                <NavLink to={`/misMascotas/${uid}`} className="nav-link nav-item">Mis Mascotas</NavLink>
                 <NavLink to="/turnos" className="nav-link nav-item">Turnos</NavLink>
                 <NavLink to="/signOut" className="nav-link nav-item"><button id="botonCerrarSesion" className="botonNavLogin">Cerrar Sesión</button></NavLink>
                 <NavLink to="/perfil" className="nav-link nav-item"><CgProfile /></NavLink>

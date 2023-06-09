@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         element: <QuienesSomos />
       },
       {
-        path: "misMascotas",
+        path: "misMascotas/:id",
         element: <MisMascotas />
       },
       {

@@ -28,16 +28,14 @@
   text-decoration: none;
   color: white;
 }
-.pie a:after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  content: ""
+
+#boton-administrador {
+  margin: 50px;
 }
 
+.botones {
+  margin: 30px;
+}
 
 /* var botonAdministrador = document.getElementById('boton-administrador');
 
@@ -45,4 +43,8 @@ if (user.email == 'admin@gmail.com') {
   botonAdministrador.style.display = 'block'; // Mostrar el botón de administrador
 } else {
   botonAdministrador.style.display = 'none'; // Ocultar el botón de administrador
-} */
+} 
+
+{User.currentUser === 'admin@gmail.com' && (
+  <button id="boton-administrador">Botón de administrador</button>
+)}*/

@@ -1,7 +1,7 @@
 import { getAuth } from "firebase/auth";
 import { useState, useEffect,useContext } from "react";
 import { useParams } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, getDoc, doc } from "firebase/firestore";
 import { db } from "./firebaseConfig/firebase";
 import { AuthContext } from "./AuthProvider";
 
@@ -12,7 +12,18 @@ const Perfil = () => {
     const uid = User.currentUser?.uid;
     const { id } = useParams();
 
-   
+    useEffect(() => {
+        async function getMascotas() {
+            const querySnapshot = await getDocs(doc(db,`/Clientes/${id}/Mascotas/id`));
+            if (querySnapshot.exists()) {
+                setMascotas(querySnapshot.data());
+              } else {
+                console.log("No se encontró el documento.");
+              }
+            }
+            getMascotas()
+    },[]);
+
 
     
 

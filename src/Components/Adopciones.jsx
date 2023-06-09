@@ -7,9 +7,28 @@ import { AuthContext } from "./AuthProvider";
 import { getAuth } from "firebase/auth";
 import "./Adopciones.css"
 
-const Adopciones=() =>{
+
+const LogInLinks = ({ isUserLoggedIn }) => {
+
     const auth = getAuth();
     const user = auth.currentUser;
+
+   if (isUserLoggedIn && user.email == 'admin@gmail.com') {
+        return (
+            <>
+                <Link to={"/agregarAdopcion"}>
+                    <button id="boton-administrador">Agregar nueva Adopcion</button>
+                </Link>
+            </>
+        );
+    }
+}
+
+const Adopciones=() =>{
+    const auth = getAuth();
+    const User = useContext(AuthContext);
+    let isUserLoggedIn = User.currentUser !== null;
+    
     const [adopciones,setAdopciones] = useState([]);
     const adopcionesCollection = collection(db, `/Adopciones`)
 
@@ -21,9 +40,12 @@ const Adopciones=() =>{
       )
     }
 
+
     useEffect(()=>{
-        getAdopciones()
+        getAdopciones();
     },[])
+   
+    
 
     return(
         <>
@@ -42,13 +64,16 @@ const Adopciones=() =>{
             </div> ))}
 
        
-
-        <Link to={"/formulario"}>
-        <div>
-            <button type="button">Formulario de Adopción</button>
+        <div className="botones">
+            <Link to={"/formulario"}>
+                <div>
+                    <button type="button">Formulario de Adopción</button>
+                </div>
+            </Link>
+            <div>
+            <LogInLinks isUserLoggedIn={isUserLoggedIn}></LogInLinks>
+            </div>
         </div>
-        </Link>
-        <button id="boton-administrador">Agregar nueva Adopcion</button>
         </>
     )
 }

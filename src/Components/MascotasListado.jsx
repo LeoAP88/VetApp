@@ -13,7 +13,7 @@ export const Mascota = ({ mascotas }) => {
             <h1>Mis Mascotas</h1>
 
             <div className="Listado_Container">
-                {mascotas.length ? mascotas.map((mascota) =>
+                {mascotas.length>0 ? mascotas.map((mascota) =>
                     <Mascotas key={mascota.id} mascotas={mascota} />)
                     :
                     (<div className='loader_container'>

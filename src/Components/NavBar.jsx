@@ -24,7 +24,6 @@ const LogInLinks = ({ isUserLoggedIn }) => {
             <>
                 <NavLink to="/clientes" className="nav-link nav-item">Clientes</NavLink>
                 <NavLink to="/turnos" className="nav-link nav-item">Turnos</NavLink>
-                <NavLink to="/agregarAdopcion" className="nav-link nav-item">Nueva Adopcion</NavLink>
                 <NavLink to="/signOut" className="nav-link nav-item"><button id="botonCerrarSesion" className="botonNavLogin">Cerrar Sesión</button></NavLink>
             </>
         );

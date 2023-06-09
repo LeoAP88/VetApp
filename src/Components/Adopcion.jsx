@@ -19,6 +19,7 @@ const Adopcion = () =>{
             }
             getAdopcion()
     },[]);
+    
 
     return(
         <div className="tarjeta" key={adopcion.id}>

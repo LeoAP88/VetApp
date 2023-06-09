@@ -1,14 +1,37 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "./AuthProvider";
 import { db } from "./firebaseConfig/firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { Mascota } from "./MascotasListado";
+import {Link} from "react-router-dom";
+import { getAuth } from "firebase/auth";
 
+
+const LogInLinks = ({ isUserLoggedIn }) => {
+
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+   if (isUserLoggedIn && user.email == 'admin@gmail.com') {
+        return (
+            <>
+                <Link to={"/crear"}>
+                    <button id="boton-administrador">Agregar nueva mascota</button>
+                </Link>
+            </>
+        );
+    }
+}
 
 const MisMascotas = () => {
     const [mascotas, setMascotas] = useState([]);
     const User = useContext(AuthContext);
     const uid = User.currentUser?.uid;
+    
+    const auth = getAuth();
+    
+    let isUserLoggedIn = User.currentUser !== null;
+
 
     useEffect(() => {
         async function getMascotas() {
@@ -29,6 +52,7 @@ const MisMascotas = () => {
     return (
         <>
             <Mascota mascotas={mascotas} />
+            <div><LogInLinks isUserLoggedIn={isUserLoggedIn}></LogInLinks></div>
         </>
     )
 }

@@ -5,6 +5,9 @@ import { collection, getDocs } from "firebase/firestore";
 import { Mascota } from "./MascotasListado";
 import {Link} from "react-router-dom";
 import { getAuth } from "firebase/auth";
+import {
+    FadeLoader
+} from 'react-spinners'
 
 
 const LogInLinks = ({ isUserLoggedIn }) => {
@@ -25,6 +28,7 @@ const LogInLinks = ({ isUserLoggedIn }) => {
 
 const MisMascotas = () => {
     const [mascotas, setMascotas] = useState([]);
+    const [loading, setLoading] = useState(true);
     const User = useContext(AuthContext);
     const uid = User.currentUser?.uid;
     
@@ -34,20 +38,27 @@ const MisMascotas = () => {
 
 
     useEffect(() => {
+        setLoading(true)
         async function getMascotas() {
             const querySnapshot = await getDocs(collection(db, `/Clientes/${uid}/Mascotas`));
-            if (querySnapshot.size === 0) {
-                return <p>No hay mascotas asociadas</p>;
-            } else {
+            if (querySnapshot.size !== 0) {
                 console.log(querySnapshot.docs.map(doc => doc.data()))
                 setMascotas(querySnapshot.docs.map(doc => { return { id: doc.id, ...doc.data() } }));
             }
+            setLoading(false)
         }
         if (User.currentUser !== null) {
             getMascotas();
         }
     },
         [uid]);
+
+    if(loading){
+        return (
+            <div className='loader_container'>
+                <FadeLoader />
+            </div>)
+    }
 
     return (
         <>

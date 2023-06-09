@@ -14,11 +14,12 @@ const LogInLinks = ({ isUserLoggedIn }) => {
 
     const auth = getAuth();
     const user = auth.currentUser;
+    const { id } = useParams();
 
    if (isUserLoggedIn && user.email == 'admin@gmail.com') {
         return (
             <>
-                <Link to={"/crear"}>
+                <Link to={`/crear/${id}`}>
                     <button id="boton-administrador">Agregar nueva mascota</button>
                 </Link>
             </>
@@ -40,7 +41,18 @@ const MisMascotas = () => {
     useEffect(() => {
         setLoading(true)
         async function getMascotas() {
-            const querySnapshot = await getDocs(collection(db, `/Clientes/${id}/Mascotas`));
+            const querySnapshot = await getDocs(collection(db, `/Clientes/${id}/Mascotas`));//le paso id, porque 
+                                                                                            //si le pasara el uid 
+                                                                                            //del administrador, 
+                                                                                            //me va a llevar a 
+                                                                                            //misMascotas del administrador
+                                                                                            //(quien no tiene mascotas, 
+                                                                                            //asi que va a decir que no 
+                                                                                            //encontro mascotas asociadas 
+                                                                                            //a ese usuario).Lo que yo quiero, 
+                                                                                            //es que me lleve al misMascotas 
+                                                                                            //del cliente, por eso capturo el 
+                                                                                            //id del cliente que esta viajando por la url.
             if (querySnapshot.size !== 0) {
                 console.log(querySnapshot.docs.map(doc => doc.data()))
                 setMascotas(querySnapshot.docs.map(doc => { return { id: doc.id, ...doc.data() } }));

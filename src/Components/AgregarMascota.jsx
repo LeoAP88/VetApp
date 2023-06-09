@@ -1,7 +1,7 @@
 //campos para el cliente: nombre, apellido, direccion, numero de telefono, email!, 
 //campos para la mascota: nombre, especie, raza, sexo, edad/nacimiento, pelaje, castrado? 
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { collection, addDoc } from "firebase/firestore"
 import { db } from "./firebaseConfig/firebase"
 import { AuthContext } from "./AuthProvider";
@@ -18,10 +18,11 @@ const AgregarMascota = () => {
     const User = useContext(AuthContext);
 
     const uid = User.currentUser?.uid;
+    const { id } = useParams();
 
     const navigate = useNavigate()
 
-    const mascotasCollection = collection(db, `/Clientes/${uid}/Mascotas`)
+    const mascotasCollection = collection(db, `/Clientes/${id}/Mascotas`)
 
     const crearMascota = async (e) => {
         e.preventDefault()
@@ -33,7 +34,7 @@ const AgregarMascota = () => {
             Sexo: Sexo,
             Edad: Edad
         })
-        navigate("/misMascotas")
+        navigate(`/misMascotas/${id}`)
 
     }
 

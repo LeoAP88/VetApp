@@ -89,7 +89,7 @@ const router = createBrowserRouter([
         element: <Turnos />
       },
       {
-        path: "crear",
+        path: "crear/:id",
         element: <Crear />
       },
       {

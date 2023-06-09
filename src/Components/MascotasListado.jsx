@@ -15,6 +15,8 @@ export const Mascota = ({ mascotas }) => {
             <div className="Listado_Container">
                 {mascotas.length>0 ? mascotas.map((mascota) =>
                     <Mascotas key={mascota.id} mascotas={mascota} />)
+                    : !mascotas.exists ?
+                    <div>No se encontraron mascotas asociadas a su usuario</div>
                     :
                     (<div className='loader_container'>
                         <FadeLoader />

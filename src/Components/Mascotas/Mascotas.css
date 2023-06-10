@@ -1,6 +1,6 @@
 .Mascota_Container {
     width: 70%;
-    height: 500px;
+    height: 600px;
     margin-bottom: 25px;
     display: flex;
     align-self: center;
@@ -35,4 +35,12 @@
     background-color: rgb(216, 216, 216);
     width: 50%;
     border-radius: 5px;
+}
+
+.HC {
+    border-radius: 10px;
+    border-color: blueviolet;
+    background-color: rgb(228, 216, 239);
+    border-width: 3px;
+    margin: 20px;
 }

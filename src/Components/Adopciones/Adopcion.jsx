@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom";
 import{useState,useEffect} from "react";
 import{collection,getDoc, doc} from "firebase/firestore";
-import { db } from "./firebaseConfig/firebase";
+import { db } from "../firebaseConfig/firebase";
+import {Link} from "react-router-dom";
+import "./Adopcion.css"
 
 const Adopcion = () =>{
     const [adopcion,setAdopcion] = useState([]);
@@ -29,7 +31,9 @@ const Adopcion = () =>{
                     <p>{adopcion.Caracteristicas}</p>
                 </div>
                 <div className="pie">
-                    <a href="#">Más información</a>
+                    <Link to={"/adopciones"}>
+                    <button className="volver">Volver</button>
+                    </Link>
                 </div>
             </div>
     )

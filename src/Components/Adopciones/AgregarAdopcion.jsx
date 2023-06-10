@@ -1,46 +1,43 @@
-//campos para el cliente: nombre, apellido, direccion, numero de telefono, email!, 
-//campos para la mascota: nombre, especie, raza, sexo, edad/nacimiento, pelaje, castrado? 
 import { useState, useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { collection, addDoc } from "firebase/firestore"
-import { db } from "./firebaseConfig/firebase"
-import { AuthContext } from "./AuthProvider";
-import './AgregarMascota.css'
+import { db } from "../firebaseConfig/firebase"
+import { AuthContext } from "../AuthProvider";
 
-const AgregarMascota = () => {
+const AgregarAdopcion = () => {
     const [Nombre, setNombre] = useState("")
     const [Especie, setEspecie] = useState("Perro")
     const [Raza, setRaza] = useState("")
     const [Color, setColor] = useState("")
     const [Sexo, setSexo] = useState("Macho")
     const [Edad, setEdad] = useState(0)
+    const [Caracteristicas, setCaracteristicas] = useState("")
 
     const User = useContext(AuthContext);
 
-    const uid = User.currentUser?.uid;
-    const { id } = useParams();
+    
 
     const navigate = useNavigate()
 
-    const mascotasCollection = collection(db, `/Clientes/${id}/Mascotas`)
+    const adopcionesCollection = collection(db, `/Adopciones`)
 
-    const crearMascota = async (e) => {
+    const agregarAdopcion = async (e) => {
         e.preventDefault()
-        await addDoc(mascotasCollection, {
+        await addDoc(adopcionesCollection, {
             Nombre: Nombre,
             Especie: Especie,
             Raza: Raza,
             Color: Color,
             Sexo: Sexo,
-            Edad: Edad
+            Edad: Edad,
+            Caracteristicas: Caracteristicas
         })
-        navigate(`/misMascotas/${id}`)
-
+        navigate("/adopciones")
     }
 
     return (
         <>
-            <h1>Agregar Nueva Mascota</h1>
+            <h1>Agregar Nueva Adopcion</h1>
             <div className="container_crearMascota">
                 <form className="crearMascota_form" action="" method='POST'>
                     <div className="container_campo">
@@ -73,7 +70,11 @@ const AgregarMascota = () => {
                         <label htmlFor="edad">Edad</label>
                         <input type="text" name="edad" required onChange={(e) => setEdad(e.target.value)}></input>
                     </div>
-                    <button className="btn-crearMascota" type="submit" onClick={crearMascota}>Cargar Mascota</button>
+                    <div className="container_campo">
+                        <label htmlFor="raza">Caracteristicas</label>
+                        <input type="text" name="caracteristicas" required onChange={(e) => setCaracteristicas(e.target.value)}></input>
+                    </div>
+                    <button className="btn-crearMascota" type="submit" onClick={agregarAdopcion}>Agregar</button>
                 </form>
             </div>
         </>
@@ -81,4 +82,4 @@ const AgregarMascota = () => {
 }
 
 
-export default AgregarMascota;
+export default AgregarAdopcion;

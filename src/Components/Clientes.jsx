@@ -3,8 +3,13 @@ import {Link} from "react-router-dom"
 import{collection,getDocs,deleteDoc,doc} from "firebase/firestore"
 import { AuthContext } from "./AuthProvider";
 import { db } from "./firebaseConfig/firebase";
+import {
+    FadeLoader
+} from 'react-spinners'
 
 const Clientes = () => {
+    const [loading, setLoading] = useState(true);
+
     const User = useContext(AuthContext);
 
     const [clientes,setClientes] = useState([])
@@ -16,11 +21,20 @@ const Clientes = () => {
       setClientes(
         data.docs.map((doc)=>({...doc.data(),id:doc.id}))
       )
+      setLoading(false)
     }
 
     useEffect(()=>{
+        setLoading(true)
         getClientes()
     },[])
+
+    if(loading){
+        return (
+            <div className='loader_container'>
+                <FadeLoader />
+            </div>)
+    }
 
     return (
         

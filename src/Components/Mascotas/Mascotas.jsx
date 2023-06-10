@@ -38,6 +38,9 @@ export const Mascotas = ({ mascotas }) => {
                         <span className="Titulo_Campo">Edad</span>
                         <p className='Datos_Campo'>{Edad}</p>
                     </div>
+                    <div>
+                        <button className="HC">Ver Historia Clínica</button>
+                    </div>
                 </div>
             </div>
         </>

@@ -1,11 +1,14 @@
 import {Link} from "react-router-dom";
 import FormularioDeAdopciones from "./FormularioDeAdopciones"
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "./firebaseConfig/firebase";
+import { db } from "../firebaseConfig/firebase";
 import{useState,useEffect, useContext} from "react"
-import { AuthContext } from "./AuthProvider";
+import { AuthContext } from "../AuthProvider";
 import { getAuth } from "firebase/auth";
 import "./Adopciones.css"
+import {
+    FadeLoader
+} from 'react-spinners'
 
 
 const LogInLinks = ({ isUserLoggedIn }) => {
@@ -25,6 +28,8 @@ const LogInLinks = ({ isUserLoggedIn }) => {
 }
 
 const Adopciones=() =>{
+    const [loading, setLoading] = useState(true);
+
     const auth = getAuth();
     const User = useContext(AuthContext);
     let isUserLoggedIn = User.currentUser !== null;
@@ -38,14 +43,22 @@ const Adopciones=() =>{
       setAdopciones(
         data.docs.map((doc)=>({...doc.data(),id:doc.id}))
       )
+      setLoading(false)
     }
 
 
     useEffect(()=>{
+        setLoading(true)
         getAdopciones();
+        
     },[])
    
-    
+    if(loading){
+        return (
+            <div className='loader_container'>
+                <FadeLoader />
+            </div>)
+    }
 
     return(
         <>

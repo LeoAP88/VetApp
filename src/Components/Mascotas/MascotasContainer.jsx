@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
-import { AuthContext } from "./AuthProvider";
-import { db } from "./firebaseConfig/firebase";
+import { AuthContext } from "../AuthProvider";
+import { db } from "../firebaseConfig/firebase"
 import { collection, getDocs } from "firebase/firestore";
 import { Mascota } from "./MascotasListado";
 import {Link, useParams} from "react-router-dom";

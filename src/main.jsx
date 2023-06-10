@@ -7,22 +7,22 @@ import {
 import { AuthProvider } from "./Components/AuthProvider.jsx";
 import App from './App.jsx'
 import './index.css'
-import Inicio from './Components/Inicio.jsx';
-import Login from './Components/Login.jsx';
-import Registro from './Components/Registro.jsx';
-import QuienesSomos from './Components/QuienesSomos.jsx';
-import MisMascotas from './Components/MascotasContainer.jsx';
-import Tienda from './Components/Tienda.jsx';
-import Adopciones from './Components/Adopciones.jsx';
-import Turnos from './Components/Turnos.jsx';
-import Consultas from './Components/Consultas.jsx';
-import FormularioDeAdopciones from './Components/FormularioDeAdopciones.jsx';
+import Inicio from './Components/Publico/Inicio.jsx';
+import Login from './Components/ManejoUsuarios/Login.jsx';
+import Registro from './Components/ManejoUsuarios/Registro.jsx';
+import QuienesSomos from './Components/Publico/QuienesSomos.jsx';
+import MisMascotas from './Components/Mascotas/MascotasContainer.jsx';
+import Tienda from './Components/Publico/Tienda.jsx';
+import Adopciones from './Components/Adopciones/Adopciones.jsx';
+import Turnos from './Components/Turnos/Turnos.jsx';
+import Consultas from './Components/Publico/Consultas.jsx';
+import FormularioDeAdopciones from './Components/Adopciones/FormularioDeAdopciones.jsx';
 import Perfil from './Components/Perfil.jsx';
-import SignOut from './Components/SignOut.jsx';
-import Crear from './Components/AgregarMascota.jsx';
+import SignOut from './Components/ManejoUsuarios/SignOut.jsx';
+import Crear from './Components/Mascotas/AgregarMascota.jsx';
 import Clientes from './Components/Clientes.jsx';
-import AgregarAdopcion from './Components/AgregarAdopcion.jsx';
-import Adopcion from './Components/Adopcion.jsx';
+import AgregarAdopcion from './Components/Adopciones/AgregarAdopcion.jsx';
+import Adopcion from './Components/Adopciones/Adopcion.jsx';
 
 
 //creamos el router que determina las rutas y que elementos renderizan

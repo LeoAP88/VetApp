@@ -12,11 +12,11 @@ const NuevaEntrada = () => {
     const User = useContext(AuthContext);
 
     const uid = User.currentUser?.uid;
-    const { id } = useParams();
+    const { idUsuario , id } = useParams();
 
     const navigate = useNavigate()
 
-    const historiasCollection = collection(db, `/Clientes/0Fi0FTD1UEej4Ovn3FjC/Mascotas/9cJ9lDS1Aw0eA5lAYobA/HistoriaClinica`)
+    const historiasCollection = collection(db, `/Clientes/${idUsuario}/Mascotas/${id}/HistoriaClinica`)
 
     const agregarEntrada = async (e) => {
         e.preventDefault()
@@ -24,7 +24,7 @@ const NuevaEntrada = () => {
             Fecha: fechaActual,
             Consulta: Consulta
         })
-        navigate(`/historiaClinica`)
+        navigate(`/historiaClinica/${idUsuario}/${id}`)
     }
 
     return (

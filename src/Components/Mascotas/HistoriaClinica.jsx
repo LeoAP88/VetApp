@@ -65,7 +65,7 @@ const HistoriaClinica = () => {
                 )}
             </div>
             <div>
-                <Link to={"/nuevaEntrada"}>
+                <Link to={`/nuevaEntrada/${idUsuario}/${id}`}>
                     <button>Nueva Entrada</button>
                 </Link>
             </div>

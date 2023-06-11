@@ -103,7 +103,7 @@ const router = createBrowserRouter([
         element: <HistoriaClinica />
       },
       {
-        path: "nuevaEntrada",
+        path: "nuevaEntrada/:idUsuario/:id",
         element: <NuevaEntrada />
       }
     ]

@@ -19,20 +19,6 @@ import { Link } from "react-router-dom";
 const Inicio = () => {
     const User = useContext(AuthContext);
     const user = User.currentUser
-  
-    const estaLogeado = () => {
-      if (user !== null) {
-        return (
-          //alert("Turnos")
-          <Link to="/turnos"></Link>
-        )
-      } else {
-        return (
-          //alert("Login")
-          <Login/> 
-        )
-      }
-    }
 
   return (
     <>
@@ -40,7 +26,14 @@ const Inicio = () => {
         <div className="img_text">
           <h1>Cuidamos a tu mascota</h1>
           <p>Somos una clínica veterinaria integral, pioneros en la <br /> atención especilizada para tus mascotas. Agendá ahora <br /> tu consulta.</p>
-          <button className="btn-consulta-inicio" onClick={estaLogeado} >Agendar consulta</button>
+          <div>
+            {
+              user !== null ?  
+              <Link to="/turnos"> <button className="btn-consulta-inicio">Agendar consulta</button></Link>
+              :
+              <Link to="/login"> <button className="btn-consulta-inicio">Agendar consulta</button></Link>
+            }
+          </div>
         </div>
       </div>
       <div><h1>Nuestros Servicios:</h1></div>

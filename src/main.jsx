@@ -23,6 +23,8 @@ import Crear from './Components/Mascotas/AgregarMascota.jsx';
 import Clientes from './Components/Clientes.jsx';
 import AgregarAdopcion from './Components/Adopciones/AgregarAdopcion.jsx';
 import Adopcion from './Components/Adopciones/Adopcion.jsx';
+import HistoriaClinica from './Components/Mascotas/HistoriaClinica.jsx';
+import NuevaEntrada from './Components/Mascotas/NuevaEntrada.jsx';
 
 
 //creamos el router que determina las rutas y que elementos renderizan
@@ -95,6 +97,14 @@ const router = createBrowserRouter([
       {
         path: "clientes",
         element: <Clientes />
+      },
+      {
+        path: "historiaClinica",
+        element: <HistoriaClinica />
+      },
+      {
+        path: "nuevaEntrada",
+        element: <NuevaEntrada />
       }
     ]
   }

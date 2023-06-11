@@ -70,7 +70,7 @@ const AgregarMascota = () => {
                         </select>
                     </div>
                     <div className="container_campo">
-                        <label htmlFor="edad">Edad</label>
+                        <label htmlFor="edad">Edad (años)</label>
                         <input type="text" name="edad" required onChange={(e) => setEdad(e.target.value)}></input>
                     </div>
                     <button className="btn-crearMascota" type="submit" onClick={crearMascota}>Cargar Mascota</button>

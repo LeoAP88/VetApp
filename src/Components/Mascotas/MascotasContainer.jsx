@@ -8,6 +8,7 @@ import { getAuth } from "firebase/auth";
 import {
     FadeLoader
 } from 'react-spinners'
+import HistoriaClinica from "./HistoriaClinica";
 
 
 const LogInLinks = ({ isUserLoggedIn }) => {
@@ -76,6 +77,7 @@ const MisMascotas = () => {
         <>
             <Mascota mascotas={mascotas} />
             <div><LogInLinks isUserLoggedIn={isUserLoggedIn}></LogInLinks></div>
+
         </>
     )
 }

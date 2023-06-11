@@ -4,4 +4,9 @@
   padding: 10px;
   border: 1px solid lightgray;
   color: white;
+  padding: 10px;
+  margin: 10px;
+}
+.pie {
+  background-color: white;
 }

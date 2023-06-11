@@ -6,6 +6,7 @@ import { AuthContext } from "../AuthProvider";
 
 const AgregarAdopcion = () => {
     const [Nombre, setNombre] = useState("")
+    const [Foto, setFoto] = useState("")
     const [Especie, setEspecie] = useState("Perro")
     const [Raza, setRaza] = useState("")
     const [Color, setColor] = useState("")
@@ -25,6 +26,7 @@ const AgregarAdopcion = () => {
         e.preventDefault()
         await addDoc(adopcionesCollection, {
             Nombre: Nombre,
+            Foto: Foto,
             Especie: Especie,
             Raza: Raza,
             Color: Color,
@@ -43,6 +45,10 @@ const AgregarAdopcion = () => {
                     <div className="container_campo">
                         <label htmlFor="nombre">Nombre</label>
                         <input type="text" name="nombre" required onChange={(e) => setNombre(e.target.value)}></input>
+                    </div>
+                    <div className="container_campo">
+                        <label htmlFor="foto"></label>
+                        <input type="text" name="foto" required onChange={(e) => setFoto(e.target.value)} placeholder="Foto"></input>
                     </div>
                     <div className="container_campo_select">
                         <p className="Especie_tag">Especie</p>

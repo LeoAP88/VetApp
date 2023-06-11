@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
-import FormularioDeAdopciones from "./FormularioDeAdopciones"
-import { collection, getDocs } from "firebase/firestore";
+import Swal from "sweetalert2"
+import whitReactContent from "sweetalert2-react-content"
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase";
 import{useState,useEffect, useContext} from "react"
 import { AuthContext } from "../AuthProvider";
@@ -11,17 +12,52 @@ import {
 } from 'react-spinners'
 
 
-const LogInLinks = ({ isUserLoggedIn }) => {
+const mySwal = whitReactContent (Swal)
+
+
+const LogInLinks = ({ isUserLoggedIn, id, getAdopciones }) => {
 
     const auth = getAuth();
     const user = auth.currentUser;
 
+    const deleteAdopcion = async(id)=>{
+        const adopcionDoc = doc(db,"Adopciones",id)
+        await deleteDoc(adopcionDoc)
+        getAdopciones()
+    }
+    
+    
+    
+    const confirmDelete = (id)=>{
+        Swal.fire({
+            title: 'Estas Seguro/a?',
+            text: "No podes revertir esta Accion!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Deseo Borrarlo!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                deleteAdopcion(id) 
+              Swal.fire(
+                'Borrado!',
+                'La adopción ha sido Borrada.',
+                'success'
+              )
+            }
+          })
+    }
+
    if (isUserLoggedIn && user.email == 'admin@gmail.com') {
         return (
             <>
-                <Link to={"/agregarAdopcion"}>
-                    <button id="boton-administrador">Agregar nueva Adopcion</button>
-                </Link>
+             <Link to={`/editar/${id}`} className="btn btn-light">
+                <i className="fa-solid fa-pencil"></i>
+            </Link>
+            <button onClick={()=>{confirmDelete(id)}} className="btn btn-danger">
+                <i className="fa-solid fa-trash"></i>
+            </button>
             </>
         );
     }
@@ -29,12 +65,14 @@ const LogInLinks = ({ isUserLoggedIn }) => {
 
 const Adopciones=() =>{
     const [loading, setLoading] = useState(true);
+    const [adopciones,setAdopciones] = useState([]);
 
     const auth = getAuth();
     const User = useContext(AuthContext);
     let isUserLoggedIn = User.currentUser !== null;
+
+    const isAdmin = User.currentUser && User.currentUser.email === 'admin@gmail.com';
     
-    const [adopciones,setAdopciones] = useState([]);
     const adopcionesCollection = collection(db, `/Adopciones`)
 
     const getAdopciones = async() =>{
@@ -75,7 +113,16 @@ const Adopciones=() =>{
                 <div className="pie">
                     <Link to={`/adopcion/${adopcion.id}`}>Más información</Link>
                 </div>
+                <div>
+                    <LogInLinks isUserLoggedIn={isUserLoggedIn} id={adopcion.id} getAdopciones={getAdopciones}></LogInLinks>
+                </div>
             </div> ))}
+               
+            {isAdmin && (
+                <Link to={"/agregarAdopcion"}>
+                    <button id="boton-administrador">Agregar nueva Adopción</button>
+                </Link>
+            )}
 
        
         <div className="botones">
@@ -84,9 +131,6 @@ const Adopciones=() =>{
                     <button type="button">Formulario de Adopción</button>
                 </div>
             </Link>
-            <div>
-            <LogInLinks isUserLoggedIn={isUserLoggedIn}></LogInLinks>
-            </div>
         </div>
         </>
     )

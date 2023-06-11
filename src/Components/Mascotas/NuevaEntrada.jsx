@@ -5,7 +5,7 @@ import { db } from "../firebaseConfig/firebase"
 import { AuthContext } from "../AuthProvider";
 
 const NuevaEntrada = () => {
-    const fechaActual = new Date().toLocaleDateString();
+    const fechaActual = new Date().toLocaleString();
 
     const[Consulta, setConsulta] = useState("")
 

@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 const FormularioDeAdopciones = () =>{
     return(
         <>
@@ -52,6 +54,10 @@ const FormularioDeAdopciones = () =>{
                         </div>
 
                 </form>
+
+                <Link to={"/adopciones"}>
+                        <button className="volver">Volver</button>
+                </Link>
             </div>
         </>
     )

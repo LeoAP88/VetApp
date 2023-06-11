@@ -18,7 +18,7 @@
   padding: 10px;
 }
 .pie{
-  background: rgb(141, 65, 141);
+  background-color: rgb(141, 65, 141);
   border-radius:15px;
   padding: 10px;
   text-align:center;
@@ -36,15 +36,3 @@
 .botones {
   margin: 30px;
 }
-
-/* var botonAdministrador = document.getElementById('boton-administrador');
-
-if (user.email == 'admin@gmail.com') {
-  botonAdministrador.style.display = 'block'; // Mostrar el botón de administrador
-} else {
-  botonAdministrador.style.display = 'none'; // Ocultar el botón de administrador
-} 
-
-{User.currentUser === 'admin@gmail.com' && (
-  <button id="boton-administrador">Botón de administrador</button>
-)}*/

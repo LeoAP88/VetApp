@@ -6,7 +6,7 @@ import { Mascotas } from './Mascotas';
 import "./MascotasListado.css"
 import { Link } from "react-router-dom";
 
-export const Mascota = ({ mascotas }) => {
+export const Mascota = ({ mascotas , idUsuario}) => {
 
     return (
         <>
@@ -14,7 +14,7 @@ export const Mascota = ({ mascotas }) => {
 
             <div className="Listado_Container">
                 {mascotas.length>0 ? mascotas.map((mascota) =>
-                    <Mascotas key={mascota.id} mascotas={mascota} />)
+                    <Mascotas key={mascota.id} mascotas={mascota} idUsuario={idUsuario}/>)
                     : 
                     <div>No se encontraron mascotas asociadas a este usuario</div>
                 }

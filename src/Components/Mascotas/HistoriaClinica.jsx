@@ -15,25 +15,16 @@ const HistoriaClinica = () => {
     const User = useContext(AuthContext);
     const uid = User.currentUser?.uid;
     const auth = getAuth()
-    const { id } = useParams();
+    const { idUsuario , id } = useParams();
 
     
     useEffect(() => {
         setLoading(true);
         async function getHistoriaClinica() {
-            const querySnapshot = await getDocs(collection(db, `/Clientes/0Fi0FTD1UEej4Ovn3FjC/Mascotas/9cJ9lDS1Aw0eA5lAYobA/HistoriaClinica`));
-            //hay que caputar los id del cliente y la mascota, por ahora deje estos solo para probar
+            const querySnapshot = await getDocs(collection(db, `/Clientes/${idUsuario}/Mascotas/${id}/HistoriaClinica`));
             if (querySnapshot.size !== 0) {
-                const historias = querySnapshot.docs.map(doc => {
-                    const data = doc.data();
-                    return {
-                        id: doc.id,
-                        Fecha: data.Fecha.toDate(), // Convertir a objeto Date
-                        Consulta: data.Consulta
-                    };
-                });
-                setHistoriaClinica(historias);
-                console.log(historias);
+                console.log(querySnapshot.docs.map(doc => doc.data()))
+                setHistoriaClinica(querySnapshot.docs.map(doc => { return { id: doc.id, ...doc.data() } }));
             } else {
                 console.log("No se encontró el documento.");
             }
@@ -61,7 +52,7 @@ const HistoriaClinica = () => {
                         <div key={historia.id}>
                             <div>
                                 <span className="Titulo_Campo">Fecha</span>
-                                <p className='Datos_Campo'>{historia.Fecha.toString()}</p>
+                                <p className='Datos_Campo'>{historia.Fecha}</p>
                             </div>
                             <div>
                                 <span className="Titulo_Campo">Consulta:</span>

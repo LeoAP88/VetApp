@@ -75,7 +75,7 @@ const MisMascotas = () => {
 
     return (
         <>
-            <Mascota mascotas={mascotas} />
+            <Mascota mascotas={mascotas} idUsuario={id}/>
             <div><LogInLinks isUserLoggedIn={isUserLoggedIn}></LogInLinks></div>
 
         </>

@@ -99,7 +99,7 @@ const router = createBrowserRouter([
         element: <Clientes />
       },
       {
-        path: "historiaClinica",
+        path: "historiaClinica/:idUsuario/:id",
         element: <HistoriaClinica />
       },
       {

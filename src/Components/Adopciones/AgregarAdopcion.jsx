@@ -50,6 +50,7 @@ const AgregarAdopcion = () => {
                         <label htmlFor="foto"></label>
                         <input type="text" name="foto" required onChange={(e) => setFoto(e.target.value)} placeholder="Foto"></input>
                     </div>
+                    <br />
                     <div className="container_campo_select">
                         <p className="Especie_tag">Especie</p>
                         <select className="select_especie" required name="especie" id="especie" onChange={(e) => setEspecie(e.target.value)}>

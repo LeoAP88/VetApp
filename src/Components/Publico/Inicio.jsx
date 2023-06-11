@@ -1,7 +1,7 @@
 import "./Inicio.css";
-import { AuthContext } from "./AuthProvider";
-import Login from './Login.jsx';
-import Turnos from './Turnos.jsx';
+import { AuthContext } from "../AuthProvider";
+import Login from '../ManejoUsuarios/Login.jsx';
+import Turnos from '../Turnos/Turnos.jsx';
 import { useContext } from "react";
 
 import {
@@ -17,16 +17,8 @@ import {
 import { Link } from "react-router-dom";
 
 const Inicio = () => {
-  /*   const User = useContext(AuthContext);
+    const User = useContext(AuthContext);
     const user = User.currentUser
-  
-    const estaLogeado = () => {
-      if (user !== null) {
-        return (<Turnos/>)
-      } else {
-        return (<Login/>)
-      }
-    } */
 
   return (
     <>
@@ -34,7 +26,14 @@ const Inicio = () => {
         <div className="img_text">
           <h1>Cuidamos a tu mascota</h1>
           <p>Somos una clínica veterinaria integral, pioneros en la <br /> atención especilizada para tus mascotas. Agendá ahora <br /> tu consulta.</p>
-          <button className="btn-consulta-inicio" /* onClick={estaLogeado} */ >Agendar consulta</button>
+          <div>
+            {
+              user !== null ?  
+              <Link to="/turnos"> <button className="btn-consulta-inicio">Agendar consulta</button></Link>
+              :
+              <Link to="/login"> <button className="btn-consulta-inicio">Agendar consulta</button></Link>
+            }
+          </div>
         </div>
       </div>
       <div><h1>Nuestros Servicios:</h1></div>

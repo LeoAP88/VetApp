@@ -1,8 +1,9 @@
 import "./Mascotas.css"
+import {Link} from "react-router-dom";
 
 import { FaDog, FaCat } from 'react-icons/all';
 
-export const Mascotas = ({ mascotas }) => {
+export const Mascotas = ({ mascotas, idUsuario }) => {
 
     const { Nombre, Especie, Raza, Color, Sexo, Edad } = mascotas;
 
@@ -35,8 +36,13 @@ export const Mascotas = ({ mascotas }) => {
                         <p className='Datos_Campo'>{Sexo}</p>
                     </div>
                     <div className="Campo_Container">
-                        <span className="Titulo_Campo">Edad</span>
+                        <span className="Titulo_Campo">Edad(años)</span>
                         <p className='Datos_Campo'>{Edad}</p>
+                    </div>
+                    <div>
+                        <Link to={`/historiaClinica/${idUsuario}/${mascotas.id}`}>
+                            <button className="HC">Ver Historia Clínica</button>
+                        </Link>
                     </div>
                 </div>
             </div>

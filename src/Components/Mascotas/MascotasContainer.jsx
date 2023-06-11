@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
-import { AuthContext } from "./AuthProvider";
-import { db } from "./firebaseConfig/firebase";
+import { AuthContext } from "../AuthProvider";
+import { db } from "../firebaseConfig/firebase"
 import { collection, getDocs } from "firebase/firestore";
 import { Mascota } from "./MascotasListado";
 import {Link, useParams} from "react-router-dom";
@@ -8,6 +8,7 @@ import { getAuth } from "firebase/auth";
 import {
     FadeLoader
 } from 'react-spinners'
+import HistoriaClinica from "./HistoriaClinica";
 
 
 const LogInLinks = ({ isUserLoggedIn }) => {
@@ -74,8 +75,9 @@ const MisMascotas = () => {
 
     return (
         <>
-            <Mascota mascotas={mascotas} />
+            <Mascota mascotas={mascotas} idUsuario={id}/>
             <div><LogInLinks isUserLoggedIn={isUserLoggedIn}></LogInLinks></div>
+
         </>
     )
 }

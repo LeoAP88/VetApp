@@ -3,7 +3,7 @@ import {Link, useNavigate, useOutletContext} from "react-router-dom"
 import {useState} from "react"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import "firebase/auth"
-import {auth} from "./firebaseConfig/firebase"
+import {auth} from "../firebaseConfig/firebase"
 
 
 const Login = () => {

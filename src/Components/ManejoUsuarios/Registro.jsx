@@ -2,7 +2,7 @@ import "./Registro.css"
 import { Link, useNavigate } from "react-router-dom"
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { db } from "../Components/firebaseConfig/firebase.jsx"
+import { db } from "../firebaseConfig/firebase.jsx"
 import { collection, doc, setDoc } from "firebase/firestore";
 
 

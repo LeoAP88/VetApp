@@ -15,12 +15,11 @@ import {
 const mySwal = whitReactContent (Swal)
 
 
-const LogInLinks = ({ isUserLoggedIn, id }) => {
-
+const LogInLinks = ({ isUserLoggedIn, id}) => {
     const auth = getAuth();
     const user = auth.currentUser;
     const navigate = useNavigate()
-
+    
     const deleteAdopcion = async(id)=>{
         const adopcionDoc = doc(db,"Adopciones",id)
         await deleteDoc(adopcionDoc)
@@ -51,10 +50,10 @@ const LogInLinks = ({ isUserLoggedIn, id }) => {
    if (isUserLoggedIn && user.email == 'admin@gmail.com') {
         return (
             <>
-             <Link to={`/editar/${id}`} className="btn btn-light"> {/* porque no funciona!!!!!!????? */}
+             <Link to={`/editar/${id}`} className="btn btn-light"> 
                 <i className="fa-solid fa-pencil"></i>
             </Link>
-            <button onClick={()=>{confirmDelete(id)}} className="btn btn-danger">  {/* porque no funciona!!!!!!????? */}
+            <button onClick={()=>{confirmDelete(id)}} className="btn btn-danger"> 
                 <i className="fa-solid fa-trash"></i>
             </button>
             </>
@@ -66,6 +65,7 @@ const Adopcion = () =>{
     const [loading, setLoading] = useState(true);
     const [adopcion,setAdopcion] = useState([]);
     const { id } = useParams();
+    console.log("ID de useParams:", id);
 
     const auth = getAuth();
     const User = useContext(AuthContext);
@@ -108,7 +108,7 @@ const Adopcion = () =>{
                     <p>{adopcion.Caracteristicas}</p>
                 </div>
                 <div>
-                    <LogInLinks isUserLoggedIn={isUserLoggedIn} id={adopcion.id}></LogInLinks>
+                    <LogInLinks isUserLoggedIn={isUserLoggedIn} id={id}></LogInLinks>
                 </div>
                 <div className="pieAdopcion">
                     <Link to={"/formulario"}>

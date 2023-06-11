@@ -1,0 +1,72 @@
+
+
+.txt{
+    margin-top: 550px;
+    padding-left: 100px;
+    font-size: 1.3rem;
+    width: 170%;
+    height: 800px;
+    text-align: justify, right;
+    font-family: 'Overpass', sans-serif;
+    font-weight: bold;
+    /* color: rgb(93, 91, 91);  */
+    color: rgb(114, 112, 112);
+}
+
+.pa{
+    width: 100%;
+    height: 350px;
+    font-size: 1.3rem;
+    font-family: 'Overpass', sans-serif;
+    text-align: left;
+    font-weight: bold;
+    color: rgb(117, 114, 114);
+
+}
+
+.txt2{
+ 
+    margin-top: 550px;
+    padding-left: 700px;
+    width: 250%;
+    height: 200px;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    text-align: left;
+    font-weight: bold;
+    font-family: 'Overpass', sans-serif;
+    color: rgb(117, 114, 114);
+}
+
+
+.esp {
+    width: 70;
+    font-weight: normal;
+    font-family: 'Overpass', sans-serif;
+    color: rgb(93, 91, 91);
+    padding: 30px;
+    display: center;
+    align-items: center;
+    margin-left: 35px;
+    
+    
+}
+
+.card-title{
+    font-family: 'Overpass', sans-serif;
+    color: rgb(93, 91, 91);
+    font-weight: bold;
+}
+.card-text{
+    font-family: 'Overpass', sans-serif;
+    color: rgb(93, 91, 91);
+    
+}
+.card{
+    justify-content:space-between;
+    border: 1px solid lightgray;
+    box-shadow: 2px 2px 8px 4px #d3d3d3d4;
+}
+.logoblanco{
+    height: 35px;
+}

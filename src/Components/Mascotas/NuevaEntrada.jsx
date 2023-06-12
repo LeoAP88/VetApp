@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams, Link } from "react-router-dom"
 import { collection, addDoc } from "firebase/firestore"
 import { db } from "../firebaseConfig/firebase"
 import { AuthContext } from "../AuthProvider";
@@ -33,6 +33,9 @@ const NuevaEntrada = () => {
         <span>{fechaActual}</span>
         <textarea name="" id="" cols="30" rows="10" onChange={(e) => setConsulta(e.target.value)}></textarea>
         <button onClick={agregarEntrada}>Guardar</button>
+        <Link to={`/historiaClinica/${idUsuario}/${id}`}>
+            <button className="volver">Volver</button>
+        </Link>
         </>
     )
 }

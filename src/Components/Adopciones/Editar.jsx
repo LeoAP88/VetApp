@@ -103,7 +103,7 @@ const Editar = () => {
                     <input value={Caracteristicas} type="text" name="caracteristicas" required onChange={(e) => setCaracteristicas(e.target.value)}></input>
                 </div>
                 <button className="btn-crearMascota" type="submit">Editar</button>
-                <Link to={"/adopciones"}>
+                <Link to={`/adopcion/${id}`}>
                     <button className="volver">Volver</button>
                 </Link>
             </form>

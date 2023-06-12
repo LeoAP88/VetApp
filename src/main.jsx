@@ -26,6 +26,7 @@ import Adopcion from './Components/Adopciones/Adopcion.jsx';
 import HistoriaClinica from './Components/Mascotas/HistoriaClinica.jsx';
 import NuevaEntrada from './Components/Mascotas/NuevaEntrada.jsx';
 import Editar from './Components/Adopciones/Editar.jsx';
+import EditarHistoriaClinica from './Components/Mascotas/EditarHistoriaClinica.jsx';
 
 
 //creamos el router que determina las rutas y que elementos renderizan
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
       {
         path: "editar/:id",
         element: <Editar />
+      },
+      {
+        path: "editarHistoria/:idUsuario/:id/:idHistoria",
+        element: <EditarHistoriaClinica />
       }
     ]
   }

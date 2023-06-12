@@ -1,13 +1,63 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../AuthProvider";
 import { db } from "../firebaseConfig/firebase"
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import Swal from "sweetalert2"
+import whitReactContent from "sweetalert2-react-content"
 import { Mascota } from "./MascotasListado";
-import {Link, useParams} from "react-router-dom";
+import {Link, useParams, useNavigate} from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import {
     FadeLoader
 } from 'react-spinners'
+
+const mySwal = whitReactContent(Swal)
+
+const LogInLinks = ({ isUserLoggedIn, idUsuario, id, idHistoria, getHistoriaClinica }) => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const navigate = useNavigate()
+
+    const deleteEntrada = async () => {
+        const entradaDoc = doc(db, `/Clientes/${idUsuario}/Mascotas/${id}/HistoriaClinica/${idHistoria}`)
+        await deleteDoc(entradaDoc)
+        getHistoriaClinica()
+    }
+
+    const confirmDelete = (id) => {
+        Swal.fire({
+            title: 'Estas Seguro/a?',
+            text: "No podes revertir esta Accion!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Deseo Borrarlo!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteEntrada(id)
+                Swal.fire(
+                    'Borrado!',
+                    'La Entrada ha sido Borrada.',
+                    'success'
+                )
+            }
+        })
+    }
+
+    if (isUserLoggedIn && user.email == 'admin@gmail.com') {
+        return (
+            <>
+                <Link to={`/editarHistoria/${idUsuario}/${id}/${idHistoria}`} className="btn btn-light">
+                    <i className="fa-solid fa-pencil"></i>
+                </Link>
+                <button onClick={() => { confirmDelete() }} className="btn btn-danger">
+                    <i className="fa-solid fa-trash"></i>
+                </button>
+            </>
+        );
+    }
+}
 
 const HistoriaClinica = () => {
     const [loading, setLoading] = useState(true);
@@ -15,24 +65,28 @@ const HistoriaClinica = () => {
     const User = useContext(AuthContext);
     const uid = User.currentUser?.uid;
     const auth = getAuth()
+    let isUserLoggedIn = User.currentUser !== null;
     const { idUsuario , id } = useParams();
 
-    
+    const isAdmin = User.currentUser && User.currentUser.email === 'admin@gmail.com';
+
+    const getHistoriaClinica = async () => {
+        const querySnapshot = await getDocs(collection(db, `/Clientes/${idUsuario}/Mascotas/${id}/HistoriaClinica`));
+        if (querySnapshot.size !== 0) {
+            console.log(querySnapshot.docs.map(doc => doc.data()))
+            setHistoriaClinica(querySnapshot.docs.map(doc => { return { id: doc.id, ...doc.data() } }));
+        } else {
+            console.log("No se encontró el documento.");
+        }
+        setLoading(false);
+        }
+       
+
     useEffect(() => {
         setLoading(true);
-        async function getHistoriaClinica() {
-            const querySnapshot = await getDocs(collection(db, `/Clientes/${idUsuario}/Mascotas/${id}/HistoriaClinica`));
-            if (querySnapshot.size !== 0) {
-                console.log(querySnapshot.docs.map(doc => doc.data()))
-                setHistoriaClinica(querySnapshot.docs.map(doc => { return { id: doc.id, ...doc.data() } }));
-            } else {
-                console.log("No se encontró el documento.");
-            }
-            setLoading(false);
-            }
-            if (User.currentUser !== null) {
-                getHistoriaClinica();
-            }
+        if (User.currentUser !== null) {
+            getHistoriaClinica();
+        }
     },[]);
 
     if(loading){
@@ -58,6 +112,9 @@ const HistoriaClinica = () => {
                                 <span className="Titulo_Campo">Consulta:</span>
                                 <p className='Datos_Campo'>{historia.Consulta}</p>
                             </div>
+                            <div>
+                                <LogInLinks isUserLoggedIn={isUserLoggedIn} idUsuario={idUsuario} id={id} idHistoria={historia.id} getHistoriaClinica={getHistoriaClinica}></LogInLinks>
+                            </div>
                         </div>
                     ))
                 ) : (
@@ -65,8 +122,13 @@ const HistoriaClinica = () => {
                 )}
             </div>
             <div>
-                <Link to={`/nuevaEntrada/${idUsuario}/${id}`}>
-                    <button>Nueva Entrada</button>
+                {isAdmin && (
+                     <Link to={`/nuevaEntrada/${idUsuario}/${id}`}>
+                        <button>Nueva Entrada</button>
+                     </Link>
+                )}
+                <Link to={`/misMascotas/${idUsuario}`}>
+                    <button className="volver">Volver</button>
                 </Link>
             </div>
         

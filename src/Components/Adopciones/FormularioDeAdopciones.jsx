@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import "./FormularioDeAdopciones.css"
 
 const FormularioDeAdopciones = () => {
     return (
         <>
-            <div>Formulario</div>
-            <div>
+            <h1 className="form_titulo">Formulario de adopción</h1>
+            <div className="container_form">
                 <form className="adopcion_form" action="mailto:veterinaria@gmail.com" method='POST'>
                     <div className="form-group">
                         <label htmlFor="nombre">Nombre y apellido</label>
@@ -49,9 +50,7 @@ const FormularioDeAdopciones = () => {
                             <input type="text" className="form-control" name='' id="" placeholder="Perro/Gato" />
                         </div>
                     </div>
-                    <div className="form-group">
-
-                    </div>
+                    <button type="submit" className="volver">Enviar</button>
 
                 </form>
 

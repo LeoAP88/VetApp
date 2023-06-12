@@ -1,0 +1,22 @@
+.container_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form_titulo {
+    font-size: 2rem;
+}
+
+.adopcion_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.form-control {
+    width: 400px;
+    line-height: 30px;
+}

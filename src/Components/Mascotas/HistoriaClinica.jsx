@@ -67,7 +67,7 @@ const HistoriaClinica = () => {
     const uid = User.currentUser?.uid;
     const auth = getAuth()
     let isUserLoggedIn = User.currentUser !== null;
-    const { idUsuario , id } = useParams();
+    const { idUsuario, id } = useParams();
 
     const isAdmin = User.currentUser && User.currentUser.email === 'admin@gmail.com';
 
@@ -80,15 +80,15 @@ const HistoriaClinica = () => {
             console.log("No se encontró el documento.");
         }
         setLoading(false);
-        }
-       
+    }
+
 
     useEffect(() => {
         setLoading(true);
         if (User.currentUser !== null) {
             getHistoriaClinica();
         }
-    },[]);
+    }, []);
 
     if (loading) {
         return (
@@ -100,34 +100,34 @@ const HistoriaClinica = () => {
 
     return (
         <>
-         <h1 className="titulo_pagina">Historia Clínica</h1>
+            <h1 className="titulo_pagina">Historia Clínica</h1>
             <section className="container_historias">
                 {isAdmin && (
-                     <Link to={`/nuevaEntrada/${idUsuario}/${id}`}>
+                    <Link to={`/nuevaEntrada/${idUsuario}/${id}`}>
                         <button className="volver">Nueva Entrada</button>
-                     </Link>
+                    </Link>
                 )}
                 <div className="historias_grupo">
-                {historiaClinica.length > 0 ? (
-                    historiaClinica.map((historia) => (
-                        <div key={historia.id}>
-                            <div>
-                                <span className="Titulo_Campo">Fecha</span>
-                                <p className='Datos_Campo'>{historia.Fecha}</p>
+                    {historiaClinica.length > 0 ? (
+                        historiaClinica.map((historia) => (
+                            <div key={historia.id} className="historias">
+                                <div className="data_grupo">
+                                    <span className="Titulo_Campo">Fecha</span>
+                                    <p className='Datos_fecha'>{historia.Fecha}</p>
+                                </div>
+                                <div className="data_grupo">
+                                    <span className="Titulo_Campo">Observaciones:</span>
+                                    <p className='Datos_Obs'>{historia.Consulta}</p>
+                                </div>
+                                <div >
+                                    <LogInLinks isUserLoggedIn={isUserLoggedIn} idUsuario={idUsuario} id={id} idHistoria={historia.id} getHistoriaClinica={getHistoriaClinica}></LogInLinks>
+                                </div>
                             </div>
-                            <div>
-                                <span className="Titulo_Campo">Consulta:</span>
-                                <p className='Datos_Campo'>{historia.Consulta}</p>
-                            </div>
-                            <div>
-                                <LogInLinks isUserLoggedIn={isUserLoggedIn} idUsuario={idUsuario} id={id} idHistoria={historia.id} getHistoriaClinica={getHistoriaClinica}></LogInLinks>
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <p>No hay datos disponibles.</p>
-                )}
-            </div>
+                        ))
+                    ) : (
+                        <p>No hay datos disponibles.</p>
+                    )}
+                </div>
             </section>
             <div>
                 <Link to={`/misMascotas/${idUsuario}`}>

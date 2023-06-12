@@ -47,7 +47,7 @@ const AgregarMascota = () => {
                         <label htmlFor="nombre">Nombre</label>
                         <input type="text" name="nombre" required onChange={(e) => setNombre(e.target.value)}></input>
                     </div>
-                    <div className="container_campo_select">
+                    <div className="container_campo_select container_select_edit">
                         <p className="Especie_tag">Especie</p>
                         <select className="select_especie" required name="especie" id="especie" onChange={(e) => setEspecie(e.target.value)}>
                             <option value="Perro">Perro</option>
@@ -62,7 +62,7 @@ const AgregarMascota = () => {
                         <label htmlFor="raza">Color</label>
                         <input type="text" name="color" required onChange={(e) => setColor(e.target.value)}></input>
                     </div>
-                    <div className="container_campo_select">
+                    <div className="container_campo_select container_select_edit">
                         <p className="Especie_tag">Sexo</p>
                         <select className="select_especie" required name="sexo" id="sexo" onChange={(e) => setSexo(e.target.value)}>
                             <option value="Macho">Macho</option>
@@ -73,7 +73,7 @@ const AgregarMascota = () => {
                         <label htmlFor="edad">Edad (años)</label>
                         <input type="text" name="edad" required onChange={(e) => setEdad(e.target.value)}></input>
                     </div>
-                    <button className="btn-crearMascota" type="submit" onClick={crearMascota}>Cargar Mascota</button>
+                    <button className="volver" type="submit" onClick={crearMascota}>Cargar Mascota</button>
                 </form>
             </div>
         </>

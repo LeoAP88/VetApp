@@ -8,6 +8,8 @@ import { Mascota } from "./MascotasListado";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import "./Mascotas.css"
+import {Link} from "react-router-dom";
+
 import { FaDog, FaCat } from 'react-icons/all';
 
 const mySwal = whitReactContent(Swal)
@@ -110,6 +112,7 @@ export const Mascotas = ({ mascotas, idUsuario, getMascotas }) => {
                     </div>
                 </div>
             </div>
+
         </>
     )
 }

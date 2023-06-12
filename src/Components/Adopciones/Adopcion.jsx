@@ -50,7 +50,7 @@ const LogInLinks = ({ isUserLoggedIn, id }) => {
     if (isUserLoggedIn && user.email == 'admin@gmail.com') {
         return (
             <>
-                <Link to={`/editar/${id}`} className="btn btn-light">
+                <Link to={`/editar/${id}`} className="btn btn-primary">
                     <i className="fa-solid fa-pencil"></i>
                 </Link>
                 <button onClick={() => { confirmDelete(id) }} className="btn btn-danger">

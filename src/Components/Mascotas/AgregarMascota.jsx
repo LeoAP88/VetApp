@@ -1,7 +1,7 @@
 //campos para el cliente: nombre, apellido, direccion, numero de telefono, email!, 
 //campos para la mascota: nombre, especie, raza, sexo, edad/nacimiento, pelaje, castrado? 
 import { useState, useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams, Link } from "react-router-dom"
 import { collection, addDoc } from "firebase/firestore"
 import { db } from "../firebaseConfig/firebase"
 import { AuthContext } from "../AuthProvider";
@@ -74,6 +74,9 @@ const AgregarMascota = () => {
                         <input type="text" name="edad" required onChange={(e) => setEdad(e.target.value)}></input>
                     </div>
                     <button className="volver" type="submit" onClick={crearMascota}>Cargar Mascota</button>
+                    <Link to={`/misMascotas/${id}`}>
+                        <button className="volver">Volver</button>
+                    </Link>
                 </form>
             </div>
         </>

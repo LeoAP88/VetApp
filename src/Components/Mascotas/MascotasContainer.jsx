@@ -64,9 +64,8 @@ const MisMascotas = () => {
 
     return (
         <>
-            <Mascota mascotas={mascotas} idUsuario={id} getMascotas={getMascotas}/>
             <div><LogInLinks isUserLoggedIn={isUserLoggedIn}></LogInLinks></div>
-
+            <Mascota mascotas={mascotas} idUsuario={id} getMascotas={getMascotas}/>
         </>
     )
 }

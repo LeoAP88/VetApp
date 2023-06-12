@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { collection, addDoc } from "firebase/firestore"
 import { db } from "../firebaseConfig/firebase"
 import { AuthContext } from "../AuthProvider";
@@ -81,6 +81,9 @@ const AgregarAdopcion = () => {
                         <input type="text" name="caracteristicas" required onChange={(e) => setCaracteristicas(e.target.value)}></input>
                     </div>
                     <button className="volver" type="submit" onClick={agregarAdopcion}>Agregar</button>
+                    <Link to={`/adopciones`}>
+                        <button className="volver">Volver</button>
+                    </Link>
                 </form>
             </div>
         </>

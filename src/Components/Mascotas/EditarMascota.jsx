@@ -31,7 +31,7 @@ const EditarMascota = () => {
             Edad: Edad
         };
         await updateDoc(mascotaDoc, data);
-        navigate(`/MisMascotas/${idUsuario}`);
+        navigate(`/misMascotas/${idUsuario}`);
       };
     
       const getMascota = async () => {
@@ -57,7 +57,7 @@ const EditarMascota = () => {
 
     return(
         <>
-        <h1>Agregar Nueva Mascota</h1>
+        <h1>Editar Mascota</h1>
         <div className="container_crearMascota">
             <form className="crearMascota_form" action="" method='POST'>
                 <div className="container_campo">
@@ -91,6 +91,9 @@ const EditarMascota = () => {
                     <input value={Edad} type="text" name="edad" required onChange={(e) => setEdad(e.target.value)}></input>
                 </div>
                 <button className="btn-crearMascota" type="submit" onClick={update}>Guardar cambios</button>
+                <Link to={`/misMascotas/${idUsuario}`}>
+                    <button className="volver">Volver</button>
+                </Link>
             </form>
         </div>
     </>

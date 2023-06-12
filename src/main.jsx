@@ -28,6 +28,7 @@ import NuevaEntrada from './Components/Mascotas/NuevaEntrada.jsx';
 import Editar from './Components/Adopciones/Editar.jsx';
 import EditarHistoriaClinica from './Components/Mascotas/EditarHistoriaClinica.jsx';
 import EditarMascota from './Components/Mascotas/EditarMascota.jsx';
+import EditarPerfil from './Components/EditarPerfil.jsx';
 
 
 //creamos el router que determina las rutas y que elementos renderizan
@@ -66,7 +67,7 @@ const router = createBrowserRouter([
         element: <MisMascotas />
       },
       {
-        path: "perfil/:id",
+        path: "perfil/:uid",
         element: <Perfil />
       },
       {
@@ -120,6 +121,10 @@ const router = createBrowserRouter([
       {
         path: "editarMascota/:idUsuario/:idMascota/",
         element: <EditarMascota />
+      },
+      {
+        path: "editarPerfil/:id",
+        element: <EditarPerfil />
       }
     ]
   }

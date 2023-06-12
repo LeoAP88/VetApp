@@ -30,15 +30,15 @@ const NuevaEntrada = () => {
 
     return (
         <>
-         <h1 className="titulo_consulta">Nueva consulta</h1>
-         <div className="container_consulta">
-             <span>{fechaActual}</span>
-             <textarea className="texto_consulta" name="" id="" cols="30" rows="10" onChange={(e) => setConsulta(e.target.value)}></textarea>
-             <button className="volver" onClick={agregarEntrada}>Guardar</button>
-         </div>
-        <Link to={`/historiaClinica/${idUsuario}/${id}`}>
-            <button className="volver">Volver</button>
-        </Link>
+            <h1 className="titulo_consulta">Nueva consulta</h1>
+            <div className="container_consulta">
+                <span>{fechaActual}</span>
+                <textarea className="texto_consulta" name="" id="" cols="30" rows="10" onChange={(e) => setConsulta(e.target.value)}></textarea>
+                <button className="volver" onClick={agregarEntrada}>Guardar</button>
+            </div>
+            <Link to={`/historiaClinica/${idUsuario}/${id}`}>
+                <button className="volver">Volver</button>
+            </Link>
         </>
     )
 }

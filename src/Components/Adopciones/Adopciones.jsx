@@ -52,7 +52,7 @@ const LogInLinks = ({ isUserLoggedIn, id, getAdopciones }) => {
     if (isUserLoggedIn && user.email == 'admin@gmail.com') {
         return (
             <>
-                <Link to={`/editar/${id}`} className="btn btn-light">
+                <Link to={`/editar/${id}`} className="btn btn-primary">
                     <i className="fa-solid fa-pencil"></i>
                 </Link>
                 <button onClick={() => { confirmDelete(id) }} className="btn btn-danger">
@@ -102,6 +102,12 @@ const Adopciones = () => {
         <>
             <h1 className="titulo_pagina">Adopciones</h1>
 
+            {isAdmin && (
+                <Link to={"/agregarAdopcion"}>
+                    <button className="volver" id="boton-administrador">Agregar nueva Adopción</button>
+                </Link>
+            )}
+
             <div className="contenedor_adopciones">
                 {adopciones.map((adopcion) => (
                     <div className="tarjeta" key={adopcion.id}>
@@ -119,11 +125,7 @@ const Adopciones = () => {
                         </div>
                     </div>))}
 
-                {isAdmin && (
-                    <Link to={"/agregarAdopcion"}>
-                        <button id="boton-administrador">Agregar nueva Adopción</button>
-                    </Link>
-                )}
+
 
             </div>
             <div className="botones">

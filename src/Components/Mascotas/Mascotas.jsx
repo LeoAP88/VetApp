@@ -1,5 +1,5 @@
 import "./Mascotas.css"
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { FaDog, FaCat } from 'react-icons/all';
 
@@ -46,6 +46,7 @@ export const Mascotas = ({ mascotas, idUsuario }) => {
                     </div>
                 </div>
             </div>
+
         </>
     )
 }

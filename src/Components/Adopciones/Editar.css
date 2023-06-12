@@ -1,0 +1,20 @@
+.container_select_edit {
+    margin-top: 10px;
+}
+
+.container_select_edit select {
+    width: 300px;
+}
+
+.editarMascota_form,
+.Especie_tag {
+    font-size: 1.2rem;
+}
+
+.editarMascota_form input {
+    height: 40px;
+}
+
+.btn {
+    margin: 0 5px;
+}

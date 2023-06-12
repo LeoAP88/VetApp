@@ -1,11 +1,12 @@
 .Mascota_Container {
-    width: 70%;
-    height: 600px;
+    width: 50%;
+    max-width: 800px;
+    height: auto;
     margin-bottom: 25px;
     display: flex;
     align-self: center;
     align-items: center;
-    border: 2px solid black;
+    box-shadow: 0px 0px 7px 0px #000000;
 }
 
 .Container_Foto_Mascota {

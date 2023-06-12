@@ -21,10 +21,10 @@
     text-decoration: underline;
 }
 
-.botonNavNoLogin{
+.botonNavNoLogin {
     color: purple;
     border-radius: 30px;
-    padding: 10px 20px;  
+    padding: 10px 20px;
     border: 3px solid purple;
     cursor: pointer;
     overflow: hidden;
@@ -37,15 +37,15 @@
     background-repeat: no-repeat;
 }
 
-#botonIngresar{
+#botonIngresar {
     background-color: purple;
     color: white;
 }
 
-.botonNavLogin{
+.botonNavLogin {
     color: green;
     border-radius: 30px;
-    padding: 10px 20px;  
+    padding: 10px 20px;
     border: 3px solid green;
     cursor: pointer;
     overflow: hidden;
@@ -53,7 +53,7 @@
     font-weight: bold;
 }
 
-#botonCerrarSesion{
+#botonCerrarSesion {
     background-color: transparent;
     background-repeat: no-repeat;
 }
@@ -64,7 +64,10 @@
 
 .huellitas {
     display: flex;
+    justify-content: center;
     align-items: center;
+    text-decoration: none;
+    /* align-items: center;
     margin-right: auto;
-    margin-left: 45px;
+    margin-left: 45px; */
 }

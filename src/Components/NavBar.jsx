@@ -55,11 +55,13 @@ const NavBar = () => {
             <div className="nav-link-section">
                 {/* NavLink agrega por defecto la clase active cuando el path esta activo. 
             Con la prop end le indicamos que matchee solo el path especificado, y no los paths hijos*/}
-                <div className="huellitas">
-                    <div><img src="../logoBlanco.jpg" alt="" className="logoBlanco"/></div>
-                    <div>huellitas</div>
-                </div>
-                <NavLink to="/" className="nav-link nav-item" end><GiHospitalCross className="logo" /></NavLink>
+                <NavLink to="/" className="nav-link nav-item huellitas">
+                    <figure>
+                        <img src="../logoBlanco.jpg" alt="" className="logoBlanco" />
+                    </figure>
+                    Huellitas
+                </NavLink>
+                {/* <NavLink to="/" className="nav-link nav-item" end><GiHospitalCross className="logo" /></NavLink> */}
                 <NavLink to="/quienesSomos" className="nav-link nav-item">Quiénes Somos</NavLink>
                 <NavLink to="/adopciones" className="nav-link nav-item">Adopciones</NavLink>
                 {/* <Link to="/" className="nav-link nav-item">Inicio</Link> */}
@@ -79,7 +81,7 @@ const NavBar = () => {
                 <a href="https://www.instagram.com/" target="_blank" style={{ color: "white", paddingRight: "10px" }}><BsInstagram /></a>
                 <a href="https://es-la.facebook.com/" target="_blank" style={{ color: "white", paddingRight: "10px" }}><BsFacebook /></a> */}
             </div>
-        </nav>
+        </nav >
     )
 }
 

@@ -1,0 +1,17 @@
+.titulo_consulta {
+    margin-top: 20px;
+    font-size: 1.6rem;
+}
+
+.container_consulta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto_consulta {
+    width: 50%;
+    max-width: 500px;
+    margin-bottom: 20px;
+}

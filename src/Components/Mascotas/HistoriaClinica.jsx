@@ -3,11 +3,12 @@ import { AuthContext } from "../AuthProvider";
 import { db } from "../firebaseConfig/firebase"
 import { collection, getDocs } from "firebase/firestore";
 import { Mascota } from "./MascotasListado";
-import {Link, useParams} from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import {
     FadeLoader
 } from 'react-spinners'
+import "./HistoriaClinica.css"
 
 const HistoriaClinica = () => {
     const [loading, setLoading] = useState(true);
@@ -15,9 +16,9 @@ const HistoriaClinica = () => {
     const User = useContext(AuthContext);
     const uid = User.currentUser?.uid;
     const auth = getAuth()
-    const { idUsuario , id } = useParams();
+    const { idUsuario, id } = useParams();
 
-    
+
     useEffect(() => {
         setLoading(true);
         async function getHistoriaClinica() {
@@ -29,47 +30,48 @@ const HistoriaClinica = () => {
                 console.log("No se encontró el documento.");
             }
             setLoading(false);
-            }
-            if (User.currentUser !== null) {
-                getHistoriaClinica();
-            }
-    },[]);
+        }
+        if (User.currentUser !== null) {
+            getHistoriaClinica();
+        }
+    }, []);
 
-    if(loading){
+    if (loading) {
         return (
             <div className='loader_container'>
-               <FadeLoader />
+                <FadeLoader />
             </div>)
     }
-    
 
-    return(
+
+    return (
         <>
-         <div>Historia Clinica</div>
-            <div>
-                {historiaClinica.length > 0 ? (
-                    historiaClinica.map((historia) => (
-                        <div key={historia.id}>
-                            <div>
-                                <span className="Titulo_Campo">Fecha</span>
-                                <p className='Datos_Campo'>{historia.Fecha}</p>
-                            </div>
-                            <div>
-                                <span className="Titulo_Campo">Consulta:</span>
-                                <p className='Datos_Campo'>{historia.Consulta}</p>
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <p>No hay datos disponibles.</p>
-                )}
-            </div>
-            <div>
+            <h1 className="titulo_pagina">Historia Clínica</h1>
+            <section className="container_historias">
                 <Link to={`/nuevaEntrada/${idUsuario}/${id}`}>
-                    <button>Nueva Entrada</button>
+                    <button className="volver">Nueva Entrada</button>
                 </Link>
-            </div>
-        
+                <div className="historias_grupo">
+                    {historiaClinica.length > 0 ? (
+                        historiaClinica.map((historia) => (
+                            <div key={historia.id} className="historias">
+                                <div className="data_grupo">
+                                    <span className="Titulo_Campo">Fecha</span>
+                                    <p className='Datos_fecha'>{historia.Fecha}</p>
+                                </div>
+                                <div className="data_grupo">
+                                    <span className="Titulo_Campo">Observaciones</span>
+                                    <p className='Datos_Obs'>{historia.Consulta}</p>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <p>No hay datos disponibles.</p>
+                    )}
+                </div>
+            </section>
+
+
         </>
     )
 }

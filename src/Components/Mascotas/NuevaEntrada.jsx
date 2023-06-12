@@ -3,16 +3,17 @@ import { useNavigate, useParams } from "react-router-dom"
 import { collection, addDoc } from "firebase/firestore"
 import { db } from "../firebaseConfig/firebase"
 import { AuthContext } from "../AuthProvider";
+import "./NuevaEntrada.css"
 
 const NuevaEntrada = () => {
     const fechaActual = new Date().toLocaleString();
 
-    const[Consulta, setConsulta] = useState("")
+    const [Consulta, setConsulta] = useState("")
 
     const User = useContext(AuthContext);
 
     const uid = User.currentUser?.uid;
-    const { idUsuario , id } = useParams();
+    const { idUsuario, id } = useParams();
 
     const navigate = useNavigate()
 
@@ -29,10 +30,12 @@ const NuevaEntrada = () => {
 
     return (
         <>
-        <p>Nueva Entrada</p>
-        <span>{fechaActual}</span>
-        <textarea name="" id="" cols="30" rows="10" onChange={(e) => setConsulta(e.target.value)}></textarea>
-        <button onClick={agregarEntrada}>Guardar</button>
+            <h1 className="titulo_consulta">Nueva consulta</h1>
+            <div className="container_consulta">
+                <span>{fechaActual}</span>
+                <textarea className="texto_consulta" name="" id="" cols="30" rows="10" onChange={(e) => setConsulta(e.target.value)}></textarea>
+                <button className="volver" onClick={agregarEntrada}>Guardar</button>
+            </div>
         </>
     )
 }

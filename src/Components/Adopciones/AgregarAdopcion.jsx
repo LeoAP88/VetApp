@@ -16,7 +16,7 @@ const AgregarAdopcion = () => {
 
     const User = useContext(AuthContext);
 
-    
+
 
     const navigate = useNavigate()
 
@@ -50,8 +50,7 @@ const AgregarAdopcion = () => {
                         <label htmlFor="foto"></label>
                         <input type="text" name="foto" required onChange={(e) => setFoto(e.target.value)} placeholder="Foto"></input>
                     </div>
-                    <br />
-                    <div className="container_campo_select">
+                    <div className="container_campo_select container_select_edit">
                         <p className="Especie_tag">Especie</p>
                         <select className="select_especie" required name="especie" id="especie" onChange={(e) => setEspecie(e.target.value)}>
                             <option value="Perro">Perro</option>
@@ -66,7 +65,7 @@ const AgregarAdopcion = () => {
                         <label htmlFor="raza">Color</label>
                         <input type="text" name="color" required onChange={(e) => setColor(e.target.value)}></input>
                     </div>
-                    <div className="container_campo_select">
+                    <div className="container_campo_select container_select_edit">
                         <p className="Especie_tag">Sexo</p>
                         <select className="select_especie" required name="sexo" id="sexo" onChange={(e) => setSexo(e.target.value)}>
                             <option value="Macho">Macho</option>
@@ -81,7 +80,7 @@ const AgregarAdopcion = () => {
                         <label htmlFor="raza">Caracteristicas</label>
                         <input type="text" name="caracteristicas" required onChange={(e) => setCaracteristicas(e.target.value)}></input>
                     </div>
-                    <button className="btn-crearMascota" type="submit" onClick={agregarAdopcion}>Agregar</button>
+                    <button className="volver" type="submit" onClick={agregarAdopcion}>Agregar</button>
                 </form>
             </div>
         </>

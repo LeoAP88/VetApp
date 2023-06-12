@@ -62,9 +62,15 @@ const EditarPerfil = () => {
                         <label value={Email} htmlFor="email">Email: {Email}</label>
                     </div>
                     <button className="volver" type="submit">Guardar</button>
-                    <Link to={`/clientes`}>
-                        <button className="volver">Volver</button>
-                    </Link>
+                    {user.email == 'admin@gmail.com' ? 
+                        <Link to={`/clientes`}>
+                            <button className="volver">Volver</button>
+                        </Link>
+                    :
+                        <Link to={`/perfil/${id}`}>
+                            <button className="volver">Volver</button>
+                        </Link>
+                    }
                 </form>
 
             </div>

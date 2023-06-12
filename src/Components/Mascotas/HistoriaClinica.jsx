@@ -5,7 +5,7 @@ import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import Swal from "sweetalert2"
 import whitReactContent from "sweetalert2-react-content"
 import { Mascota } from "./MascotasListado";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import {
     FadeLoader
@@ -102,9 +102,11 @@ const HistoriaClinica = () => {
         <>
          <h1 className="titulo_pagina">Historia Clínica</h1>
             <section className="container_historias">
-                <Link to={`/nuevaEntrada/${idUsuario}/${id}`}>
-                    <button className="volver">Nueva Entrada</button>
-                </Link>
+                {isAdmin && (
+                     <Link to={`/nuevaEntrada/${idUsuario}/${id}`}>
+                        <button className="volver">Nueva Entrada</button>
+                     </Link>
+                )}
                 <div className="historias_grupo">
                 {historiaClinica.length > 0 ? (
                     historiaClinica.map((historia) => (
@@ -128,11 +130,6 @@ const HistoriaClinica = () => {
             </div>
             </section>
             <div>
-                {isAdmin && (
-                     <Link to={`/nuevaEntrada/${idUsuario}/${id}`}>
-                        <button>Nueva Entrada</button>
-                     </Link>
-                )}
                 <Link to={`/misMascotas/${idUsuario}`}>
                     <button className="volver">Volver</button>
                 </Link>

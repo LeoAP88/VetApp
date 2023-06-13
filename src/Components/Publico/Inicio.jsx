@@ -17,8 +17,8 @@ import {
 import { Link } from "react-router-dom";
 
 const Inicio = () => {
-    const User = useContext(AuthContext);
-    const user = User.currentUser
+  const User = useContext(AuthContext);
+  const user = User.currentUser
 
   return (
     <>
@@ -28,10 +28,10 @@ const Inicio = () => {
           <p>Somos una clínica veterinaria integral, pioneros en la <br /> atención especilizada para tus mascotas. Agendá ahora <br /> tu consulta.</p>
           <div>
             {
-              user !== null ?  
-              <Link to="/turnos"> <button className="btn-consulta-inicio">Agendar consulta</button></Link>
-              :
-              <Link to="/login"> <button className="btn-consulta-inicio">Agendar consulta</button></Link>
+              user !== null ?
+                <Link to="/turnos"> <button className="btn-consulta-inicio">Agendar consulta</button></Link>
+                :
+                <Link to="/login"> <button className="btn-consulta-inicio">Agendar consulta</button></Link>
             }
           </div>
         </div>

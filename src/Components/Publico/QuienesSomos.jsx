@@ -25,7 +25,7 @@ const QuienesSomos = () => {
           <Carousel.Item>
             <img
               className="img-fluid"
-              src="1.jpeg"
+              src="./src/assets/img/1.jpeg"
               alt="First slide"
             />
             <Carousel.Caption>
@@ -38,7 +38,7 @@ const QuienesSomos = () => {
           <Carousel.Item>
             <img
               className="img-fluid"
-              src="2.jpeg"
+              src="./src/assets/img/2.jpeg"
               alt="Second slide"
             />
 
@@ -52,7 +52,7 @@ const QuienesSomos = () => {
           <Carousel.Item>
             <img
               className="img-fluid"
-              src="vetdog.jpg"
+              src="./src/assets/img/vetdog.jpg"
               alt="Third slide"
             />
             <Carousel.Caption>
@@ -76,7 +76,7 @@ const QuienesSomos = () => {
 
         <div class="col">
           <div class="card">
-            <img src="5.jpeg" class="card-img-top" alt="..." />
+            <img src="./src/assets/img/5.jpeg" class="card-img-top" alt="..." />
             <div class="card-body">
               <h5 class="card-title">Dra. Patricia Hernández y Dr. Nicolás Sáenz</h5>
               <p class="card-text">Clínica Médica</p>
@@ -85,7 +85,7 @@ const QuienesSomos = () => {
         </div>
         <div class="col">
           <div class="card">
-            <img src="4.jpeg" class="card-img-top" alt="..." />
+            <img src="./src/assets/img/4.jpeg" class="card-img-top" alt="..." />
             <div class="card-body">
               <h5 class="card-title">Dra. Carla Sevilla</h5>
               <p class="card-text">Especialista en Nutrición</p>
@@ -94,7 +94,7 @@ const QuienesSomos = () => {
         </div>
         <div class="col">
           <div class="card">
-            <img src="dx.jpg" class="card-img-top" alt="..." />
+            <img src="./src/assets/img/dx2.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <h5 class="card-title">Dr. Carlos Spina</h5>
               <p class="card-text">Traumatología y Diagnóstico por Imagénes.</p>
@@ -104,7 +104,7 @@ const QuienesSomos = () => {
 
         <div class="col">
           <div class="card">
-            <img src="RV.jpg" class="card-img-top" alt="..." />
+            <img src="./src/assets/img/RV.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
               <h5 class="card-title">Dra. Andrea Diaz y Dr. Juan Goncalves</h5>
               <p class="card-text">Cirugia General</p>

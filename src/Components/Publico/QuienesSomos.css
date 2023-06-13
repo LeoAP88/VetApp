@@ -65,11 +65,15 @@
 }
 
 .card {
-    justify-content: space-between;
+    margin: 30px 50px;
     border: 1px solid lightgray;
     box-shadow: 2px 2px 2px 2px #d3d3d3d4;
 }
 
 .logoblanco {
     height: 35px;
+}
+
+.card-img-top {
+    height: 600px;
 }

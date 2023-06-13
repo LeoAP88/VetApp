@@ -42,11 +42,8 @@
 
 .especialidades {
     display: flex;
-    margin: 100px;
-    margin-top: 0px;
-    align-items: center;
-    align-content: center;
     align-self: center;
+    margin-bottom: 25px;
 }
 
 .int {
@@ -77,4 +74,8 @@
 
 .btn-consulta-inicio:hover {
     background-color: grey;
+}
+
+.titulo_secundario {
+    margin-top: 20px;
 }

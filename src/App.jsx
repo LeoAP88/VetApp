@@ -9,9 +9,11 @@ function App() {
   return (
     //El componente Outlet le dice a react router en donde se renderizan las rutas hijo.
     <div id="app">
-      <NavBar/>
-      <Outlet/>
-      <Footer/>
+      <NavBar />
+      <div id="wrapper" >
+        <Outlet />
+      </div>
+      <Footer />
     </div>
   )
 }

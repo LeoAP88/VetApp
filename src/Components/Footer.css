@@ -1,16 +1,20 @@
-#footer{
-    height: 115px;
+#footer {
     background-color: black;
-    margin-top: auto;
     color: white;
-    padding-bottom: 10px;
     display: flex;
+    justify-content: center;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    height: 6rem;
 }
 
 
 .huellitasFooter {
-    margin-left: 70px;
+    width: 5%;
 }
+
 .text {
-    margin-left: 700px;
+    width: 90%;
+    margin-left: -50px;
 }

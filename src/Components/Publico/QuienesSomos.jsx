@@ -71,7 +71,7 @@ const QuienesSomos = () => {
 
 
       </div>
-      <h1 className="esp"><img src="../logoBlanco.jpg" alt="" className="logoBlanco" /> Nuestro equipo </h1>
+      <h2 className="esp"><img src="../src/assets/img/logoBlanco.jpg" alt="" className="logoBlanco" /> Nuestro equipo </h2>
       <div class="row row-cols-1 row-cols-md-2 g-4">
 
         <div class="col">

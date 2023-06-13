@@ -50,13 +50,16 @@ const FormularioDeAdopciones = () => {
                             <input type="text" className="form-control" name='' id="" placeholder="Perro/Gato" />
                         </div>
                     </div>
-                    <button type="submit" className="volver">Enviar</button>
+                    <div>
+                        <button type="submit" className="volver">Enviar</button>
+                        <Link to={"/adopciones"}>
+                            <button className="volver">Volver</button>
+                        </Link>
+                    </div>
 
                 </form>
 
-                <Link to={"/adopciones"}>
-                    <button className="volver">Volver</button>
-                </Link>
+
             </div>
         </>
     )

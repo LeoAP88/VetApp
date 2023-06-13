@@ -80,10 +80,12 @@ const AgregarAdopcion = () => {
                         <label htmlFor="raza">Caracteristicas</label>
                         <input type="text" name="caracteristicas" required onChange={(e) => setCaracteristicas(e.target.value)}></input>
                     </div>
-                    <button className="volver" type="submit" onClick={agregarAdopcion}>Agregar</button>
-                    <Link to={`/adopciones`}>
-                        <button className="volver">Volver</button>
-                    </Link>
+                    <div>
+                        <button className="volver" type="submit" onClick={agregarAdopcion}>Agregar</button>
+                        <Link to={`/adopciones`}>
+                            <button className="volver">Volver</button>
+                        </Link>
+                    </div>
                 </form>
             </div>
         </>

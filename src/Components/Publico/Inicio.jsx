@@ -29,9 +29,9 @@ const Inicio = () => {
           <div>
             {
               user !== null ?
-                <Link to="/turnos"> <button className="btn-consulta-inicio">Agendar consulta</button></Link>
+                <Link to="/turnos"> <button className="btn-consulta-inicio">Agendar Turno</button></Link>
                 :
-                <Link to="/login"> <button className="btn-consulta-inicio">Agendar consulta</button></Link>
+                <Link to="/login"> <button className="btn-consulta-inicio">Agendar Turno</button></Link>
             }
           </div>
         </div>

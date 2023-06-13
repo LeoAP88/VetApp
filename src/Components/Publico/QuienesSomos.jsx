@@ -72,42 +72,42 @@ const QuienesSomos = () => {
 
       </div>
       <h2 className="esp"><img src="../src/assets/img/logoBlanco.jpg" alt="" className="logoBlanco" /> Nuestro equipo </h2>
-      <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div className="row row-cols-1 row-cols-md-2 g-4">
 
-        <div class="col">
-          <div class="card">
-            <img src="./src/assets/img/5.jpeg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Dra. Patricia Hernández y Dr. Nicolás Sáenz</h5>
-              <p class="card-text">Clínica Médica</p>
+        <div className="col">
+          <div className="card">
+            <img src="./src/assets/img/5.jpeg" className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">Dra. Patricia Hernández y Dr. Nicolás Sáenz</h5>
+              <p className="card-text">Clínica Médica</p>
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card">
-            <img src="./src/assets/img/4.jpeg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Dra. Carla Sevilla</h5>
-              <p class="card-text">Especialista en Nutrición</p>
+        <div className="col">
+          <div className="card">
+            <img src="./src/assets/img/4.jpeg" className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">Dra. Carla Sevilla</h5>
+              <p className="card-text">Especialista en Nutrición</p>
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card">
-            <img src="./src/assets/img/dx2.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Dr. Carlos Spina</h5>
-              <p class="card-text">Traumatología y Diagnóstico por Imagénes.</p>
+        <div className="col">
+          <div className="card">
+            <img src="./src/assets/img/dx2.jpg" className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">Dr. Carlos Spina</h5>
+              <p className="card-text">Traumatología y Diagnóstico por Imagénes.</p>
             </div>
           </div>
         </div>
 
-        <div class="col">
-          <div class="card">
-            <img src="./src/assets/img/RV.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Dra. Andrea Diaz y Dr. Juan Goncalves</h5>
-              <p class="card-text">Cirugia General</p>
+        <div className="col">
+          <div className="card">
+            <img src="./src/assets/img/RV.jpg" className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">Dra. Andrea Diaz y Dr. Juan Goncalves</h5>
+              <p className="card-text">Cirugia General</p>
             </div>
           </div>
         </div>

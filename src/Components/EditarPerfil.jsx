@@ -1,7 +1,6 @@
-import { getAuth } from "firebase/auth";
 import { useState, useEffect,useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { collection, getDocs, getDoc, doc, updateDoc } from "firebase/firestore";
+import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "./firebaseConfig/firebase";
 import { AuthContext } from "./AuthProvider";
 
@@ -11,8 +10,8 @@ const EditarPerfil = () => {
     const [Apellido, setApellido] = useState("")
 
     const User = useContext(AuthContext);
-    const user = User.currentUser
-    const navigate = useNavigate()
+    const user = User.currentUser;
+    const navigate = useNavigate();
     const { id } = useParams();
 
     const update = async (e) => {

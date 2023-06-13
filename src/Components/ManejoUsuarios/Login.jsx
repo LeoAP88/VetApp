@@ -16,7 +16,9 @@ const Login = () => {
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
 
-    const loginSubmit= () =>{
+    const loginSubmit= (e) =>{
+        e.preventDefault();
+
         signInWithEmailAndPassword(auth, email, password)
             .then(()=>{
                 console.log("Ingreso correcto");
@@ -39,8 +41,7 @@ const Login = () => {
                         <label htmlFor="password">Contraseña</label>
                         <input id="password" type="password" placeholder="Contraseña" name="password" required onChange={(e) =>setPassword(e.target.value)}></input>
                         
-                        <button type="button" onClick={loginSubmit}>Ingresar</button>
-                        
+                        <button type="submit" onSubmit={loginSubmit}>Ingresar</button>                  
                     </form>
 
                 </div>

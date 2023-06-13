@@ -5,12 +5,12 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthProvider";
 import { getAuth } from "firebase/auth";
 
-const LogInLinks = ({ isUserLoggedIn }) => {
+const LogInLinks = () => {
 
-    const auth = getAuth();
-    const user = auth.currentUser;
     const User = useContext(AuthContext);
-    const uid = User.currentUser?.uid;
+    const user = User.currentUser;
+    const uid = user?.uid;
+    const isUserLoggedIn = user !== null;
 
     if (!isUserLoggedIn) {
         return (
@@ -35,7 +35,7 @@ const LogInLinks = ({ isUserLoggedIn }) => {
         return (
             <>
                 <NavLink to={`/misMascotas/${uid}`} className="nav-link nav-item">Mis Mascotas</NavLink>
-                <NavLink to="/turnos" className="nav-link nav-item">Turnos</NavLink>
+                <NavLink to="/turnos" className="nav-link nav-item">Turnos</NavLink>      
                 <NavLink to="/signOut" className="nav-link nav-item"><button id="botonCerrarSesion" className="botonNavLogin">Cerrar Sesión</button></NavLink>
                 <NavLink to={`/perfil/${uid}`} className="nav-link nav-item"><CgProfile /></NavLink>
             </>
@@ -44,11 +44,6 @@ const LogInLinks = ({ isUserLoggedIn }) => {
 }
 
 const NavBar = () => {
-
-    const User = useContext(AuthContext);
-    let isUserLoggedIn = User.currentUser !== null;
-    /* console.log(User.currentUser)
-    console.log(isUserLoggedIn) */
 
     return (
         <nav className="navbar" id="navbar">
@@ -66,8 +61,7 @@ const NavBar = () => {
                 <NavLink to="/adopciones" className="nav-link nav-item">Adopciones</NavLink>
                 {/* <Link to="/" className="nav-link nav-item">Inicio</Link> */}
                 <NavLink to="/consultas" className="nav-link nav-item">Consultas</NavLink>
-
-                <LogInLinks isUserLoggedIn={isUserLoggedIn}></LogInLinks>
+                <LogInLinks></LogInLinks>
                 <a href="https://www.instagram.com/" target="_blank" style={{ color: "black", paddingRight: "10px" }}><BsInstagram /></a>
                 <a href="https://es-la.facebook.com/" target="_blank" style={{ color: "black", paddingRight: "10px" }}><BsFacebook /></a>
 

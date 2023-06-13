@@ -1,18 +1,15 @@
-import { getAuth } from "firebase/auth";
 import { useState, useEffect,useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { collection, getDocs, getDoc, doc, updateDoc } from "firebase/firestore";
+import { getDoc, doc} from "firebase/firestore";
 import { db } from "./firebaseConfig/firebase";
 import { AuthContext } from "./AuthProvider";
 
 const Perfil = () => {
-    const [Perfil, setPerfil] = useState("")
+    
     const [Nombre, setNombre] = useState("")
     const [Email, setEmail] = useState("")
     const [Apellido, setApellido] = useState("")
 
-    const User = useContext(AuthContext);
-    const navigate = useNavigate()
     const { uid } = useParams();
 
     const getPerfil = async () => {

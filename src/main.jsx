@@ -29,6 +29,7 @@ import Editar from './Components/Adopciones/Editar.jsx';
 import EditarHistoriaClinica from './Components/Mascotas/EditarHistoriaClinica.jsx';
 import EditarMascota from './Components/Mascotas/EditarMascota.jsx';
 import EditarPerfil from './Components/EditarPerfil.jsx';
+import EditarTurno from './Components/Turnos/EditarTurno.jsx'
 
 
 //creamos el router que determina las rutas y que elementos renderizan
@@ -125,6 +126,10 @@ const router = createBrowserRouter([
       {
         path: "editarPerfil/:id",
         element: <EditarPerfil />
+      },
+      {
+        path: "/editarTurno/:idTurno",
+        element: <EditarTurno></EditarTurno>
       }
     ]
   }

@@ -1,0 +1,9 @@
+.boton {
+  background-color: rgb(141, 65, 141);
+  border-radius: 15px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+}

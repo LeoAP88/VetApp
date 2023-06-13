@@ -1,11 +1,10 @@
 import { useState, useEffect, useContext } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore"
 import { AuthContext } from "./AuthProvider";
-import { getAuth } from "firebase/auth";
 import { db } from "./firebaseConfig/firebase";
 import Swal from "sweetalert2"
-import whitReactContent from "sweetalert2-react-content"
+import withReactContent from "sweetalert2-react-content"
 import Table from 'react-bootstrap/Table';
 import "./Clientes.css"
 import {
@@ -13,12 +12,13 @@ import {
 } from 'react-spinners';
 
 
-const mySwal = whitReactContent(Swal)
+const mySwal = withReactContent(Swal)
 
-const LogInLinks = ({ isUserLoggedIn, id, getClientes }) => {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    const navigate = useNavigate()
+const LogInLinks = ({ id, getClientes }) => {
+    
+    const User = useContext(AuthContext);
+    const user = User.currentUser;
+    let isUserLoggedIn = User.currentUser !== null;
 
 
     const deleteCliente = async () => {
@@ -66,10 +66,6 @@ const LogInLinks = ({ isUserLoggedIn, id, getClientes }) => {
 const Clientes = () => {
     const [loading, setLoading] = useState(true);
 
-    const User = useContext(AuthContext);
-    const uid = User.currentUser?.uid;
-    const auth = getAuth()
-    let isUserLoggedIn = User.currentUser !== null;
 
     const [clientes, setClientes] = useState([])
     const clientesCollection = collection(db, "Clientes")
@@ -123,7 +119,7 @@ const Clientes = () => {
                                     <Link to={`/misMascotas/${cliente.id}`}><button className="btn btn-success">Ver Mascotas</button></Link>
                                 </td>
                                 <td>
-                                    <LogInLinks isUserLoggedIn={isUserLoggedIn} id={cliente.id} getClientes={getClientes}></LogInLinks>
+                                    <LogInLinks id={cliente.id} getClientes={getClientes}></LogInLinks>
                                 </td>
                             </tr>
                         ))}

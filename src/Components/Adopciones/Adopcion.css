@@ -14,11 +14,13 @@
 
 .container_adopcion {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .tarjeta {
   margin-top: 30px;
   padding: 10px;
+  width: 30%;
 }

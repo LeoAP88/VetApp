@@ -22,7 +22,6 @@
 
 .img {
     width: 100%;
-    height: 1000px;
     background-repeat: no-repeat;
     background-size: cover;
     background-image: linear-gradient(to bottom, #ff000000, rgb(63, 62, 62)), url(../../assets/img/img.jpg);

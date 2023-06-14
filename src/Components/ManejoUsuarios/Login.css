@@ -1,11 +1,10 @@
 /* efectos por defecto */
 body {
-    font-family: 'Overpass', sans-serif;
     font-weight: normal;
     font-size: 100%;
     color: #1b262c;
     margin: 0;
-    background-color: #5f6769;
+    background-color: white;
 }
 
 /* efectos para el contenedor de pantalla completa */
@@ -19,66 +18,30 @@ body {
     height: 70vh;
     background-position: center;
     background-size: cover;
+    background-image: url("https://www.esaote.com/uploads/pics/header-us-mri-vet_17.jpg");
 }
 
-/* contenedor del login a la izquierda */
-#contenedorcentrado {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-
-
-    background-color: #5f6769;
-
-    /*opacity: 0.50;
-    filter: alpha(opacity=50);*/
-
-    border-radius: 10px 10px 10px 10px;
-    -moz-border-radius: 10px 10px 10px 10px;
-    -webkit-border-radius: 10px 10px 10px 10px;
-
-    -webkit-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
-    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
-
-    padding: 30px;
-    box-sizing: border-box;
-}
-
-/* formulario de login */
-/* formulario de login */
 #login {
     width: 100%;
-    max-width: 320px;
-    min-width: 320px;
+    max-width: 500px;
     padding: 30px 30px 50px 30px;
-    background-color: #719192;
+    background-color: white;
+    margin-left: 900px;
+    height: 500px;
 
     -webkit-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
-
-    border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px 3px 3px 3px;
-    -webkit-border-radius: 3px 3px 3px 3px;
-
-    box-sizing: border-box;
-
-    opacity: 1;
-    filter: alpha(opacity=1);
+    border-radius: 10px;
 }
 
 #login label {
-    display: block;
-    font-family: 'Overpass', sans-serif;
     font-size: 120%;
     color: #3c4245;
-
     margin-top: 15px;
 }
 
 #login input {
-    font-family: 'Overpass', sans-serif;
     font-size: 110%;
     color: #1b262c;
 
@@ -91,30 +54,23 @@ body {
 
     box-sizing: border-box;
 
-    border: none;
-    border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px 3px 3px 3px;
-    -webkit-border-radius: 3px 3px 3px 3px;
+    border-color: gray;
+    border-radius: 10px;
 }
 
 #login input::placeholder {
-    font-family: 'Overpass', sans-serif;
-    color: #E4E4E4;
+    color: black;
 }
 
 #login button {
-    font-family: 'Overpass', sans-serif;
     font-size: 110%;
     color: #1b262c;
     width: 100%;
     height: 40px;
-    border: none;
 
-    border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px 3px 3px 3px;
-    -webkit-border-radius: 3px 3px 3px 3px;
+    border-radius: 10px;
 
-    background-color: #dfcdc3;
+    background-color: rgb(223, 219, 219);
 
     margin-top: 10px;
 }
@@ -122,25 +78,6 @@ body {
 #login button:hover {
     background-color: #3c4245;
     color: #dfcdc3;
-}
-
-/* formulario de login */
-
-/* seccion de la derecha */
-/* por defecto */
-#derecho {
-    /*display: flex;
-    align-items:center;
-    justify-content:center;*/
-
-    text-align: center;
-    width: 100%;
-
-    opacity: 0.70;
-    filter: alpha(opacity=70);
-
-    padding: 20px 20px 20px 50px;
-    box-sizing: border-box;
 }
 
 .titulo {
@@ -207,10 +144,6 @@ hr {
 
     #login {
         margin: 0 auto;
-    }
-
-    #derecho {
-        padding: 20px 20px 20px 20px;
     }
 
     #login label {

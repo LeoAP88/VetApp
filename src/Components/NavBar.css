@@ -1,3 +1,9 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+}
 .nav-link-section {
     height: 60px;
     display: flex;
@@ -67,7 +73,6 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    /* align-items: center;
     margin-right: auto;
-    margin-left: 45px; */
+    margin-left: 45px;
 }

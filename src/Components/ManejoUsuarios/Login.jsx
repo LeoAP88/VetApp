@@ -31,33 +31,21 @@ const Login = () => {
     }
     return(
         <div id="contenedor">
-
-            <div id="contenedorcentrado">
                 <div id="login">
+                <div className="titulo"> Ingresa a tu cuenta</div>
                     <form id="loginform" onSubmit={loginSubmit}>
                         <label htmlFor="email">Email</label>
                         <input id="usuario" type="text" name="email" placeholder="email" required onChange={(e) =>setEmail(e.target.value)}></input>
 
                         <label htmlFor="password">Contraseña</label>
                         <input id="password" type="password" placeholder="Contraseña" name="password" required onChange={(e) =>setPassword(e.target.value)}></input>
-                        
-                        <button type="submit" onSubmit={loginSubmit}>Ingresar</button>                  
-                    </form>
-
-                </div>
-                <div id="derecho">
-                    <div className="titulo">
-                        Bienvenido
-                    </div>
-                    <hr></hr>
-                    <div className="pie-form">
-                        <a href="#">¿Perdiste tu contraseña?</a>
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                        <button type="button" onClick={loginSubmit}>Ingresar</button>
                         <Link to={"/register"}>¿No tienes Cuenta? Registrate</Link>
-                        <Link to={"/"}>« Volver</Link>
-                    </div>
+                    </form>
                 </div>
             </div>
-        </div>
+        
     );
 }
 

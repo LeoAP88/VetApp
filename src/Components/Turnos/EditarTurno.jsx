@@ -35,7 +35,7 @@ const EditarTurno = () => {
 
     const update = async (e) => {
         e.preventDefault();
-        console.log(fecha)
+        
         const turnoDoc = doc(db, `/Turnos/${idTurno}`);
         const data = {
             Fecha: deFechaInputAMS(fecha),

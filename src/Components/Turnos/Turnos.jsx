@@ -86,16 +86,20 @@ const Turnos = () => {
             const q = query(turnosCollection, where("Fecha",">=",fechaActualms))
             
             const data = await getDocs(q);
+            if(data.docs.length!==0){
             setTurnos(
                 data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
             );
+            }
             setLoading(false)
         }else if(currentUser!==null){
-            const q = query(turnosCollection, where("ClienteID", "==", currentUser.id), where("Fecha",">=",fechaActualms));
+            const q = query(turnosCollection, where("ClienteID", "==", currentUser.uid), where("Fecha",">=",fechaActualms));
             const data = await getDocs(q);
+            if(data.docs.length!==0){
             setTurnos(
                 data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
             );
+            }
             setLoading(false)
         }
 
@@ -104,13 +108,23 @@ const Turnos = () => {
     useEffect(()=>{
         getTurnos();
     }
-    ,[isAdmin]);
+    ,[currentUser]);
 
     if (loading) {
         return (
             <div className='loader_container'>
                 <FadeLoader />
             </div>)
+    }
+
+    if(!loading && turnos.length===0){
+        return(
+            <div className="container">
+            <h1>Turnos</h1>
+            <h3>No se registran turnos.</h3>
+            <button className="boton">Agendar Turno</button>
+            </div>
+        );
     }
 
     return (

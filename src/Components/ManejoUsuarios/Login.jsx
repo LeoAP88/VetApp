@@ -40,7 +40,7 @@ const Login = () => {
                         <label htmlFor="password">Contraseña</label>
                         <input id="password" type="password" placeholder="Contraseña" name="password" required onChange={(e) =>setPassword(e.target.value)}></input>
                         <a href="#">¿Olvidaste tu contraseña?</a>
-                        <button type="button" onClick={loginSubmit}>Ingresar</button>
+                        <button type="submit" onSubmit={loginSubmit}>Ingresar</button>
                         <Link to={"/register"}>¿No tienes Cuenta? Registrate</Link>
                     </form>
                 </div>

@@ -91,7 +91,7 @@ const Turnos = () => {
                 data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
             );
             }
-            setLoading(false)
+            setLoading(false);
         }else if(currentUser!==null){
             const q = query(turnosCollection, where("ClienteID", "==", currentUser.uid), where("Fecha",">=",fechaActualms));
             const data = await getDocs(q);
@@ -100,7 +100,7 @@ const Turnos = () => {
                 data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
             );
             }
-            setLoading(false)
+            setLoading(false);
         }
 
     }

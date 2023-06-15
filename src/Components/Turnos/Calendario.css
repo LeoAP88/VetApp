@@ -1,0 +1,19 @@
+.dia-calendario.activo {
+    background-color: lightblue !important;
+}
+
+.dia-calendario {
+    transition: background-color 0.5s;
+    cursor: pointer;
+}
+.dia-calendario:hover{
+    background-color: lightgray;
+}
+
+.dia-calendario.deshabilitado{
+    background-color: red !important;
+}
+
+.dia-calendario.otro-mes{
+    background-color: lightgray;
+}

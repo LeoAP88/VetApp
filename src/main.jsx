@@ -30,7 +30,10 @@ import EditarHistoriaClinica from './Components/Mascotas/EditarHistoriaClinica.j
 import EditarMascota from './Components/Mascotas/EditarMascota.jsx';
 import EditarPerfil from './Components/EditarPerfil.jsx';
 import EditarTurno from './Components/Turnos/EditarTurno.jsx'
+import AgendarTurno from './Components/Turnos/AgendarTurno.jsx';
 
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 //creamos el router que determina las rutas y que elementos renderizan
 const router = createBrowserRouter([
@@ -130,6 +133,10 @@ const router = createBrowserRouter([
       {
         path: "/editarTurno/:idTurno",
         element: <EditarTurno></EditarTurno>
+      },
+      {
+        path: "/agendarTurno",
+        element: <AgendarTurno></AgendarTurno>
       }
     ]
   }
@@ -138,5 +145,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   // el elemento RouterProvider utiliza el router para renderizar nuestras rutas.
 
-  <AuthProvider><RouterProvider router={router}></RouterProvider> </AuthProvider>
+  <AuthProvider>
+  <LocalizationProvider dateAdapter={AdapterDayjs}>
+  <RouterProvider router={router}></RouterProvider>
+  </LocalizationProvider>
+  </AuthProvider>
 )

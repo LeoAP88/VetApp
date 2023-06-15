@@ -121,7 +121,9 @@ const Turnos = () => {
             <div className="container">
             <h1>Turnos</h1>
             <h3>No se registran turnos.</h3>
+            <Link to={"/agendarTurno"}>
             <button className="boton">Agendar Turno</button>
+            </Link>
             </div>
         );
     }

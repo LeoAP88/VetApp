@@ -3,29 +3,19 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { getDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase"
 
-const deMSAFechaInput = miliseg => {
-    const date = new Date(miliseg);
+const deISOStringAFechaInput = ISOString => {
+    const date = new Date(ISOString);
     const mes = (date.getMonth()+1).toString();
     return `${date.getFullYear()}-${mes.length<2?"0"+mes:mes}-${date.getDate()}`;
 }
-const deFechaInputAMS = fechaInput => {
-    const date = Date.parse(fechaInput+"T00:00:00.000-03:00");
-    return date;
-}
-const deMinsAHoraInput = mins => {
-    let h = Math.trunc(mins/60).toString();
-    let m = (mins%60).toString();
-    
-    return `${h.length<2?"0"+h:h}:${m.length<2?"0"+m:m}`;
-}
-const deHoraInputAMins = horaInput => {
-    const [horas,mins]= horaInput.split(":").map(n=>Number(n));
-    return horas*60+mins;
+const deFechaInputAISOString = fechaInput => {
+    const date = new Date(fechaInput+"T00:00:00.000-03:00");
+    return date.toISOString();
 }
 
 const EditarTurno = () => {
     const [fecha, setFecha] = useState("")
-    const [hora, setHora] = useState("Perro")
+    const [hora, setHora] = useState("")
     const [clienteID, setClienteID] = useState("")
     const [clienteNombre, setClienteNombre] = useState("")
 
@@ -38,8 +28,8 @@ const EditarTurno = () => {
         
         const turnoDoc = doc(db, `/Turnos/${idTurno}`);
         const data = {
-            Fecha: deFechaInputAMS(fecha),
-            Hora: deHoraInputAMins(hora),
+            Fecha: deFechaInputAISOString(fecha),
+            Hora: hora,
             ClienteID: clienteID,
             ClienteNombre: clienteNombre,
         };
@@ -52,8 +42,8 @@ const EditarTurno = () => {
         const turnoDoc = await getDoc(doc(db, `/Turnos/${idTurno}`));
         if (turnoDoc.exists()) {
           
-          setFecha(deMSAFechaInput(turnoDoc.data().Fecha));
-          setHora(deMinsAHoraInput(turnoDoc.data().Hora));
+          setFecha(deISOStringAFechaInput(turnoDoc.data().Fecha));
+          setHora(turnoDoc.data().Hora);
           setClienteID(turnoDoc.data().ClienteID);
           setClienteNombre(turnoDoc.data().ClienteNombre);
         } else {

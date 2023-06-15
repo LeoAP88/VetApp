@@ -12,16 +12,10 @@ import {FadeLoader} from 'react-spinners';
 
 const mySwal = withReactContent(Swal)
 
+//convierte la fecha desde un objeto Date al formato tradicional "dd/mm/aaaa"
 const parsearFecha = date => `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
 
-/*hora en formato n minutos (0 para 00:00, 1439 para 23:59)*/ 
-const parsearHora = hora => {
-    let h = Math.trunc(hora/60).toString();
-    let min = (hora%60).toString();
-    
-    return `${h.length<2?"0"+h:h}:${min.length<2?"0"+min:min}`;
-}
-
+// Componente que se renderiza si el usuario es admin, con los controles de edicion y borrado
 const ControlesAdmin = ({ id, getTurnos }) => {
     
     const User = useContext(AuthContext);
@@ -69,8 +63,9 @@ const ControlesAdmin = ({ id, getTurnos }) => {
 const Turnos = () => {
     const [loading, setLoading] = useState(true);
 
+    //La base utiliza el formato ISO de Date para las fechas, y el formato "hh:mm" para la hora.
     const fechaActual = new Date();
-    const fechaActualms = fechaActual.getTime();
+    const fechaActualParsed = fechaActual.toISOString();
     
     const User = useContext(AuthContext);
     const currentUser = User.currentUser;
@@ -81,9 +76,11 @@ const Turnos = () => {
     const [turnos, setTurnos] = useState([])
 
     const getTurnos = async () => {
-        
+        // si es admin, trae TODOS los turnos. Si no, solo los del usuario
         if(isAdmin){
-            const q = query(turnosCollection, where("Fecha",">=",fechaActualms))
+
+            //query utilizando como limite inferior la fecha actual, de esta manera trae solo los turnos futuros
+            const q = query(turnosCollection, where("Fecha",">=",fechaActualParsed))
             
             const data = await getDocs(q);
             if(data.docs.length!==0){
@@ -93,7 +90,8 @@ const Turnos = () => {
             }
             setLoading(false);
         }else if(currentUser!==null){
-            const q = query(turnosCollection, where("ClienteID", "==", currentUser.uid), where("Fecha",">=",fechaActualms));
+            //igual que arriba, pero se le añade otra condicion para que matchee el cliente logeado con sus turnos
+            const q = query(turnosCollection, where("ClienteID", "==", currentUser.uid), where("Fecha",">=",fechaActualParsed));
             const data = await getDocs(q);
             if(data.docs.length!==0){
             setTurnos(
@@ -117,6 +115,7 @@ const Turnos = () => {
             </div>)
     }
 
+    //renderizado condicional para el caso de que no existan turnos
     if(!loading && turnos.length===0){
         return(
             <div className="container">
@@ -144,7 +143,7 @@ const Turnos = () => {
                         {turnos.map(
                             (turno)=>{
                             const fechaTurno = parsearFecha(new Date(turno.Fecha));
-                            const horaTurno = parsearHora(turno.Hora);
+                            const horaTurno = turno.Hora;
                             return(
                                 <tr key={turno.id}>
                                     <td>{fechaTurno}</td>
@@ -162,8 +161,9 @@ const Turnos = () => {
                         )}
                     </tbody>
                 </Table>
-            
+            <Link to={"/agendarTurno"}>
             <button className="boton">Agendar Turno</button>
+            </Link>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import "./Turnos.css"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../AuthProvider"
-import { collection, getDocs, query, where } from "firebase/firestore"
+import { collection, getDocs, query, where, doc, deleteDoc } from "firebase/firestore"
 import { useState, useEffect, useContext } from "react"
 import { db } from "../firebaseConfig/firebase"
 import Table from 'react-bootstrap/Table';
@@ -42,7 +42,7 @@ const ControlesAdmin = ({ id, getTurnos }) => {
                 deleteTurno()
                 Swal.fire(
                     'Borrado!',
-                    'La Entrada ha sido Borrada.',
+                    'El turno ha sido Borrado.',
                     'success'
                 )
             }

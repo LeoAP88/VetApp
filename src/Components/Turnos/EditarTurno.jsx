@@ -70,12 +70,11 @@ const EditarTurno = () => {
                     <input value={hora} className="form-control" type="time" name="hora" id="hora" required onChange={(e) => setHora(e.target.value)}></input>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="clienteID">ID Cliente</label>
-                    <input value={clienteID} className="form-control" type="text" name="clienteID" id="clienteID" required onChange={(e) => setClienteID(e.target.value)}></input>
-                </div>
-                <div className="form-group">
                     <label htmlFor="clienteNombre">Nombre Cliente</label>
                     <input value={clienteNombre} className="form-control" type="text" name="clienteNombre" id="clienteNombre" required onChange={(e) => setClienteNombre(e.target.value)}></input>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="clienteID">ID Cliente: {clienteID}</label>
                 </div>
                 <button className="btn" type="submit" onClick={update}>Guardar cambios</button>
                 <Link to={`/turnos`}>

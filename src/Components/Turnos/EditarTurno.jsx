@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { getDoc, updateDoc, doc } from "firebase/firestore";
+import { getDoc, updateDoc, doc, setDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase"
 
 /*
@@ -35,14 +35,30 @@ const EditarTurno = () => {
     const [clienteID, setClienteID] = useState("")
     const [clienteNombre, setClienteNombre] = useState("")
 
-    const { idTurno } = useParams();
+    const { fechaTurno, horaTurno } = useParams();
 
     const navigate = useNavigate();
+
+    const deleteTurno = async ()=>{
+        if(fechaTurno!==fecha){
+            const fechaDoc = await getDoc(doc(db, `/Turnos/${fechaTurno}`));
+            const coleccionHorasTurno = collection(db,`/Turnos/${fechaTurno}/TurnosDelDia`);
+            const horaDoc = await getDoc(doc(db, `/Turnos/${fechaTurno}/TurnosDelDia/${horaTurno}`));
+            await deleteDoc(horaDoc);
+            const horas = await getDocs(coleccionHorasTurno);
+            if(horas.empty){
+                const 
+            }
+
+        }
+    }
 
     const update = async (e) => {
         e.preventDefault();
         
-        const turnoDoc = doc(db, `/Turnos/${idTurno}`);
+        await deleteTurno();
+
+        const turnoDoc = doc(db, `/Turnos/${fechaTurno}/TurnosDelDia/${horaTurno}`);
         const data = {
             Fecha: deFechaInputAISOString(fecha),
             Hora: hora,
@@ -55,13 +71,14 @@ const EditarTurno = () => {
     
       const getTurno = async () => {
     
-        const turnoDoc = await getDoc(doc(db, `/Turnos/${idTurno}`));
-        if (turnoDoc.exists()) {
+        const fechaDoc = await getDoc(doc(db, `/Turnos/${fechaTurno}`));
+        const horaDoc = await getDoc(doc(db, `/Turnos/${fechaTurno}/TurnosDelDia/${horaTurno}`));
+        if (fechaDoc.exists() && horaDoc.exists()) {
           
-          setFecha(deISOStringAFechaInput(turnoDoc.data().Fecha));
-          setHora(turnoDoc.data().Hora);
-          setClienteID(turnoDoc.data().ClienteID);
-          setClienteNombre(turnoDoc.data().ClienteNombre);
+          setFecha(deISOStringAFechaInput(fechaDoc.id));
+          setHora(horaDoc.id);
+          setClienteID(horaDoc.data().ClienteID);
+          setClienteNombre(horaDoc.data().ClienteNombre);
         } else {
           console.log("El archivo no existe");
         }

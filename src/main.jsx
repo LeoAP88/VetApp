@@ -129,7 +129,7 @@ const router = createBrowserRouter([
         element: <EditarPerfil />
       },
       {
-        path: "/editarTurno/:idTurno",
+        path: "/editarTurno/:fechaTurno/:horaTurno",
         element: <EditarTurno></EditarTurno>
       },
       {

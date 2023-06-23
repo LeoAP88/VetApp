@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { getDoc, updateDoc, doc, setDoc, deleteDoc } from "firebase/firestore";
+import { getDoc, updateDoc, doc, getDocs, setDoc, deleteDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase"
 
 /*
@@ -18,6 +18,10 @@ Turnos  (col)-
 
 */
 
+const horasDisponibles = [  "08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30",
+"13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30",
+"18:00","18:30"               
+];
 //funciones para converir fecha tradicional (input) a ISOString (formato utilizado en la base) y viceversa.
 const deISOStringAFechaInput = ISOString => {
     const date = new Date(ISOString);
@@ -27,6 +31,23 @@ const deISOStringAFechaInput = ISOString => {
 const deFechaInputAISOString = fechaInput => {
     const date = new Date(fechaInput+"T00:00:00.000-03:00");
     return date.toISOString();
+}
+
+const SelecccionarHora = ({horasDisponibles, className, horaSelec, setHoraSelec}) => {
+    
+    const changeHora = (e) => {
+        setHoraSelec(e.target.value);
+    }
+    console.log(horaSelec)
+    return(<select className={className} onChange={changeHora} value={horaSelec}>
+        {horasDisponibles.map(
+            (hora) => {
+                return(
+                    <option key={hora} value={hora}>{hora}</option>
+                );
+            }
+        )}
+    </select>);
 }
 
 const EditarTurno = () => {
@@ -40,32 +61,59 @@ const EditarTurno = () => {
     const navigate = useNavigate();
 
     const deleteTurno = async ()=>{
-        if(fechaTurno!==fecha){
-            const fechaDoc = await getDoc(doc(db, `/Turnos/${fechaTurno}`));
-            const coleccionHorasTurno = collection(db,`/Turnos/${fechaTurno}/TurnosDelDia`);
-            const horaDoc = await getDoc(doc(db, `/Turnos/${fechaTurno}/TurnosDelDia/${horaTurno}`));
-            await deleteDoc(horaDoc);
-            const horas = await getDocs(coleccionHorasTurno);
-            if(horas.empty){
-                const 
-            }
 
+        const fechaDocRef = doc(db, `/Turnos/${fechaTurno}`);
+        const fechaDoc = await getDoc(fechaDocRef);
+
+        const coleccionHorasTurno = collection(db,`/Turnos/${fechaTurno}/TurnosDelDia`);
+
+        const horaDocRef = doc(db, `/Turnos/${fechaTurno}/TurnosDelDia/${horaTurno}`);
+
+        await deleteDoc(horaDocRef);
+        
+        const horas = await getDocs(coleccionHorasTurno);
+        if(horas.empty){
+            await deleteDoc(fechaDocRef);
+        }else if(fechaDoc.data().diaOcupado){
+             await updateDoc(fechaDocRef,{diaOcupado:false});
         }
+
+    }
+
+    const initNuevaFechaDocRef = async () => {
+        const nuevaFechaDocRef = doc(db,`/Turnos/${fecha}`);
+        const nuevaFechaDoc = await getDoc(nuevaFechaDocRef);
+        if(!nuevaFechaDoc.exists()){
+            await setDoc(nuevaFechaDocRef,{diaOcupado: false});
+        }
+        return nuevaFechaDocRef;
     }
 
     const update = async (e) => {
         e.preventDefault();
-        
+
+        if((await getDoc(nuevaFechaDocRef)).data().diaOcupado && (fecha!==fechaTurno)){
+            console.error("Error! Dia completo!")
+            return;
+        }
+
         await deleteTurno();
 
-        const turnoDoc = doc(db, `/Turnos/${fechaTurno}/TurnosDelDia/${horaTurno}`);
-        const data = {
-            Fecha: deFechaInputAISOString(fecha),
-            Hora: hora,
+        const nuevaFechaDocRef = await initNuevaFechaDocRef();
+        const nuevaHoraDocRef = doc(db,`Turnos/${fecha}/TurnosDelDia/${hora}`);
+        const nuevaFechaTurnosCol = collection(db,`Turnos/${fecha}/TurnosDelDia`);
+        
+        await setDoc(nuevaHoraDocRef,{
             ClienteID: clienteID,
-            ClienteNombre: clienteNombre,
-        };
-        await updateDoc(turnoDoc, data);
+            ClienteNombre: clienteNombre
+        });
+
+        if((await getDocs(nuevaFechaTurnosCol)).size===22){
+            await updateDoc(nuevaFechaDocRef, {
+                diaOcupado: true
+            });
+        }
+        
         navigate(`/turnos`);
       };
     
@@ -100,7 +148,7 @@ const EditarTurno = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="fecha">Hora</label>
-                    <input value={hora} className="form-control" type="time" name="hora" id="hora" required onChange={(e) => setHora(e.target.value)}></input>
+                    <SelecccionarHora horaSelec={hora} setHoraSelec={setHora} horasDisponibles={horasDisponibles} className="form-control"/>
                 </div>
                 <div className="form-group">
                     

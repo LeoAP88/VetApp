@@ -1,7 +1,7 @@
 import "./Turnos.css"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../AuthProvider"
-import { collection, getDocs, query, where, doc, deleteDoc, collectionGroup } from "firebase/firestore"
+import { collection, getDocs, updateDoc, query, where, doc, deleteDoc, collectionGroup, getDoc } from "firebase/firestore"
 import { useState, useEffect, useContext } from "react"
 import { db } from "../firebaseConfig/firebase"
 import Table from 'react-bootstrap/Table';
@@ -31,19 +31,35 @@ const mySwal = withReactContent(Swal)
 const parsearFecha = date => `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
 
 // Componente que se renderiza si el usuario es admin, con los controles de edicion y borrado
-const ControlesAdmin = ({ id, getTurnos }) => {
+const ControlesAdmin = ({ fechaTurno, horaTurno, getTurnos }) => {
     
     const User = useContext(AuthContext);
     const user = User.currentUser;
 
+    const deleteTurno = async (fechaTurno,horaTurno)=>{
 
-    const deleteTurno = async () => {
-        const turnoDoc = doc(db, `/Turnos/${id}`)
-        await deleteDoc(turnoDoc)
+        const fechaDocRef = doc(db, `/Turnos/${fechaTurno}`);
+        const fechaDoc = await getDoc(fechaDocRef);
+
+        const coleccionHorasTurno = collection(db,`/Turnos/${fechaTurno}/TurnosDelDia`);
+
+        const horaDocRef = doc(db, `/Turnos/${fechaTurno}/TurnosDelDia/${horaTurno}`);
+        console.log(horaDocRef)
+
+        const res = await deleteDoc(horaDocRef);
+        console.log(res)
+        const horas = await getDocs(coleccionHorasTurno);
+        if(horas.empty){
+            await deleteDoc(fechaDocRef);
+        }else if(fechaDoc.data().diaOcupado){
+             await updateDoc(fechaDocRef,{diaOcupado:false});
+        }
         getTurnos();
+
     }
 
-    const confirmDelete = () => {
+
+    const confirmDelete = (fechaTurno, horaTurno) => {
         Swal.fire({
             title: 'Estas Seguro/a?',
             text: "No podes revertir esta Accion!",
@@ -54,7 +70,7 @@ const ControlesAdmin = ({ id, getTurnos }) => {
             confirmButtonText: 'Si, Deseo Borrarlo!'
         }).then((result) => {
             if (result.isConfirmed) {
-                deleteTurno()
+                deleteTurno(fechaTurno, horaTurno)
                 Swal.fire(
                     'Borrado!',
                     'El turno ha sido Borrado.',
@@ -65,10 +81,10 @@ const ControlesAdmin = ({ id, getTurnos }) => {
     }
         return (
             <>
-                <Link to={`/editarTurno/${id}`} className="btn btn-primary">
+                <Link to={`/editarTurno/${fechaTurno}/${horaTurno}`} className="btn btn-primary">
                     <i className="fa-solid fa-pencil"></i>
                 </Link>
-                <button onClick={() => { confirmDelete() }} className="btn btn-danger">
+                <button onClick={() => { confirmDelete(fechaTurno, horaTurno) }} className="btn btn-danger">
                     <i className="fa-solid fa-trash"></i>
                 </button>
             </>
@@ -88,59 +104,48 @@ const Turnos = () => {
     
 
     const [turnos, setTurnos] = useState([])
-
+    
     const getTurnos = async () => {
-        // si es admin, trae TODOS los turnos. Si no, solo los del usuario
-        if(isAdmin){
 
-            //query utilizando como limite inferior la fecha actual, de esta manera trae solo los turnos futuros
-            const q = query(collection(db, "Turnos"), where("__name__",">=",fechaActualParsed));
-            
-            const data = await getDocs(q);
-            if(data.docs.length!==0){
-            setTurnos(
-                data.docs.map(async (doc) => {
-                    const horasTurno = await getDocs(collection(db, `Turnos/${doc.id}/TurnosDelDia`));
-                    let turnosArray = [];
-                    if(horasTurno.docs.length!==0){
-                        turnosArray = horasTurno.docs.map(
-                            docHora => ({ ...docHora.data(), Hora: docHora.id, Fecha: doc.id })
-                        )
-                    }
-                    return turnosArray;
-                }
-                )
-            );
-            }
-            setLoading(false);
-        }else if(currentUser!==null){
-            //igual que arriba, pero se le añade otra condicion para que matchee el cliente logeado con sus turnos
-
-            const q = query(collectionGroup(db, 'TurnosDelDia'), where('ClienteID', '==', 'currentUser.uid'));
-            const data = await getDocs(q);
-            if(data.docs.length!==0){
-                setTurnos(
-                    data.docs.filter(
-                        (doc) => {
-                            const docPath = doc.ref.path.split("/");
-                            return Date.parse(docPath[1])<fechaActualParsed;
-                        }
-                    ).map(async (doc) => {
-                        const horasTurno = await getDocs(collection(db, `Turnos/${doc.id}/TurnosDelDia`));
-                        let turnosArray = [];
-                        if(horasTurno.docs.length!==0){
-                            turnosArray = horasTurno.docs.map(
-                            docHora => ({ ...docHora.data(), Hora: docHora.id, Fecha: doc.id })
-                            )
-                        }
-                        return turnosArray;
-                    }
-                    )
-                );
-            }
-            setLoading(false);
+        if(currentUser===null){
+            return;
         }
 
+        const filtroFechaPosteriorAHoy = (doc) => {
+            const docPath = doc.ref.path.split("/");
+            
+            return (Date.parse(docPath[1])>=Date.parse(fechaActualParsed));
+        }
+
+        const mapHoraDocATurnosArray = async (doc) => {
+            const docPath = doc.ref.path.split("/");
+            
+            return { ...doc.data(), Hora: doc.id, Fecha: docPath[1]};
+        }
+
+        let q = null;
+        // si es admin, trae TODOS los turnos. Si no, solo los del usuario
+        
+        if(isAdmin){
+            //query utilizando como limite inferior la fecha actual, de esta manera trae solo los turnos futuros
+            q = query(collectionGroup(db, 'TurnosDelDia'))          
+        }else{
+            //igual que arriba, pero se le añade otra condicion para que matchee el cliente logeado con sus turnos
+            q = query(collectionGroup(db, 'TurnosDelDia'), where('ClienteID', '==', currentUser.uid));        
+        }
+
+        const data = await getDocs(q);
+
+        if(!data.empty){
+            const turnosArray = await Promise.all(
+                data.docs.filter(
+                    filtroFechaPosteriorAHoy
+                ).map(
+                    mapHoraDocATurnosArray
+                ));
+            setTurnos(turnosArray);
+        }
+        setLoading(false);
     }
 
     useEffect(()=>{
@@ -177,23 +182,23 @@ const Turnos = () => {
                             <th>Fecha</th>
                             <th>Horario</th>
                             <th>Cliente</th>
-                            <th></th>
+                            {isAdmin? (<th></th>):(<></>)}
                         </tr>
                     </thead>
 
                     <tbody>
-                        {turnos.flat().map(
+                        {turnos.map(
                             (turno)=>{
                             const fechaTurno = parsearFecha(new Date(turno.Fecha));
                             const horaTurno = turno.Hora;
                             return(
-                                <tr key={turno.id}>
+                                <tr key={`${fechaTurno}-${horaTurno}`}>
                                     <td>{fechaTurno}</td>
                                     <td>{horaTurno}</td>
                                     <td>{turno.ClienteNombre}</td>
                                     {isAdmin?(
                                     <td>
-                                        <ControlesAdmin id={turno.id} getTurnos={getTurnos}></ControlesAdmin>
+                                        <ControlesAdmin fechaTurno={turno.Fecha} horaTurno={turno.Hora} getTurnos={getTurnos}></ControlesAdmin>
                                     </td>)
                                     :(<></>)
                                     }

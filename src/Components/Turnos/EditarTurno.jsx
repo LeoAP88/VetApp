@@ -3,6 +3,22 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { getDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase"
 
+/*
+    Estructura de la base de turnos
+    
+Turnos  (col)-
+             "ISOString fechadeturno"  (doc)-
+                                            | - TurnosDelDia (col)- 
+                                            |                      |- 08:00(doc): ClienteID(string), ClienteNombre(string)
+                                            |                      |- 08:30(doc)
+                                            |                      |- 10:30(doc)
+                                            |                          ...
+                                            |                                
+                                             -   diaocupado(bool)
+
+*/
+
+//funciones para converir fecha tradicional (input) a ISOString (formato utilizado en la base) y viceversa.
 const deISOStringAFechaInput = ISOString => {
     const date = new Date(ISOString);
     const mes = (date.getMonth()+1).toString();
@@ -70,6 +86,7 @@ const EditarTurno = () => {
                     <input value={hora} className="form-control" type="time" name="hora" id="hora" required onChange={(e) => setHora(e.target.value)}></input>
                 </div>
                 <div className="form-group">
+                    
                     <label htmlFor="clienteNombre">Nombre Cliente</label>
                     <input value={clienteNombre} className="form-control" type="text" name="clienteNombre" id="clienteNombre" required onChange={(e) => setClienteNombre(e.target.value)}></input>
                 </div>

@@ -1,7 +1,7 @@
 import "./Turnos.css"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../AuthProvider"
-import { collection, getDocs, query, where, doc, deleteDoc } from "firebase/firestore"
+import { collection, getDocs, query, where, doc, deleteDoc, collectionGroup } from "firebase/firestore"
 import { useState, useEffect, useContext } from "react"
 import { db } from "../firebaseConfig/firebase"
 import Table from 'react-bootstrap/Table';
@@ -9,6 +9,21 @@ import withReactContent from "sweetalert2-react-content"
 import Swal from "sweetalert2"
 import {FadeLoader} from 'react-spinners';
 
+
+/*
+    Estructura de la base de turnos
+    
+Turnos  (col)-
+             "ISOString fechadeturno"  (doc)-
+                                            | - TurnosDelDia (col)- 
+                                            |                      |- 08:00(doc): ClienteID(string), ClienteNombre(string)
+                                            |                      |- 08:30(doc)
+                                            |                      |- 10:30(doc)
+                                            |                          ...
+                                            |                                
+                                             -   diaocupado(bool)
+
+*/
 
 const mySwal = withReactContent(Swal)
 
@@ -71,7 +86,6 @@ const Turnos = () => {
     const currentUser = User.currentUser;
     const isAdmin = currentUser?.email === 'admin@gmail.com'
     
-    const turnosCollection = collection(db, "Turnos")
 
     const [turnos, setTurnos] = useState([])
 
@@ -80,23 +94,49 @@ const Turnos = () => {
         if(isAdmin){
 
             //query utilizando como limite inferior la fecha actual, de esta manera trae solo los turnos futuros
-            const q = query(turnosCollection, where("Fecha",">=",fechaActualParsed))
+            const q = query(collection(db, "Turnos"), where("__name__",">=",fechaActualParsed));
             
             const data = await getDocs(q);
             if(data.docs.length!==0){
             setTurnos(
-                data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+                data.docs.map(async (doc) => {
+                    const horasTurno = await getDocs(collection(db, `Turnos/${doc.id}/TurnosDelDia`));
+                    let turnosArray = [];
+                    if(horasTurno.docs.length!==0){
+                        turnosArray = horasTurno.docs.map(
+                            docHora => ({ ...docHora.data(), Hora: docHora.id, Fecha: doc.id })
+                        )
+                    }
+                    return turnosArray;
+                }
+                )
             );
             }
             setLoading(false);
         }else if(currentUser!==null){
             //igual que arriba, pero se le añade otra condicion para que matchee el cliente logeado con sus turnos
-            const q = query(turnosCollection, where("ClienteID", "==", currentUser.uid), where("Fecha",">=",fechaActualParsed));
+
+            const q = query(collectionGroup(db, 'TurnosDelDia'), where('ClienteID', '==', 'currentUser.uid'));
             const data = await getDocs(q);
             if(data.docs.length!==0){
-            setTurnos(
-                data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-            );
+                setTurnos(
+                    data.docs.filter(
+                        (doc) => {
+                            const docPath = doc.ref.path.split("/");
+                            return Date.parse(docPath[1])<fechaActualParsed;
+                        }
+                    ).map(async (doc) => {
+                        const horasTurno = await getDocs(collection(db, `Turnos/${doc.id}/TurnosDelDia`));
+                        let turnosArray = [];
+                        if(horasTurno.docs.length!==0){
+                            turnosArray = horasTurno.docs.map(
+                            docHora => ({ ...docHora.data(), Hora: docHora.id, Fecha: doc.id })
+                            )
+                        }
+                        return turnosArray;
+                    }
+                    )
+                );
             }
             setLoading(false);
         }
@@ -142,7 +182,7 @@ const Turnos = () => {
                     </thead>
 
                     <tbody>
-                        {turnos.map(
+                        {turnos.flat().map(
                             (turno)=>{
                             const fechaTurno = parsearFecha(new Date(turno.Fecha));
                             const horaTurno = turno.Hora;

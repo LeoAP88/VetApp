@@ -18,19 +18,19 @@ const Consultas = () => {
                     </div>
                 </div>
 
-                <div className="form_container">
+                <div className="formContainer">
                     <form className="consultas_form" action="mailto:veterinaria@gmail.com" method='POST'>
                         <div className="form-group">
                             <label htmlFor="nombre">Nombre y apellido</label>
-                            <input type="text" className="form-control" name='nombre' id="nombre" placeholder="Nombre..." />
+                            <input type="text" className="form-control-Consultas" name='nombre' id="nombre" placeholder="Nombre..." />
                         </div>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input type="email" className="form-control" name='email' id="email" placeholder="Email..." />
+                            <input type="email" className="form-control-Consultas" name='email' id="email" placeholder="Email..." />
                         </div>
                         <div className="form-group">
                             <label htmlFor="mensaje">Mensaje</label>
-                            <textarea className="form-control" name='mensaje' id="mensaje" rows="3" placeholder="Deja tu mensaje aquí" maxLength={200}></textarea>
+                            <textarea className="form-control-Consultas" name='mensaje' id="mensaje" rows="3" placeholder="Deja tu mensaje aquí" maxLength={200}></textarea>
                         </div>
                         <button className="btn-consulta" type="submit">Enviar</button>
                     </form>

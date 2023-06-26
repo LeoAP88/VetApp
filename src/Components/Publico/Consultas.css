@@ -2,6 +2,11 @@
     display: flex;
     justify-content: space-evenly;
     margin-top: 50px;
+    height: 67vh;
+    
+}
+
+.formContainer {
 }
 
 .texto-consultas {
@@ -18,7 +23,7 @@
 .container_iconos_redes {
     display: flex;
     gap: 20px;
-
+    
 }
 
 .container_texto_redes {
@@ -26,26 +31,30 @@
 }
 
 .texto_redes {
-    font-size: 1.4rem;
+    font-size: 2rem;
     align-self: auto;
+    color: rgb(29, 29, 29);
+    font-weight: bold;
 }
 
 .icono_redes {
     color: black;
     font-size: 2rem;
+    color: rgb(29, 29, 29);
 }
 
 .consultas_form {
     width: 100%;
 }
 
-.form-control {
+.form-control-Consultas {
     font-family: inherit;
-    width: 100%;
+    width: 800px;
     border: 1px solid black;
     border-radius: 10px;
     font-size: 1.1rem;
     padding: 10px;
+    margin: 0;
 }
 
 .form-group {

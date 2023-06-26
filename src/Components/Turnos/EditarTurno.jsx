@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { getDoc, updateDoc, doc, getDocs, setDoc, deleteDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase"
+import { AuthContext } from "../AuthProvider";
 
 /*
     Estructura de la base de turnos
@@ -28,18 +29,14 @@ const deISOStringAFechaInput = ISOString => {
     const mes = (date.getMonth()+1).toString();
     return `${date.getFullYear()}-${mes.length<2?"0"+mes:mes}-${date.getDate()}`;
 }
-const deFechaInputAISOString = fechaInput => {
-    const date = new Date(fechaInput+"T00:00:00.000-03:00");
-    return date.toISOString();
-}
 
-const SelecccionarHora = ({horasDisponibles, className, horaSelec, setHoraSelec}) => {
+const SelecccionarHora = ({horasDisponibles, className, horaSelec, setHoraSelec, name, id}) => {
     
     const changeHora = (e) => {
         setHoraSelec(e.target.value);
     }
     console.log(horaSelec)
-    return(<select className={className} onChange={changeHora} value={horaSelec}>
+    return(<select name={name} id={id} className={className} onChange={changeHora} value={horaSelec}>
         {horasDisponibles.map(
             (hora) => {
                 return(
@@ -51,10 +48,16 @@ const SelecccionarHora = ({horasDisponibles, className, horaSelec, setHoraSelec}
 }
 
 const EditarTurno = () => {
-    const [fecha, setFecha] = useState("")
-    const [hora, setHora] = useState("")
-    const [clienteID, setClienteID] = useState("")
-    const [clienteNombre, setClienteNombre] = useState("")
+    const User = useContext(AuthContext);
+    const isAdmin = User?.currentUser?.email === "admin@gmail.com";
+
+    const [datosForm, setDatosForm] = useState({
+                                                    fecha: "",
+                                                    hora: "",
+                                                    ClienteID: "",
+                                                    ClienteNombre: ""
+                                                    }); // <-- para meter todos los states aca
+    
 
     const { fechaTurno, horaTurno } = useParams();
 
@@ -81,7 +84,7 @@ const EditarTurno = () => {
     }
 
     const initNuevaFechaDocRef = async () => {
-        const nuevaFechaDocRef = doc(db,`/Turnos/${fecha}`);
+        const nuevaFechaDocRef = doc(db,`/Turnos/${datosForm.fecha}`);
         const nuevaFechaDoc = await getDoc(nuevaFechaDocRef);
         if(!nuevaFechaDoc.exists()){
             await setDoc(nuevaFechaDocRef,{diaOcupado: false});
@@ -92,7 +95,7 @@ const EditarTurno = () => {
     const update = async (e) => {
         e.preventDefault();
 
-        if((await getDoc(nuevaFechaDocRef)).data().diaOcupado && (fecha!==fechaTurno)){
+        if((await getDoc(nuevaFechaDocRef)).data().diaOcupado && (datosForm.fecha!==fechaTurno)){
             console.error("Error! Dia completo!")
             return;
         }
@@ -100,12 +103,12 @@ const EditarTurno = () => {
         await deleteTurno();
 
         const nuevaFechaDocRef = await initNuevaFechaDocRef();
-        const nuevaHoraDocRef = doc(db,`Turnos/${fecha}/TurnosDelDia/${hora}`);
-        const nuevaFechaTurnosCol = collection(db,`Turnos/${fecha}/TurnosDelDia`);
+        const nuevaHoraDocRef = doc(db,`Turnos/${datosForm.fecha}/TurnosDelDia/${datosForm.hora}`);
+        const nuevaFechaTurnosCol = collection(db,`Turnos/${datosForm.fecha}/TurnosDelDia`);
         
         await setDoc(nuevaHoraDocRef,{
-            ClienteID: clienteID,
-            ClienteNombre: clienteNombre
+            ClienteID: datosForm.clienteID,
+            ClienteNombre: datosForm.clienteNombre
         });
 
         if((await getDocs(nuevaFechaTurnosCol)).size===22){
@@ -115,27 +118,39 @@ const EditarTurno = () => {
         }
         
         navigate(`/turnos`);
-      };
+    };
     
-      const getTurno = async () => {
+    const getTurno = async () => {
     
         const fechaDoc = await getDoc(doc(db, `/Turnos/${fechaTurno}`));
         const horaDoc = await getDoc(doc(db, `/Turnos/${fechaTurno}/TurnosDelDia/${horaTurno}`));
         if (fechaDoc.exists() && horaDoc.exists()) {
-          
-          setFecha(deISOStringAFechaInput(fechaDoc.id));
-          setHora(horaDoc.id);
-          setClienteID(horaDoc.data().ClienteID);
-          setClienteNombre(horaDoc.data().ClienteNombre);
+
+          let nuevoDatosForm = {...datosForm};
+
+          nuevoDatosForm.fecha = deISOStringAFechaInput(fechaDoc.id);
+          nuevoDatosForm.hora = (horaDoc.id);
+          nuevoDatosForm.ClienteID = horaDoc.data().ClienteID;
+          nuevoDatosForm.ClienteNombre = horaDoc.data().ClienteNombre;
+
+          setDatosForm(nuevoDatosForm);
+
         } else {
           console.log("El archivo no existe");
         }
-      }
+    }
     
-      useEffect(() => {
-        getTurno();
-      }, []);
+    useEffect(() => {
+      getTurno();
+    }, []);
 
+    if(!isAdmin){
+        return(
+            <div className="container">
+                <h1>Acceso Denegado</h1>
+            </div>
+        );
+    }
 
 
     return(
@@ -144,19 +159,19 @@ const EditarTurno = () => {
             <form action="" method='POST'>
                 <div className="form-group">
                     <label htmlFor="fecha">Fecha</label>
-                    <input value={fecha} className="form-control" type="date" name="fecha" id="fecha" required onChange={(e) => setFecha(e.target.value)}></input>
+                    <input value={datosForm.fecha} className="form-control" type="date" name="fecha" id="fecha" required onChange={(e) => setDatosForm({...datosForm, fecha: e.target.value})}></input>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="fecha">Hora</label>
-                    <SelecccionarHora horaSelec={hora} setHoraSelec={setHora} horasDisponibles={horasDisponibles} className="form-control"/>
+                    <label htmlFor="hora">Hora</label>
+                    <SelecccionarHora horaSelec={datosForm.hora} setHoraSelec={(h)=>setDatosForm({...datosForm,hora:h})} horasDisponibles={horasDisponibles} name="hora" id="hora" className="form-control"/>
                 </div>
                 <div className="form-group">
                     
                     <label htmlFor="clienteNombre">Nombre Cliente</label>
-                    <input value={clienteNombre} className="form-control" type="text" name="clienteNombre" id="clienteNombre" required onChange={(e) => setClienteNombre(e.target.value)}></input>
+                    <input value={datosForm.ClienteNombre} className="form-control" type="text" name="clienteNombre" id="clienteNombre" required onChange={(e) => setDatosForm({...datosForm, clienteNombre: e.target.value})}></input>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="clienteID">ID Cliente: {clienteID}</label>
+                    <label htmlFor="clienteID">ID Cliente: {datosForm.ClienteID}</label>
                 </div>
                 <button className="btn" type="submit" onClick={update}>Guardar cambios</button>
                 <Link to={`/turnos`}>

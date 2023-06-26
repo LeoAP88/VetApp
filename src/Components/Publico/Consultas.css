@@ -1,23 +1,40 @@
+.titulo_consultas{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
 .section_consultas {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 80px;
     margin-top: 50px;
-    height: 67vh;
+    height: 62vh;
     
 }
 
-.formContainer {
-}
-
 .texto-consultas {
-    font-weight: bold;
+    font-weight: 500;
+    font-size: large;
 }
 
 .container_redes {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: flex-start;
+}
+
+.datos{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 30px;
+    font-size: larger;
+}
+
+.dato{
+    padding-top: 20px;
+}
+.icono_dato{
+    padding-right: 10px;
 }
 
 .container_iconos_redes {
@@ -33,23 +50,23 @@
 .texto_redes {
     font-size: 2rem;
     align-self: auto;
-    color: rgb(29, 29, 29);
+    color: rgb(92, 2, 92);
     font-weight: bold;
 }
 
 .icono_redes {
-    color: black;
+    color: purple;
     font-size: 2rem;
-    color: rgb(29, 29, 29);
 }
 
 .consultas_form {
     width: 100%;
+    margin-top: 10px;
 }
 
 .form-control-Consultas {
     font-family: inherit;
-    width: 800px;
+    width: 900px;
     border: 1px solid black;
     border-radius: 10px;
     font-size: 1.1rem;
@@ -61,8 +78,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 25px;
     font-size: 1.3rem;
+    margin-bottom: 45px;
 }
 
 .form-group label {
@@ -87,4 +104,9 @@
 textarea {
     resize: none;
     height: 150px;
+}
+
+#mapa{
+    width: 430px;
+    height: 250px;
 }

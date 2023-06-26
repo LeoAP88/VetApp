@@ -1,7 +1,6 @@
 .navbar {
     position: sticky;
     top: 0;
-    z-index: 100;
     background-color: white;
 }
 .nav-link-section {
@@ -39,13 +38,15 @@
 }
 
 #botonRegistrate {
-    background-color: transparent;
-    background-repeat: no-repeat;
+    background-color: purple;
+    color: white;
+    padding-bottom: 13px;
 }
 
 #botonIngresar {
-    background-color: purple;
-    color: white;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    padding-bottom: 13px;
 }
 
 .botonNavLogin {
@@ -70,9 +71,7 @@
 
 .huellitas {
     display: flex;
-    justify-content: center;
     align-items: center;
-    text-decoration: none;
     margin-right: auto;
     margin-left: 45px;
 }

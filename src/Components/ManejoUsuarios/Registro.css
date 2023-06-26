@@ -1,5 +1,4 @@
 body {
-  font-family: 'Overpass', sans-serif;
   font-weight: normal;
   font-size: 100%;
   color: #1b262c;
@@ -21,7 +20,6 @@ body {
   text-align: center;
   padding: 0 0 20px 0;
   border-bottom: 1px solid silver;
-  font-family: 'Overpass', sans-serif;
 }
 
 .center form {
@@ -131,7 +129,6 @@ input[type="Submit"]:hover {
 }
 
 .btn-registro {
-  font-family: 'Overpass', sans-serif;
   font-size: 110%;
   color: #1b262c;
   width: 100%;

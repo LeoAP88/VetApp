@@ -5,6 +5,8 @@ import Calendario from "./Calendario";
 import {FadeLoader} from 'react-spinners';
 import { AuthContext } from "../AuthProvider"
 
+/*BUG EN DIAOCUPADO - REVISAR*/
+
 
 /*
     Estructura de la base de turnos
@@ -242,7 +244,7 @@ const AgendarTurno = ()=> {
         <div className="mt-2 mb-2">
         <SelecccionarHora horaSelec={horaSelec} setHoraSelec={setHoraSelec} horasDisponibles={horasDisponiblesParaTurno(horasOcupadas)} className="form-control"/>
         </div>
-        <button onClick={cargarTurno}>Agendar Turno</button>
+        <button onClick={cargarTurno} className="btn btn-outline-success">Agendar Turno</button>
         </div>
 
     );

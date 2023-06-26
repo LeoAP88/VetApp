@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "./Calendario.css"
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+
+/* FALTA TERMINAR ESTILO*/
 
 const MESES = ["Enero","Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
@@ -70,23 +73,29 @@ const construirMes = (mes,anio) => {
 }
 
 //componente representando un dia del calendario, separado de Calendario para descomprimir
-const DiaCalendario = ({deshabilitado,onClick,activo,otroMes,dia,children}) => {
+const DiaCalendario = ({onClick,dia,children, propsEstilo}) => {
 
     //handler para elevar el objeto Date correspondiente al dia y manejar el deshabilitado
     const onClickOverride = (e) => {
-        if(deshabilitado)
+        if(propsEstilo.deshabilitado)
             return;
         
         onClick(e,dia)
     }
+
+    const clasesEstilo = `${propsEstilo.isInh?"table-danger":""} ${propsEstilo.activo?"table-primary":""} ${propsEstilo.otroMes?"table-secondary":""} ${propsEstilo.isAntAHoy?"table-warning":""} dia-calendario`
+    
     return(
-    <td className={`${deshabilitado?"deshabilitado":""} ${activo?"activo":""} ${otroMes?"otro-mes":""} dia-calendario`} onClick={onClickOverride}>{children}</td>
+    <td className={clasesEstilo} onClick={onClickOverride}>{children}</td>
     );
 }
 
 //Componente Calendario. La prop diasInhabilitados le indica que dias estan sin turnos disponibles (falta terminar implementacion),
 //diaActivo corresponde al dia que se encuentra seleccionado, y toggleDia es el handler del elemento padre para registrar la selección del día. 
 const Calendario = ({diasInhabilitados=[],diaActivo,toggleDia}) => {
+
+    const fechaHoyParsed = Date.parse(diaActivo);
+    
 
     //conseguimos la matriz para el calendario
     const diasDelMes = construirMes(diaActivo.getMonth()+1,diaActivo.getFullYear());
@@ -125,9 +134,9 @@ const Calendario = ({diasInhabilitados=[],diaActivo,toggleDia}) => {
     return(
         <div>
         <div className="container d-flex flex-direction-row align-items-center justify-content-center">
-        <button className="me-auto" onClick={clickMesAnt}>{`<<`}</button>
+        <button type="button" className="me-auto btn-calendario" onClick={clickMesAnt}><BsArrowLeft/></button>
         <h3><b>{`${MESES[diaActivo.getMonth()]} - ${diaActivo.getFullYear()}`}</b></h3>
-        <button className="ms-auto" onClick={clickMesPost}>{`>>`}</button>
+        <button type="button" className="ms-auto btn-calendario" onClick={clickMesPost}><BsArrowRight/></button>
         </div>
         <table className="table table-sm table-bordered">
         <thead>
@@ -151,7 +160,10 @@ const Calendario = ({diasInhabilitados=[],diaActivo,toggleDia}) => {
                     const isInh = diasInhabilitados.find(inh => inh === dia.toISOString());
                     const isActivo = diaActivo.toLocaleDateString()===dia.toLocaleDateString();
                     const isOtroMes = diaActivo.getMonth()!==dia.getMonth();
-                    return (<DiaCalendario key={index} onClick={clickDia} deshabilitado={isInh} activo={isActivo} otroMes={isOtroMes} dia={dia}>{dia.getDate()}</DiaCalendario>);
+                    const isAntAHoy = fechaHoyParsed>Date.parse(dia);
+
+                    const propsEstilo = {isInh: isInh, anteriorAHoy: isAntAHoy, activo: isActivo, otroMes: isOtroMes}
+                    return (<DiaCalendario key={index} onClick={clickDia} propsEstilo={propsEstilo} dia={dia}>{dia.getDate()}</DiaCalendario>);
                 })}
                 </tr>);
             })}

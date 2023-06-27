@@ -48,10 +48,10 @@ const LogInLinks = ({ isUserLoggedIn, idUsuario, id, idHistoria, getHistoriaClin
     if (isUserLoggedIn && user.email == 'admin@gmail.com') {
         return (
             <>
-                <Link to={`/editarHistoria/${idUsuario}/${id}/${idHistoria}`} className="btn btn-light">
+                <Link to={`/editarHistoria/${idUsuario}/${id}/${idHistoria}`} className="boton_editar btn btn-light">
                     <i className="fa-solid fa-pencil"></i>
                 </Link>
-                <button onClick={() => { confirmDelete() }} className="btn btn-danger">
+                <button onClick={() => { confirmDelete() }} className="boton_borrar btn btn-danger">
                     <i className="fa-solid fa-trash"></i>
                 </button>
             </>
@@ -119,7 +119,7 @@ const HistoriaClinica = () => {
                                     <span className="Titulo_Campo">Observaciones:</span>
                                     <p className='Datos_Obs'>{historia.Consulta}</p>
                                 </div>
-                                <div >
+                                <div className="bot">
                                     <LogInLinks isUserLoggedIn={isUserLoggedIn} idUsuario={idUsuario} id={id} idHistoria={historia.id} getHistoriaClinica={getHistoriaClinica}></LogInLinks>
                                 </div>
                             </div>

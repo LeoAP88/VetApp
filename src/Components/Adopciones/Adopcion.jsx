@@ -50,10 +50,10 @@ const LogInLinks = ({ isUserLoggedIn, id }) => {
     if (isUserLoggedIn && user.email == 'admin@gmail.com') {
         return (
             <>
-                <Link to={`/editar/${id}`} className="btn btn-primary">
+                <Link to={`/editar/${id}`} className="boton_editar btn btn-primary">
                     <i className="fa-solid fa-pencil"></i>
                 </Link>
-                <button onClick={() => { confirmDelete(id) }} className="btn btn-danger">
+                <button onClick={() => { confirmDelete(id) }} className="boton_borrar btn btn-danger">
                     <i className="fa-solid fa-trash"></i>
                 </button>
             </>
@@ -108,7 +108,7 @@ const Adopcion = () => {
                     <p>{adopcion.Edad}</p>
                     <p>{adopcion.Caracteristicas}</p>
                 </div>
-                <div>
+                <div className="bot">
                     <LogInLinks isUserLoggedIn={isUserLoggedIn} id={id}></LogInLinks>
                 </div>
                 <div className="pieAdopcion">

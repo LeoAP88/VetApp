@@ -66,6 +66,23 @@
 
 #boton-administrador {
   margin: 50px;
+  color: purple;
+  border-radius: 30px;
+  padding: 10px 20px;
+  border: 3px solid purple;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#boton-administrador:hover{
+  background-color: rgb(141, 65, 141);
+  border-radius: 15px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  color: white;
 }
 
 .botones{

@@ -140,7 +140,7 @@ const Adopciones = () => {
             
             {isAdmin && (
                 <Link to={"/agregarAdopcion"}>
-                    <button className="botones" id="boton-administrador">Agregar nueva Adopción</button>
+                    <button className="boton_nueva_adopcion" id="boton-administrador">Agregar nueva Adopción</button>
                 </Link>
             )}
 

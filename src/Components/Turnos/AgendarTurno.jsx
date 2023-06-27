@@ -4,6 +4,7 @@ import { db } from "../firebaseConfig/firebase"
 import Calendario from "./Calendario";
 import {FadeLoader} from 'react-spinners';
 import { AuthContext } from "../AuthProvider"
+import "./AgendarTurno.css"
 
 /*SEGUIR CON EDITAR TURNO*/
 /*REVISAR QUE LAS FECHAS SE CARGUEN CON t00:00:00.000*/
@@ -238,15 +239,16 @@ const AgendarTurno = ()=> {
     }
 
     return (
-        <div className="container">
-        <div className="container">
-        {/*Calendario recibe los dias sin turnos, el dia activo (seleccionado) y el handler para cambiar el dia activo*/}
-        <Calendario diasInhabilitados={arrayDiasOcupados()} diaActivo={diaActivo} toggleDia={cambiarDiaActivo}></Calendario>
-        </div>
-        <div className="mt-2 mb-2">
-        <SelecccionarHora horaSelec={horaSelec} setHoraSelec={setHoraSelec} horasDisponibles={horasDisponiblesParaTurno(horasOcupadas)} className="form-control"/>
-        </div>
-        <button onClick={cargarTurno} className="btn btn-outline-success">Agendar Turno</button>
+        <div className="container_agendarTurno">
+            <h1 className="titulo_agendar">¡Agenda tu turno!</h1>
+            <div className="container_agendar">
+                {/*Calendario recibe los dias sin turnos, el dia activo (seleccionado) y el handler para cambiar el dia activo*/}
+                <Calendario diasInhabilitados={arrayDiasOcupados()} diaActivo={diaActivo} toggleDia={cambiarDiaActivo}></Calendario>
+            </div>
+            <div className="mt-2 mb-2">
+                <SelecccionarHora horaSelec={horaSelec} setHoraSelec={setHoraSelec} horasDisponibles={horasDisponiblesParaTurno(horasOcupadas)} className="form-control"/>
+            </div>
+            <button onClick={cargarTurno} className="boton_agendar btn btn-outline-success">Agendar Turno</button>
         </div>
 
     );

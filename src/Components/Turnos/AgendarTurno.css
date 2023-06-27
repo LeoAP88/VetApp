@@ -1,0 +1,28 @@
+
+
+.container_agendarTurno{
+    min-height: 82vh;
+}
+
+.container_agendar{
+    margin: 100px 300px;
+}
+
+.titulo_agendar{
+    font-style: italic;
+    margin: 20px;
+}
+
+.btn {
+    color: purple;
+    border-radius: 30px;
+    padding: 10px 20px;
+    border: 3px solid purple;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 20px;
+    width: 30%;
+}

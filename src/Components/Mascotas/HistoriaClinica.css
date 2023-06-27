@@ -1,3 +1,11 @@
+.container_historiaClinica{
+    min-height: 82vh;
+}
+
+.titulo_pagina{
+    font-style: italic;
+}
+
 .container_historias {
     display: flex;
     flex-direction: column;

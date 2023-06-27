@@ -99,6 +99,7 @@ const HistoriaClinica = () => {
 
     return (
         <>
+        <div className="container_historiaClinica">
             <h1 className="titulo_pagina">Historia Clínica</h1>
             <section className="container_historias">
                 {isAdmin && (
@@ -124,7 +125,7 @@ const HistoriaClinica = () => {
                             </div>
                         ))
                     ) : (
-                        <p>No hay datos disponibles.</p>
+                        <p>No hay datos disponibles aún.</p>
                     )}
                 </div>
             </section>
@@ -133,6 +134,7 @@ const HistoriaClinica = () => {
                     <button className="volver">Volver</button>
                 </Link>
             </div>
+        </div>
         </>
     )
 }

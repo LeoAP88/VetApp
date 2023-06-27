@@ -1,11 +1,24 @@
+.container_mascotas{
+    min-height: 82vh;
+}
+
+
+.titulo_misMascotas{
+    font-style: italic;
+}
+
 .Mascota_Container {
-    width: 50%;
-    max-width: 800px;
-    height: auto;
-    margin-bottom: 25px;
+    width: 20%;
     display: flex;
-    align-self: center;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    border-radius: 15px;
     align-items: center;
+    justify-content: center;
+    padding: 0;
+    height: auto;
+    margin: 30px;
+    padding: 10px;
     box-shadow: 0px 0px 7px 0px #000000;
 }
 
@@ -22,20 +35,20 @@
     width: 50%;
 }
 
-.Campo_Container {
+.Campo_Container_mascotas {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    margin: 20px;
+    width: 100%;
 }
 
-.Titulo_Campo {
+.Titulo_Campo_mascotas {
     font-size: 1.1rem;
 }
 
-.Datos_Campo {
-    background-color: rgb(216, 216, 216);
-    width: 50%;
+.Datos_Campo_mascotas {
     border-radius: 5px;
+    margin: 0 10px;
 }
 
 .HC {
@@ -49,6 +62,7 @@
     font-weight: bold;
     text-decoration: none;
     margin: 20px;
+    width: 100%;
 }
 
 .loader_container {
@@ -61,7 +75,9 @@
 .Listado_Container {
     margin-top: 50px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-crearMascota {

@@ -99,7 +99,7 @@ const MisMascotas = () => {
     return (
         <>
         <div className="container_mascotas">
-            <h1>Mis Mascotas</h1>
+            <h1 className="titulo_misMascotas">Mis Mascotas</h1>
             <div className="Listado_Container">
                 {mascotas.length>0 ? mascotas.map((mascota) =>(
                     <div className='Mascota_Container' key={mascota.id}>
@@ -108,29 +108,29 @@ const MisMascotas = () => {
                             {mascota.Especie === 'Perro' ? <FaDog /> : <FaCat />}
                         </div>
                         <div className="Container_DatosMascota">
-                            <div className="Campo_Container">
-                                <span className="Titulo_Campo">Nombre</span>
-                                <p className='Datos_Campo'>{mascota.Nombre}</p>
+                            <div className="Campo_Container_mascotas">
+                                <span className="Titulo_Campo_mascotas">Nombre:</span>
+                                <p className='Datos_Campo_mascotas'>{mascota.Nombre}</p>
                             </div>
-                            <div className="Campo_Container">
-                                <span className="Titulo_Campo">Especie</span>
-                                <p className='Datos_Campo'>{mascota.Especie}</p>
+                            <div className="Campo_Container_mascotas">
+                                <span className="Titulo_Campo_mascotas">Especie:</span>
+                                <p className='Datos_Campo_mascotas'>{mascota.Especie}</p>
                             </div>
-                            <div className="Campo_Container">
-                                <span className="Titulo_Campo">Raza</span>
-                                <p className='Datos_Campo'>{mascota.Raza}</p>
+                            <div className="Campo_Container_mascotas">
+                                <span className="Titulo_Campo_mascotas">Raza:</span>
+                                <p className='Datos_Campo_mascotas'>{mascota.Raza}</p>
                             </div>
-                            <div className="Campo_Container">
-                                <span className="Titulo_Campo">Color</span>
-                                <p className='Datos_Campo'>{mascota.Color}</p>
+                            <div className="Campo_Container_mascotas">
+                                <span className="Titulo_Campo_mascotas">Color:</span>
+                                <p className='Datos_Campo_mascotas'>{mascota.Color}</p>
                             </div>
-                            <div className="Campo_Container">
-                                <span className="Titulo_Campo">Sexo</span>
-                                <p className='Datos_Campo'>{mascota.Sexo}</p>
+                            <div className="Campo_Container_mascotas">
+                                <span className="Titulo_Campo_mascotas">Sexo:</span>
+                                <p className='Datos_Campo_mascotas'>{mascota.Sexo}</p>
                             </div>
-                            <div className="Campo_Container">
-                                <span className="Titulo_Campo">Edad(años)</span>
-                                <p className='Datos_Campo'>{mascota.Edad}</p>
+                            <div className="Campo_Container_mascotas">
+                                <span className="Titulo_Campo_mascotas">Edad(años):</span>
+                                <p className='Datos_Campo_mascotas'>{mascota.Edad}</p>
                             </div>
                             <div>
                                 <LogInLinks isUserLoggedIn={isUserLoggedIn} idUsuario={idUsuario} idMascota={mascota.id} getMascotas={getMascotas}></LogInLinks>

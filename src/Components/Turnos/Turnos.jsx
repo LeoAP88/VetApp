@@ -52,7 +52,8 @@ const ControlesAdmin = ({ fechaTurno, horaTurno, getTurnos }) => {
         if(horas.empty){
             await deleteDoc(fechaDocRef);
         }else if(fechaDoc.data().diaOcupado){
-             await updateDoc(fechaDocRef,{diaOcupado:false});
+            console.log("dia ocupado cambiando deleteturno")
+            await updateDoc(fechaDocRef,{diaOcupado:false});
         }
         getTurnos();
 

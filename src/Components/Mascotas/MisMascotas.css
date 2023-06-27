@@ -61,7 +61,6 @@
     outline: none;
     font-weight: bold;
     text-decoration: none;
-    margin: 20px;
     width: 100%;
 }
 
@@ -69,7 +68,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    height: 82vh;
 }
 
 .Listado_Container {
@@ -94,4 +93,17 @@
 .btn-crearMascota:hover {
     background-color: #3c4245;
     color: #dfcdc3;
+}
+
+#boton-administrador{
+    color: purple;
+    border-radius: 30px;
+    padding: 10px 20px;
+    border: 3px solid purple;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-weight: bold;
+    text-decoration: none;
+    width: 20%;
 }

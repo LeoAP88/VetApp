@@ -6,7 +6,7 @@ const FormularioDeAdopciones = () => {
         <>
             <h1 className="form_titulo">Formulario de adopción</h1>
             <div className="container_form">
-                <form className="adopcion_form" action="mailto:veterinaria@gmail.com" method='POST'>
+                <form className="adopcion_form" action="mailto:veterinariaAdopciones@gmail.com" method='POST'>
                     <div className="form-group">
                         <label htmlFor="nombre">Nombre y apellido</label>
                         <input type="text" className="form-control" name='nombre' id="nombre" placeholder="Nombre..." />

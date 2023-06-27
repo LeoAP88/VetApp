@@ -51,10 +51,10 @@ const LogInLinks = ({ id, getClientes }) => {
     if (isUserLoggedIn && user.email == 'admin@gmail.com') {
         return (
             <>
-                <Link to={`/editarPerfil/${id}`} className="btn btn-primary">
+                <Link to={`/editarPerfil/${id}`} className="boton_editar btn btn-primary">
                     <i className="fa-solid fa-pencil"></i>
                 </Link>
-                <button onClick={() => { confirmDelete() }} className="btn btn-danger">
+                <button onClick={() => { confirmDelete() }} className="boton_borrar btn btn-danger">
                     <i className="fa-solid fa-trash"></i>
                 </button>
             </>
@@ -116,7 +116,7 @@ const Clientes = () => {
                                 <td>{cliente.Apellido}</td>
                                 <td>{cliente.Email}</td>
                                 <td>
-                                    <Link to={`/misMascotas/${cliente.id}`}><button className="btn btn-success">Ver Mascotas</button></Link>
+                                    <Link to={`/misMascotas/${cliente.id}`}><button className="boton_ver_mascotas_btn btn-success">Ver Mascotas</button></Link>
                                 </td>
                                 <td>
                                     <LogInLinks id={cliente.id} getClientes={getClientes}></LogInLinks>

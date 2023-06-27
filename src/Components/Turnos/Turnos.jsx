@@ -82,10 +82,10 @@ const ControlesAdmin = ({ fechaTurno, horaTurno, getTurnos }) => {
     }
         return (
             <>
-                <Link to={`/editarTurno/${fechaTurno}/${horaTurno}`} className="btn btn-primary">
+                <Link to={`/editarTurno/${fechaTurno}/${horaTurno}`} className=" boton_editar btn btn-primary">
                     <i className="fa-solid fa-pencil"></i>
                 </Link>
-                <button onClick={() => { confirmDelete(fechaTurno, horaTurno) }} className="btn btn-danger">
+                <button onClick={() => { confirmDelete(fechaTurno, horaTurno) }} className="boton_borrar btn btn-danger">
                     <i className="fa-solid fa-trash"></i>
                 </button>
             </>

@@ -50,10 +50,10 @@ const LogInLinks = ({ isUserLoggedIn, idUsuario, idMascota, getMascotas }) => {
     if (isUserLoggedIn && user.email == 'admin@gmail.com') {
         return (
             <>
-                <Link to={`/editarMascota/${idUsuario}/${idMascota}`} className="btn btn-light">
+                <Link to={`/editarMascota/${idUsuario}/${idMascota}`} className="boton_editar btn btn-light">
                     <i className="fa-solid fa-pencil"></i>
                 </Link>
-                <button onClick={() => { confirmDelete() }} className="btn btn-danger">
+                <button onClick={() => { confirmDelete() }} className="boton_borrar btn btn-danger">
                     <i className="fa-solid fa-trash"></i>
                 </button>
             </>
@@ -132,7 +132,7 @@ const MisMascotas = () => {
                                 <span className="Titulo_Campo_mascotas">Edad(años):</span>
                                 <p className='Datos_Campo_mascotas'>{mascota.Edad}</p>
                             </div>
-                            <div>
+                            <div className="bot">
                                 <LogInLinks isUserLoggedIn={isUserLoggedIn} idUsuario={idUsuario} idMascota={mascota.id} getMascotas={getMascotas}></LogInLinks>
                             </div>
                             <div>

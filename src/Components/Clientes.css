@@ -1,0 +1,19 @@
+.boton_ver_mascotas_btn {
+    color: purple;
+    border-radius: 30px;
+    border: 3px solid purple;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-weight: bold;
+    text-decoration: none;
+    width: 60%;
+    margin-top: 20px;
+}
+
+.boton_editar {
+    background-color: rgb(107 107 226 / 72%);
+}
+.boton_borrar{
+    background-color: #eb5757;
+}

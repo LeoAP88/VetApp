@@ -94,11 +94,27 @@
 .intro p{
   margin: 0 100px;
 }
-#form_adop{
+
+#form_adop1{
   margin-top: 20px;
+}
+#form_adop2{
+  margin: 20px;
+  font-size: 1.2rem;
 }
 
 .Link{
   margin: 0;
   padding: 0;
+}
+
+.boton_editar{
+  background-color: rgb(107 107 226 / 72%);
+}
+.boton_borrar{
+  background-color: #eb5757;
+}
+
+.bot{
+  display: flex;
 }

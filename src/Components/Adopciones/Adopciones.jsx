@@ -52,10 +52,10 @@ const LogInLinks = ({ isUserLoggedIn, id, getAdopciones }) => {
     if (isUserLoggedIn && user.email == 'admin@gmail.com') {
         return (
             <>
-                <Link to={`/editar/${id}`} className="btn btn-primary">
+                <Link to={`/editar/${id}`} className="boton_editar btn btn-primary">
                     <i className="fa-solid fa-pencil"></i>
                 </Link>
-                <button onClick={() => { confirmDelete(id) }} className="btn btn-danger">
+                <button onClick={() => { confirmDelete(id) }} className="boton_borrar btn btn-danger">
                     <i className="fa-solid fa-trash"></i>
                 </button>
             </>
@@ -116,7 +116,7 @@ const Adopciones = () => {
                 </p>
                 <Link to={"/formulario"}>
                     <div>
-                        <button className="botones" id="form_adop">¡Quiero adoptar!</button>
+                        <button className="botones" id="form_adop1">¡Quiero adoptar!</button>
                     </div>
                 </Link>
             </div>
@@ -132,7 +132,7 @@ const Adopciones = () => {
                         <div className="pie">
                             <Link to={`/adopcion/${adopcion.id}`}><button>Más información</button></Link>
                         </div>
-                        <div>
+                        <div className="bot">
                             <LogInLinks isUserLoggedIn={isUserLoggedIn} id={adopcion.id} getAdopciones={getAdopciones}></LogInLinks>
                         </div>
                     </div>))}
@@ -147,7 +147,7 @@ const Adopciones = () => {
             <div>
                 <Link to={"/formulario"}>
                     <div>
-                        <button className="botones" id="form_adop">¡Quiero adoptar!</button>
+                        <button className="botones" id="form_adop2">¡Quiero adoptar!</button>
                     </div>
                 </Link>
             </div>

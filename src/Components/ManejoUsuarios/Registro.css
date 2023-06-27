@@ -1,153 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+/* efectos por defecto */
 body {
-  font-weight: normal;
-  font-size: 100%;
-  color: #1b262c;
-
-  background-color: #5f6769;
-  margin: 0;
-  padding: 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  overflow: hidden;
+    font-weight: normal;
+    font-size: 100%;
+    color: #1b262c;
+    margin: 0;
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.center {
+/* efectos para el contenedor de pantalla completa */
+#container {
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 82vh;
+    background-position: center;
+    background-size: cover;
+    background-image: url("https://www.esaote.com/uploads/pics/header-us-mri-vet_17.jpg");
+}
+
+#registro {
+  width: 100%;
+  max-width: 500px;
+  padding: 30px 30px 50px 30px;
+  background-color: white;
+  margin-left: 900px;
+  height: 600px;
+
+  -webkit-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
 }
 
-.center h1 {
-  text-align: center;
-  padding: 0 0 20px 0;
-  border-bottom: 1px solid silver;
-}
-
-.center form {
-  padding: 0 40px;
-  box-sizing: border-box;
-}
-
-form .txt_field {
-  position: relative;
-  border-bottom: 2px solid #adadad;
-  margin: 30px 0;
-}
-
-.txt_field input {
-  width: 100%;
-  padding: 0 5px;
-  height: 40px;
-  font-size: 16px;
-  border: none;
-  background: none;
-  outline: none;
-}
-
-.txt_field label {
-  position: absolute;
-  top: 50%;
-  left: 5px;
-  color: #adadad;
-  transform: translateY(-50%);
-  font-size: 16px;
-  pointer-events: none;
-}
-
-.txt_field span::before {
-  content: '';
-  position: absolute;
-  top: 40px;
-  left: 0;
-  width: 0px;
-  height: 2px;
-  background: #2691d9;
-  transition: .5s;
-}
-
-.txt_field input:focus~label,
-.txt_field input:valid~label {
-  top: -5px;
-  color: #2691d9;
-}
-
-.txt_field input:focus~span::before,
-.txt_field input:Valid~span::before {
-  width: 100%;
-}
-
-.pass {
-  margin: -5px 0 20px 5px;
-  color: #a6a6a6;
-  cursor: pointer;
-}
-
-.pass:hover {
-  text-decoration: underline;
-}
-
-input[type="Submit"] {
-  width: 100%;
-  height: 50px;
-  border: 1px solid;
-  border-radius: 25px;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  background-color: #dfcdc3;
-
-}
-
-input[type="Submit"]:hover {
-  background: #2691d9;
-  color: #e9f4fb;
-  transition: .5s;
-}
-
-.signup_link {
-  margin: 30px 0;
-  text-align: center;
-  font-size: 16px;
-
-}
-
-.signup_link a {
-  color: #7498b0;
-  text-decoration: none;
-}
-
-.signup_link a:hover {
-  text-decoration: underline;
-}
-
-.HomeAbout {
-  width: 100vw;
-  height: 25vh;
+#registroform {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .Titulo_registro {
-  color: #dfcdc3;
+  font-size: 35px;
+  font-weight: bold;
+  font-style: italic;
 }
 
-.btn-registro {
+#registroform  label {
+  font-size: 120%;
+  color: #3c4245;
+  margin-top: 15px;
+}
+
+#registroform  input {
   font-size: 110%;
   color: #1b262c;
+
+  display: block;
   width: 100%;
   height: 40px;
+
+  margin-bottom: 10px;
+  padding: 5px 5px 5px 10px;
+
+  box-sizing: border-box;
+
+  border-color: gray;
+  border-radius: 10px;
+}
+
+#registroform button {
+  font-size: 110%;
+  color: white;
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgb(193, 130, 193);
+  -webkit-text-stroke: 1px white;
+  margin-top: 20px;
   border: none;
-
-  border-radius: 3px 3px 3px 3px;
-  -moz-border-radius: 3px 3px 3px 3px;
-  -webkit-border-radius: 3px 3px 3px 3px;
-
-  background-color: #dfcdc3;
-
-  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
-.signup_link {
+#registroform button:hover {
+  background-color:purple;
   color: #dfcdc3;
 }
 
-.signup_link a {
-  color: #dfcdc3;
+.Link{
+  align-self: center;
+  width: 100%;
+}
+
+.signup_link{
+  align-self: center;
+}
+
+
+.bold {
+  text-decoration: none;
+  color: black;
 }

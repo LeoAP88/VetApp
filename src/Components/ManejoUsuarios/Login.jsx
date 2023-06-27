@@ -32,16 +32,16 @@ const Login = () => {
     return(
         <div id="contenedor">
                 <div id="login">
-                <div className="titulo"> Ingresa a tu cuenta</div>
+                <div className="titulo_login"> Ingresa a tu cuenta</div>
                     <form id="loginform" onSubmit={loginSubmit}>
-                        <label htmlFor="email">Email</label>
-                        <input id="usuario" type="text" name="email" placeholder="email" required onChange={(e) =>setEmail(e.target.value)}></input>
+                        <label htmlFor="email" className="log">Email</label>
+                        <input id="usuario" type="email" className="log" name="email" placeholder="ejemplo@email.com" required onChange={(e) =>setEmail(e.target.value)}></input>
 
-                        <label htmlFor="password">Contraseña</label>
-                        <input id="password" type="password" placeholder="Contraseña" name="password" required onChange={(e) =>setPassword(e.target.value)}></input>
-                        <a href="#">¿Olvidaste tu contraseña?</a>
-                        <button type="submit" onSubmit={loginSubmit}>Ingresar</button>
-                        <Link to={"/register"}>¿No tienes Cuenta? Registrate</Link>
+                        <label htmlFor="password" className="log" >Contraseña</label>
+                        <input id="password" type="password" className="log" placeholder="Contraseña" name="password" required onChange={(e) =>setPassword(e.target.value)}></input>
+                        <a href="#"className="log1" id="cont">¿Olvidaste tu contraseña?</a>
+                        <button type="submit" className="log" onSubmit={loginSubmit}>Ingresar</button>
+                        <Link to={"/register"} className="log1">¿No tienes Cuenta? <b>Registrate</b></Link>
                     </form>
                 </div>
             </div>

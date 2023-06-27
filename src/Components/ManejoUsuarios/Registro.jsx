@@ -44,35 +44,27 @@ const Registro = () => {
 
 
     return (
-        <div className="container">
-            <div className="center">
+        <div id="container">
+            <div id="registro">
                 <h1 className="Titulo_registro">Registro</h1>
-                <form method="POST" action="">
-                    <div className="txt_field">
-                        <input type="email" name="email" required onChange={(e) => setEmail(e.target.value)}></input>
-                        <span></span>
+                <form method="POST" action="" id="registroform">
                         <label>Email</label>
-                    </div>
-                    <div className="txt_field">
-                        <input type="password" name="password" required onChange={(e) => setPassword(e.target.value)}></input>
-                        <span></span>
+                        <input type="email" name="email" required onChange={(e) => setEmail(e.target.value)}></input>
+                        
                         <label>Password - (6 caracteres min)</label>
-                    </div>
-                    <div className="txt_field">
-                        <input type="nombre" name="nombre" required onChange={(e) => setNombre(e.target.value)}></input>
-                        <span></span>
+                        <input type="password" name="password" required onChange={(e) => setPassword(e.target.value)}></input>
+                        
                         <label>Nombre</label>
-                    </div>
-                    <div className="txt_field">
-                        <input type="apellido" name="apellido" required onChange={(e) => setApellido(e.target.value)}></input>
-                        <span></span>
+                        <input type="nombre" name="nombre" required onChange={(e) => setNombre(e.target.value)}></input>
+
                         <label>Apellido</label>
-                    </div>
-                    <Link to={"/"}>
+                        <input type="apellido" name="apellido" required onChange={(e) => setApellido(e.target.value)}></input>
+
+                    <Link to={"/"} className="Link">
                         <button className="btn-registro" type="submit" title="Registrarse" name="Registrarse" disabled={password.length < 6} onClick={submit}>Registrarse</button>
                     </Link>
                     <div className="signup_link">
-                        ¿Ya tenes una cuenta? <Link to={"/Login"}>Ingresá acá</Link>
+                        ¿Ya tenes una cuenta? <Link to={"/Login"} className="bold"><b>Ingresá acá</b></Link>
                     </div>
                 </form>
             </div>

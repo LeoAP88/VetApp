@@ -19,10 +19,17 @@ Turnos  (col)-
 
 */
 
+/*revisar update e initNuevaFechaDocRef - fechas deberian estar siempre con T00:00:00.000*/
+
 const horasDisponibles = [  "08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30",
 "13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30",
 "18:00","18:30"               
 ];
+
+const deFechaInputAISOString = fecha => {
+    console.log((new Date(fecha)).toISOString())
+    return (new Date(fecha)).toISOString();
+}
 //funciones para converir fecha tradicional (input) a ISOString (formato utilizado en la base) y viceversa.
 const deISOStringAFechaInput = ISOString => {
     const date = new Date(ISOString);
@@ -84,7 +91,9 @@ const EditarTurno = () => {
     }
 
     const initNuevaFechaDocRef = async () => {
-        const nuevaFechaDocRef = doc(db,`/Turnos/${datosForm.fecha}`);
+        const nuevaFecha = deFechaInputAISOString(datosForm.fecha);
+
+        const nuevaFechaDocRef = doc(db,`/Turnos/${nuevaFecha}`);
         const nuevaFechaDoc = await getDoc(nuevaFechaDocRef);
         if(!nuevaFechaDoc.exists()){
             await setDoc(nuevaFechaDocRef,{diaOcupado: false});
@@ -94,21 +103,25 @@ const EditarTurno = () => {
 
     const update = async (e) => {
         e.preventDefault();
-
-        if((await getDoc(nuevaFechaDocRef)).data().diaOcupado && (datosForm.fecha!==fechaTurno)){
+        const nuevaFechaDocRef = await initNuevaFechaDocRef();
+        console.log()
+        
+        if((await getDoc(nuevaFechaDocRef)).data().diaOcupado && (deFechaInputAISOString(datosForm.fecha)!==fechaTurno)){
             console.error("Error! Dia completo!")
             return;
         }
 
+        console.log("upss")
+        return;
         await deleteTurno();
 
-        const nuevaFechaDocRef = await initNuevaFechaDocRef();
+        
         const nuevaHoraDocRef = doc(db,`Turnos/${datosForm.fecha}/TurnosDelDia/${datosForm.hora}`);
         const nuevaFechaTurnosCol = collection(db,`Turnos/${datosForm.fecha}/TurnosDelDia`);
         
         await setDoc(nuevaHoraDocRef,{
-            ClienteID: datosForm.clienteID,
-            ClienteNombre: datosForm.clienteNombre
+            ClienteID: datosForm.ClienteID,
+            ClienteNombre: datosForm.ClienteNombre
         });
 
         if((await getDocs(nuevaFechaTurnosCol)).size===22){

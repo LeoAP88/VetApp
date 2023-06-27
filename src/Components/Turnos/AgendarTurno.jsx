@@ -5,7 +5,8 @@ import Calendario from "./Calendario";
 import {FadeLoader} from 'react-spinners';
 import { AuthContext } from "../AuthProvider"
 
-/*BUG EN DIAOCUPADO - REVISAR*/
+/*SEGUIR CON EDITAR TURNO*/
+/*REVISAR QUE LAS FECHAS SE CARGUEN CON t00:00:00.000*/
 
 
 /*
@@ -173,7 +174,7 @@ const AgendarTurno = ()=> {
             //ya que las horas son unicas debido a la funcionalidad de carga, 
             //y que la totalidad de turnos para un mismo dia son 21 turnos, una vez llegado a los 21 turnos
             //en una misma fecha, se cambia diaOcupado a true en el doc.
-            if(horasDisponiblesParaTurno(horasOcupadas).length===0){
+            if(horasDisponiblesParaTurno(horasOcupadas).length===1){
                 const turnoRef = doc(db, "Turnos", diaTurno);
                 await updateDoc(turnoRef, {
                     diaOcupado: true
@@ -206,6 +207,7 @@ const AgendarTurno = ()=> {
             () => {
                 alert("success!");
                 getHorasReservadas(diaActivo);
+                getTurnos();
             }
           ).catch(error => {
             console.log('Algo fallo al agregar el nuevo turno - setdoc hora', error);

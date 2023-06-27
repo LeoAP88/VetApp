@@ -3,8 +3,7 @@ import { AuthContext } from "../AuthProvider";
 import { db } from "../firebaseConfig/firebase"
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import Swal from "sweetalert2"
-import whitReactContent from "sweetalert2-react-content"
-import { Mascota } from "./MascotasListado";
+import whitReactContent from "sweetalert2-react-content";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import {
@@ -73,7 +72,7 @@ const HistoriaClinica = () => {
 
     const getHistoriaClinica = async () => {
         const querySnapshot = await getDocs(collection(db, `/Clientes/${idUsuario}/Mascotas/${id}/HistoriaClinica`));
-        if (querySnapshot.size !== 0) {
+        if (querySnapshot.size >= 0) {
             console.log(querySnapshot.docs.map(doc => doc.data()))
             setHistoriaClinica(querySnapshot.docs.map(doc => { return { id: doc.id, ...doc.data() } }));
         } else {

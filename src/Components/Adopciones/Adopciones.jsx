@@ -147,7 +147,7 @@ const Adopciones = () => {
             <div>
                 <Link to={"/formulario"}>
                     <div>
-                        <button className="botones" id="formulario">¡Quiero adoptar!</button>
+                        <button className="botones" id="form_adop">¡Quiero adoptar!</button>
                     </div>
                 </Link>
             </div>

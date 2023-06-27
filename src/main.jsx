@@ -11,7 +11,7 @@ import Inicio from './Components/Publico/Inicio.jsx';
 import Login from './Components/ManejoUsuarios/Login.jsx';
 import Registro from './Components/ManejoUsuarios/Registro.jsx';
 import QuienesSomos from './Components/Publico/QuienesSomos.jsx';
-import MisMascotas from './Components/Mascotas/MascotasContainer.jsx';
+import MisMascotas from './Components/Mascotas/MisMascotas.jsx';
 import Tienda from './Components/Publico/Tienda.jsx';
 import Adopciones from './Components/Adopciones/Adopciones.jsx';
 import Turnos from './Components/Turnos/Turnos.jsx';
@@ -65,7 +65,7 @@ const router = createBrowserRouter([
         element: <QuienesSomos />
       },
       {
-        path: "misMascotas/:id",
+        path: "misMascotas/:idUsuario",
         element: <MisMascotas />
       },
       {

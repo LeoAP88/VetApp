@@ -164,7 +164,7 @@ const Turnos = () => {
     //renderizado condicional para el caso de que no existan turnos
     if(!loading && turnos.length===0){
         return(
-            <div className="container">
+            <div className="container_turnos">
             <h1>Turnos</h1>
             <h3>No se registran turnos.</h3>
             <Link to={"/agendarTurno"}>
@@ -175,7 +175,7 @@ const Turnos = () => {
     }
 
     return (
-        <div className="container">
+        <div className="container_turnos">
             <h1>Turnos</h1>
             <Table striped>
                     <thead>

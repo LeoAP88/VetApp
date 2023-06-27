@@ -1,3 +1,7 @@
+.container_turnos{
+  min-height: 82vh;
+}
+
 .boton {
   background-color: rgb(141, 65, 141);
   border-radius: 15px;

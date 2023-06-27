@@ -4,6 +4,7 @@ import { db } from "../firebaseConfig/firebase"
 import Calendario from "./Calendario";
 import {FadeLoader} from 'react-spinners';
 import { AuthContext } from "../AuthProvider"
+import {Link, useParams, useNavigate} from "react-router-dom";
 import "./AgendarTurno.css"
 
 /*SEGUIR CON EDITAR TURNO*/
@@ -24,6 +25,7 @@ Turnos  (col)-
                                              -   diaocupado(bool)
 
 */
+
 
 const SelecccionarHora = ({horasDisponibles, className, horaSelec, setHoraSelec}) => {
     
@@ -248,7 +250,9 @@ const AgendarTurno = ()=> {
             <div className="mt-2 mb-2">
                 <SelecccionarHora horaSelec={horaSelec} setHoraSelec={setHoraSelec} horasDisponibles={horasDisponiblesParaTurno(horasOcupadas)} className="form-control"/>
             </div>
+            <Link to={`/turnos`}>
             <button onClick={cargarTurno} className="boton_agendar btn btn-outline-success">Agendar Turno</button>
+            </Link>
         </div>
 
     );

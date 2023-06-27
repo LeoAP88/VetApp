@@ -1,0 +1,8 @@
+.container_perfil{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 50px 0;
+    font-size: 1.2rem;
+    min-height: 68vh;
+}

@@ -2,16 +2,30 @@
 
 .container_agendarTurno{
     min-height: 82vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 85vh;
 }
 
 .container_agendar{
-    margin: 100px 300px;
+    width: 50%;
+    max-width: 600px;
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container_horario{
+    width: 100px;
 }
 
 .titulo_agendar{
     font-style: italic;
     margin: 20px;
 }
+
 
 .btn {
     color: purple;
@@ -24,13 +38,13 @@
     font-weight: bold;
     text-decoration: none;
     margin: 20px;
-    width: 30%;
+    /* width: 30%; */
 }
 
 .btn:hover{
     background-color: rgb(141, 65, 141);
     border-radius: 15px;
-    padding: 10px;
+    /* padding: 10px; */
     border: 1px solid lightgray;
     color: white;
 }

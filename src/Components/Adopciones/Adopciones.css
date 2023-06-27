@@ -1,25 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.container_adopciones {
+  min-height: 82vh;
+  font-family: 'Montserrat', sans-serif;
+}
 .contenedor_adopciones {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  height: 58vh;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
-.tarjeta {
-  margin: 10px;
-  flex: 1 0 300px;
+.tarjeta_adopciones {
+  width: 20%;
   display: flex;
   flex-direction: column;
   border: 1px solid lightgray;
   box-shadow: 2px 2px 8px 4px #d3d3d3d1;
   border-radius: 15px;
-  font-family: sans-serif;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  width: 300px;
+  margin: 0 10px;
+  padding: 0;
   height: auto;
+  margin-top: 30px;
+  padding: 10px;
 }
 
 .titulo {
@@ -38,27 +45,60 @@
 }
 
 .pie {
-  background-color: rgb(141, 65, 141);
+ 
   border-radius: 15px;
   padding: 10px;
   text-align: center;
   margin: 10px;
 }
 
-.pie a {
+.pie button {
+  color: purple;
+  border-radius: 30px;
+  padding: 10px 20px;
+  border: 3px solid purple;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  font-weight: bold;
   text-decoration: none;
-  color: white;
 }
 
 #boton-administrador {
   margin: 50px;
 }
 
-.botones {
-  margin: 30px;
+.botones{
+  background-color: rgb(141, 65, 141);
+  border-radius: 15px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  color: white;
+}
+
+#formulario{
+  margin-bottom: 20px;
 }
 
 .titulo_pagina {
-  font-size: 2.5rem;
-  margin: 30px 0;
+  font-size: 3rem;
+  font-weight: bold;
+  font-style: italic;
+  margin: 40px 20px 20px 20px;
+}
+
+.intro{
+  margin: 20px;
+  font-size: 1.2rem;
+}
+.intro p{
+  margin: 0 100px;
+}
+#form_adop{
+  margin-top: 20px;
+}
+
+.Link{
+  margin: 0;
+  padding: 0;
 }

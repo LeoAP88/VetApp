@@ -49,16 +49,16 @@ const Registro = () => {
                 <h1 className="Titulo_registro">Registro</h1>
                 <form method="POST" action="" id="registroform">
                         <label>Email</label>
-                        <input type="email" name="email" required onChange={(e) => setEmail(e.target.value)}></input>
+                        <input type="email" name="email" placeholder="ejemplo@email.com" required onChange={(e) => setEmail(e.target.value)}></input>
                         
-                        <label>Password - (6 caracteres min)</label>
-                        <input type="password" name="password" required onChange={(e) => setPassword(e.target.value)}></input>
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Mínimo 6 caracteres" required onChange={(e) => setPassword(e.target.value)}></input>
                         
                         <label>Nombre</label>
-                        <input type="nombre" name="nombre" required onChange={(e) => setNombre(e.target.value)}></input>
+                        <input type="nombre" name="nombre" placeholder="Nombre..." required onChange={(e) => setNombre(e.target.value)}></input>
 
                         <label>Apellido</label>
-                        <input type="apellido" name="apellido" required onChange={(e) => setApellido(e.target.value)}></input>
+                        <input type="apellido" name="apellido" placeholder="Apellido..." required onChange={(e) => setApellido(e.target.value)}></input>
 
                     <Link to={"/"} className="Link">
                         <button className="btn-registro" type="submit" title="Registrarse" name="Registrarse" disabled={password.length < 6} onClick={submit}>Registrarse</button>

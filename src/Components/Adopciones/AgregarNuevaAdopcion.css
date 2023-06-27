@@ -1,0 +1,18 @@
+.container_nueva_adopcion {
+    min-height: 80vh;
+}
+
+.container_campo input{
+    border-radius: 5px;
+}
+
+#sexo{
+    border-radius: 5px;
+}
+#especie{
+    border-radius: 5px;
+}
+
+#caracteristicas{
+    border-radius: 20px;
+}

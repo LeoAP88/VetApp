@@ -100,41 +100,58 @@ const Adopciones = () => {
 
     return (
         <>
-            <h1 className="titulo_pagina">Adopciones</h1>
-
-            {isAdmin && (
-                <Link to={"/agregarAdopcion"}>
-                    <button className="volver" id="boton-administrador">Agregar nueva Adopción</button>
+        <div className="container_adopciones">
+            <div className="intro">
+                <h1 className="titulo_pagina">¡Suma a un nuevo integrante a tu familia!</h1>
+                <p>
+                    Adoptando estas salvando la vida de un animal rescatado. 
+                    Adoptar es un acto de increíble amor y responsabilidad, 
+                    por eso es necesario estar completamente seguros de que 
+                    estamos listos para tener una mascota. 
+                    Un animal de compañía dependerá toda su vida de nosotros. 
+                    <br />
+                    Si ya lo decidiste y te sentís capacitado es momento 
+                    de comenzar con el proceso de adopcion. 
+                    ¡Completá el formulario y nos contactaremos!
+                </p>
+                <Link to={"/formulario"}>
+                    <div>
+                        <button className="botones" id="form_adop">¡Quiero adoptar!</button>
+                    </div>
                 </Link>
-            )}
-
+            </div>
             <div className="contenedor_adopciones">
                 {adopciones.map((adopcion) => (
-                    <div className="tarjeta" key={adopcion.id}>
-                        <div className="titulo">{adopcion.Nombre}</div>
+                    <div className="tarjeta_adopciones" key={adopcion.id}>
                         <div className="cuerpo">
                             <div>
                                 <img src={`${adopcion.Foto}`} alt=""></img>
                             </div>
                         </div>
+                        <div className="titulo">{adopcion.Nombre}</div>
                         <div className="pie">
-                            <Link to={`/adopcion/${adopcion.id}`}>Más información</Link>
+                            <Link to={`/adopcion/${adopcion.id}`}><button>Más información</button></Link>
                         </div>
                         <div>
                             <LogInLinks isUserLoggedIn={isUserLoggedIn} id={adopcion.id} getAdopciones={getAdopciones}></LogInLinks>
                         </div>
                     </div>))}
-
-
-
             </div>
-            <div className="botones">
+            
+            {isAdmin && (
+                <Link to={"/agregarAdopcion"}>
+                    <button className="botones" id="boton-administrador">Agregar nueva Adopción</button>
+                </Link>
+            )}
+
+            <div>
                 <Link to={"/formulario"}>
                     <div>
-                        <button className="volver">Formulario de Adopción</button>
+                        <button className="botones" id="formulario">¡Quiero adoptar!</button>
                     </div>
                 </Link>
             </div>
+        </div>
         </>
     )
 }

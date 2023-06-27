@@ -103,10 +103,11 @@
 
 textarea {
     resize: none;
-    height: 150px;
+    height: 200px;
 }
 
 #mapa{
     width: 430px;
-    height: 250px;
+    height: 200px;
+    border-radius: 15px;
 }

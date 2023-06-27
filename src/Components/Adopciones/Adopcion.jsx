@@ -114,7 +114,7 @@ const Adopcion = () => {
                 <div className="pieAdopcion">
                     <Link to={"/formulario"}>
                         <div>
-                            <button type="button" className="volver">Formulario de Adopción</button>
+                            <button type="button" className="volver">¡Quiero adoptar!</button>
                         </div>
                     </Link>
                     <Link to={"/adopciones"}>

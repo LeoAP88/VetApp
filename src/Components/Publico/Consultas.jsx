@@ -31,11 +31,11 @@ const Consultas = () => {
                         </div>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input type="email" className="form-control-Consultas" name='email' id="email" placeholder="ejemplo@mail.com" />
+                            <input type="email" className="form-control-Consultas" name='email' id="email" placeholder="ejemplo@email.com" />
                         </div>
                         <div className="form-group">
                             <label htmlFor="mensaje">Mensaje</label>
-                            <textarea className="form-control-Consultas" name='mensaje' id="mensaje" rows="3" placeholder="Deja tu mensaje aquí" maxLength={200}></textarea>
+                            <textarea className="form-control-Consultas" name='mensaje' id="mensaje" rows="10" placeholder="Deja tu mensaje aquí" maxLength={200}></textarea>
                         </div>
                         <button className="btn-consulta" type="submit">Enviar</button>
                     </form>

@@ -100,7 +100,7 @@ const Editar = () => {
                     </div>
                     <div className="container_campo">
                         <label htmlFor="raza">Caracteristicas</label>
-                        <input value={Caracteristicas} type="text" name="caracteristicas" required onChange={(e) => setCaracteristicas(e.target.value)}></input>
+                        <textarea  value={Caracteristicas} name="caracteristicas" id="caracteristicas" cols="25" rows="5" required onChange={(e) => setCaracteristicas(e.target.value)}></textarea>
                     </div>
                     <button className="volver" type="submit">Guardar</button>
                     <Link to={`/adopcion/${id}`}>

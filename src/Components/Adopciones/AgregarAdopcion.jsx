@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom"
 import { collection, addDoc } from "firebase/firestore"
 import { db } from "../firebaseConfig/firebase"
 import { AuthContext } from "../AuthProvider";
+import "./AgregarNuevaAdopcion.css"
 
 const AgregarAdopcion = () => {
     const [Nombre, setNombre] = useState("")
@@ -39,6 +40,7 @@ const AgregarAdopcion = () => {
 
     return (
         <>
+        <div className="container_nueva_adopcion">
             <h1>Agregar Nueva Adopcion</h1>
             <div className="container_crearMascota">
                 <form className="crearMascota_form" action="" method='POST'>
@@ -47,8 +49,8 @@ const AgregarAdopcion = () => {
                         <input type="text" name="nombre" required onChange={(e) => setNombre(e.target.value)}></input>
                     </div>
                     <div className="container_campo">
-                        <label htmlFor="foto"></label>
-                        <input type="text" name="foto" required onChange={(e) => setFoto(e.target.value)} placeholder="Foto"></input>
+                        <label htmlFor="foto">Foto</label>
+                        <input type="text" name="foto" required onChange={(e) => setFoto(e.target.value)}></input>
                     </div>
                     <div className="container_campo_select container_select_edit">
                         <p className="Especie_tag">Especie</p>
@@ -78,7 +80,7 @@ const AgregarAdopcion = () => {
                     </div>
                     <div className="container_campo">
                         <label htmlFor="raza">Caracteristicas</label>
-                        <input type="text" name="caracteristicas" required onChange={(e) => setCaracteristicas(e.target.value)}></input>
+                        <textarea name="caracteristicas" id="caracteristicas" cols="25" rows="5" required onChange={(e) => setCaracteristicas(e.target.value)}></textarea>
                     </div>
                     <div>
                         <button className="volver" type="submit" onClick={agregarAdopcion}>Agregar</button>
@@ -87,6 +89,7 @@ const AgregarAdopcion = () => {
                         </Link>
                     </div>
                 </form>
+            </div>
             </div>
         </>
     )

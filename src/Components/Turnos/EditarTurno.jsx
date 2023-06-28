@@ -11,7 +11,7 @@ import "./EditarTurno.css"
     Estructura de la base de turnos
     
 Turnos  (col)-
-             "ISOString fechadeturno"  (doc)-
+             "YYYY-MM-DD"  (doc)-
                                             | - TurnosDelDia (col)- 
                                             |                      |- 08:00(doc): ClienteID(string), ClienteNombre(string)
                                             |                      |- 08:30(doc)
@@ -21,7 +21,7 @@ Turnos  (col)-
                                              -   diaocupado(bool)
 
 */
-/* FALTA CORREGIR BUG EN EDITAR TURNO: partiendo de un dia sin ocupar a un dia casi lleno (1 faltante), el turno no se pasa */
+
 
 const EditarTurno = () => {
     const User = useContext(AuthContext);
@@ -40,6 +40,14 @@ const EditarTurno = () => {
 
     const navigate = useNavigate();
 
+    const horasDisponibles = () => {
+        let horasDisp = horasDisponiblesParaTurno(datosForm.horasOcupadas);;
+        if(datosForm.fecha === fechaTurno){
+            horasDisp = [horaTurno,...horasDisp];
+        }
+        return horasDisp;
+    }
+
     const deleteTurno = async ()=>{
 
         const fechaDocRef = doc(db, `/Turnos/${fechaTurno}`);
@@ -55,7 +63,7 @@ const EditarTurno = () => {
         if(horas.empty){
             await deleteDoc(fechaDocRef);
         }else if(fechaDoc.data().diaOcupado){
-             await updateDoc(fechaDocRef,{diaOcupado:false});
+            await updateDoc(fechaDocRef,{diaOcupado:false});
         }
 
     }
@@ -63,7 +71,7 @@ const EditarTurno = () => {
     const initNuevaFechaDocRef = async () => {
         const nuevaFecha = datosForm.fecha;
 
-        const nuevaFechaDocRef = doc(db,`/Turnos/${nuevaFecha}`);
+        const nuevaFechaDocRef = doc(db,"Turnos",`${nuevaFecha}`);
         const nuevaFechaDoc = await getDoc(nuevaFechaDocRef);
         if(!nuevaFechaDoc.exists()){
             await setDoc(nuevaFechaDocRef,{diaOcupado: false});
@@ -131,13 +139,14 @@ const EditarTurno = () => {
         const diaSelec = new FechaDia(FechaDia.fechaAMDAISOStringArg(...fecha.split("-")))
         const horasOcupadas = await getHorasReservadas(diaSelec);
         
-        setDatosForm({...datosForm, fecha: fecha, horasOcupadas:horasOcupadas})
+        setDatosForm({...datosForm,hora: horasDisponiblesParaTurno(horasOcupadas)[0], fecha: fecha, horasOcupadas:horasOcupadas})
     }
 
     console.log(datosForm)
     useEffect( ()=>{
         getTurno();
     } , []);
+
 
     if(!isAdmin){
         return(
@@ -158,7 +167,7 @@ const EditarTurno = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="hora">Hora</label>
-                    <SelecccionarHora horaSelec={datosForm.hora} setHoraSelec={(h)=>setDatosForm({...datosForm,hora:h})} horasDisponibles={horasDisponiblesParaTurno(datosForm.horasOcupadas)} name="hora" id="hora" className="form-control"/>
+                    <SelecccionarHora horaSelec={datosForm.hora} setHoraSelec={(h)=>setDatosForm({...datosForm,hora:h})} horasDisponibles={horasDisponibles()} name="hora" id="hora" className="form-control"/>
                 </div>
                 <div className="form-group">
                     

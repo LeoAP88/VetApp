@@ -15,7 +15,7 @@ import FechaDia from "./FechaDia"
     Estructura de la base de turnos
     
 Turnos  (col)-
-             "ISOString fechadeturno"  (doc)-
+             "YYYY-MM-DD"  (doc)-
                                             | - TurnosDelDia (col)- 
                                             |                      |- 08:00(doc): ClienteID(string), ClienteNombre(string)
                                             |                      |- 08:30(doc)
@@ -42,7 +42,7 @@ const ControlesAdmin = ({ fechaTurno, horaTurno, getTurnos }) => {
   const deleteTurno = async (fechaTurno, horaTurno) => {
     const fechaDocRef = doc(db, `/Turnos/${fechaTurno}`);
     const fechaDoc = await getDoc(fechaDocRef);
-    console.log(fechaDoc)
+    
 
     const coleccionHorasTurno = collection(
       db,
@@ -53,10 +53,10 @@ const ControlesAdmin = ({ fechaTurno, horaTurno, getTurnos }) => {
       db,
       `/Turnos/${fechaTurno}/TurnosDelDia/${horaTurno}`
     );
-    console.log(horaDocRef);
+    
 
     const res = await deleteDoc(horaDocRef);
-    console.log(res);
+    
     const horas = await getDocs(coleccionHorasTurno);
     if (horas.empty) {
       await deleteDoc(fechaDocRef);
@@ -124,7 +124,7 @@ const Turnos = () => {
         const filtroFechaPosteriorAHoy = (doc) => {
             const docPath = doc.ref.path.split("/");
             const fechaDoc = new FechaDia(`${docPath[1]}T00:00:00.000-03:00`);
-            console.log(fechaDoc)
+            
             
             return fechaActual.esAnteriorA(fechaDoc) || fechaDoc.getFecha()===fechaActual.getFecha();
         }
@@ -155,7 +155,7 @@ const Turnos = () => {
                 ).map(
                     mapHoraDocATurnosArray
                 ));
-            console.log(turnosArray)
+            
             setTurnos(turnosArray);
         }
         setLoading(false);

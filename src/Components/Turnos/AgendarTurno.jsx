@@ -11,22 +11,20 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase";
 import Calendario from "./Calendario";
-import {FadeLoader} from 'react-spinners';
 import { AuthContext } from "../AuthProvider"
-import {Link, useParams, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import "./AgendarTurno.css"
 import FechaDia from "./FechaDia";
 import SelecccionarHora from "./SeleccionarHora";
 import { horasDisponiblesParaTurno, getHorasReservadas } from "./utilidadesTurnos";
 
 /*SEGUIR CON EDITAR TURNO*/
-/*REVISAR QUE LAS FECHAS SE CARGUEN CON t00:00:00.000*/
 
 /*
     Estructura de la base de turnos
     
 Turnos  (col)-
-             "ISOString fechadeturno"  (doc)-
+             "YYYY-MM-DD"  (doc)-
                                             | - TurnosDelDia (col)- 
                                             |                      |- 08:00(doc): ClienteID(string), ClienteNombre(string)
                                             |                      |- 08:30(doc)
@@ -71,7 +69,7 @@ const AgendarTurno = ()=> {
             
             //guardamos los turnos como pares key:value en un objeto de la siguiente estructura:
             //{
-            // "ISOString fecha"(key) : OCUPADO/DISP (value)    
+            // "string fecha"(key) : OCUPADO/DISP (value)    
             //}
             //de esta manera facilmente tenemos los dias con turnos y si estan completos o no
             let turnos = {}
@@ -203,7 +201,7 @@ const AgendarTurno = ()=> {
             <h1 className="titulo_agendar">¡Agenda tu turno!</h1>
             <div className="container_agendar">
                 {/*Calendario recibe los dias sin turnos, el dia activo (seleccionado) y el handler para cambiar el dia activo*/}
-                <Calendario diasInhabilitados={arrayDiasOcupados()} diaActivo={diaActivo} toggleDia={cambiarDiaActivo}></Calendario>
+                <Calendario diasInhabilitados={[]} diaActivo={diaActivo} toggleDia={cambiarDiaActivo}></Calendario>
             </div>
             <div className="mt-2 mb-2">
                 <SelecccionarHora horaSelec={horaSelec} setHoraSelec={setHoraSelec} horasDisponibles={[]} className="form-control container_horario"/>

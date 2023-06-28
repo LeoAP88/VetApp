@@ -1,3 +1,6 @@
+.container_nuevaEntrada{
+    min-height: 82vh;
+}
 .titulo_consulta {
     margin-top: 20px;
     font-size: 1.6rem;

@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { getDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase"
 import { AuthContext } from "../AuthProvider";
+import "./EditarHistoriaClinica.css"
 
 const EditarHistoriaClinica = () => {
   const [Fecha, setFecha] = useState("")
@@ -43,6 +44,7 @@ const EditarHistoriaClinica = () => {
 
   return (
     <>
+    <div className="container_editarHistoria">
       <h1 className="titulo_consulta">Editar historia</h1>
       <span>{Fecha}</span>
       <div className="container_consulta">
@@ -52,6 +54,7 @@ const EditarHistoriaClinica = () => {
       <Link to={`/historiaClinica/${idUsuario}/${id}`}>
         <button className="volver">Volver</button>
       </Link>
+    </div>
     </>
   )
 }

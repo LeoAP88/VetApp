@@ -73,8 +73,11 @@ const HistoriaClinica = () => {
     const getHistoriaClinica = async () => {
         const querySnapshot = await getDocs(collection(db, `/Clientes/${idUsuario}/Mascotas/${id}/HistoriaClinica`));
         if (querySnapshot.size >= 0) {
-            console.log(querySnapshot.docs.map(doc => doc.data()))
-            setHistoriaClinica(querySnapshot.docs.map(doc => { return { id: doc.id, ...doc.data() } }));
+            const historias = querySnapshot.docs.map(doc => { return { id: doc.id, ...doc.data() } });
+            // Ordenar las historias por fecha de creación en forma descendente
+            historias.sort((a, b) => b.Fecha.localeCompare(a.Fecha));
+
+            setHistoriaClinica(historias);
         } else {
             console.log("No se encontró el documento.");
         }

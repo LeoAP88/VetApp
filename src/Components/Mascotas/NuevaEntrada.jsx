@@ -30,6 +30,7 @@ const NuevaEntrada = () => {
 
     return (
         <>
+        <div className="container_nuevaEntrada">
             <h1 className="titulo_consulta">Nueva consulta</h1>
             <div className="container_consulta">
                 <span>{fechaActual}</span>
@@ -39,6 +40,7 @@ const NuevaEntrada = () => {
             <Link to={`/historiaClinica/${idUsuario}/${id}`}>
                 <button className="volver">Volver</button>
             </Link>
+        </div>
         </>
     )
 }

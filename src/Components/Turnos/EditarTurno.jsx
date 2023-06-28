@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { getDoc, updateDoc, doc, getDocs, setDoc, deleteDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase"
 import { AuthContext } from "../AuthProvider";
+import "./EditarTurno.css"
 
 /*
     Estructura de la base de turnos
@@ -104,7 +105,6 @@ const EditarTurno = () => {
     const update = async (e) => {
         e.preventDefault();
         const nuevaFechaDocRef = await initNuevaFechaDocRef();
-        console.log()
         
         if((await getDoc(nuevaFechaDocRef)).data().diaOcupado && (deFechaInputAISOString(datosForm.fecha)!==fechaTurno)){
             console.error("Error! Dia completo!")
@@ -167,7 +167,7 @@ const EditarTurno = () => {
 
 
     return(
-        <div className="container d-flex flex-column align-items-center mt-4">
+        <div className="container_editarTurno d-flex flex-column align-items-center mt-4">
             <h1>Editar Turno</h1>
             <form action="" method='POST'>
                 <div className="form-group">
@@ -183,11 +183,8 @@ const EditarTurno = () => {
                     <label htmlFor="clienteNombre">Nombre Cliente</label>
                     <input value={datosForm.ClienteNombre} className="form-control" type="text" name="clienteNombre" id="clienteNombre" required onChange={(e) => setDatosForm({...datosForm, clienteNombre: e.target.value})}></input>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="clienteID">ID Cliente: {datosForm.ClienteID}</label>
-                </div>
-                <button className="btn" type="submit" onClick={update}>Guardar cambios</button>
                 <Link to={`/turnos`}>
+                    <button className="btn" type="submit" onClick={update}>Guardar cambios</button>
                     <button className="btn">Volver</button>
                 </Link>
             </form>

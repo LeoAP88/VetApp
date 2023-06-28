@@ -66,6 +66,7 @@ const AgendarTurno = ()=> {
         const q = query(collection(db,"Turnos"), where('__name__',">=",fechaActual.getFecha()))
         
         const data = await getDocs(q);
+        console.log(data)
         if(data.docs.length!==0){
             
             //guardamos los turnos como pares key:value en un objeto de la siguiente estructura:
@@ -171,7 +172,7 @@ const AgendarTurno = ()=> {
             ClienteNombre: `${cliente.Nombre} ${cliente.Apellido}`,
             ClienteID: currentUser.uid
         }).then(
-            async () => {
+            () => {
                 alert("success!");
                 navigate("/turnos");
             }
@@ -205,7 +206,7 @@ const AgendarTurno = ()=> {
                 <Calendario diasInhabilitados={arrayDiasOcupados()} diaActivo={diaActivo} toggleDia={cambiarDiaActivo}></Calendario>
             </div>
             <div className="mt-2 mb-2">
-                <SelecccionarHora horaSelec={horaSelec} setHoraSelec={setHoraSelec} horasDisponibles={horasDisponiblesParaTurno(horasOcupadas)} className="form-control"/>
+                <SelecccionarHora horaSelec={horaSelec} setHoraSelec={setHoraSelec} horasDisponibles={[]} className="form-control container_horario"/>
             </div>
             
             <button onClick={cargarTurno} className="boton_agendar btn btn-outline-success">Agendar Turno</button>
@@ -233,14 +234,12 @@ const AgendarTurno = ()=> {
         />
       </div>
 
-      <Link to={`/turnos`}>
         <button
           onClick={cargarTurno}
           className="boton_agendar btn btn-outline-success"
         >
           Agendar Turno
         </button>
-      </Link>
     </div>
   );
 };

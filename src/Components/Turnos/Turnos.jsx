@@ -42,6 +42,7 @@ const ControlesAdmin = ({ fechaTurno, horaTurno, getTurnos }) => {
   const deleteTurno = async (fechaTurno, horaTurno) => {
     const fechaDocRef = doc(db, `/Turnos/${fechaTurno}`);
     const fechaDoc = await getDoc(fechaDocRef);
+    console.log(fechaDoc)
 
     const coleccionHorasTurno = collection(
       db,
@@ -123,8 +124,9 @@ const Turnos = () => {
         const filtroFechaPosteriorAHoy = (doc) => {
             const docPath = doc.ref.path.split("/");
             const fechaDoc = new FechaDia(`${docPath[1]}T00:00:00.000-03:00`);
+            console.log(fechaDoc)
             
-            return fechaActual.esAnteriorA(fechaDoc);
+            return fechaActual.esAnteriorA(fechaDoc) || fechaDoc.getFecha()===fechaActual.getFecha();
         }
 
         const mapHoraDocATurnosArray = async (doc) => {
@@ -144,8 +146,8 @@ const Turnos = () => {
             q = query(collectionGroup(db, 'TurnosDelDia'), where('ClienteID', '==', currentUser.uid));        
         }
 
+        
         const data = await getDocs(q);
-
         if(!data.empty){
             const turnosArray = await Promise.all(
                 data.docs.filter(
@@ -153,6 +155,7 @@ const Turnos = () => {
                 ).map(
                     mapHoraDocATurnosArray
                 ));
+            console.log(turnosArray)
             setTurnos(turnosArray);
         }
         setLoading(false);
@@ -163,9 +166,6 @@ const Turnos = () => {
     getTurnos();
   }, [currentUser]);
 
-  useEffect(() => {
-    getTurnos();
-  }, []);
 
   if (loading) {
     return (

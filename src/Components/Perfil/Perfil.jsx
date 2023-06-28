@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { getDoc, doc } from "firebase/firestore";
-import { db } from "./firebaseConfig/firebase";
-import { AuthContext } from "./AuthProvider";
+import { db } from "../firebaseConfig/firebase";
+import { AuthContext } from "../firebaseConfig/AuthProvider"
 import "./Perfil.css";
 import { BsFillFilePersonFill } from "react-icons/bs";
 

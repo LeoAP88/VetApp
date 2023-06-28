@@ -4,7 +4,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { AuthProvider } from "./Components/AuthProvider.jsx";
+import { AuthProvider } from "./Components/firebaseConfig/AuthProvider.jsx";
 import App from './App.jsx'
 import './index.css'
 import Inicio from './Components/Publico/Inicio.jsx';
@@ -12,12 +12,11 @@ import Login from './Components/ManejoUsuarios/Login.jsx';
 import Registro from './Components/ManejoUsuarios/Registro.jsx';
 import QuienesSomos from './Components/Publico/QuienesSomos.jsx';
 import MisMascotas from './Components/Mascotas/MisMascotas.jsx';
-import Tienda from './Components/Publico/Tienda.jsx';
 import Adopciones from './Components/Adopciones/Adopciones.jsx';
 import Turnos from './Components/Turnos/Turnos.jsx';
 import Consultas from './Components/Publico/Consultas.jsx';
 import FormularioDeAdopciones from './Components/Adopciones/FormularioDeAdopciones.jsx';
-import Perfil from './Components/Perfil.jsx';
+import Perfil from './Components/Perfil/Perfil.jsx';
 import SignOut from './Components/ManejoUsuarios/SignOut.jsx';
 import Crear from './Components/Mascotas/AgregarMascota.jsx';
 import Clientes from './Components/Clientes.jsx';
@@ -28,7 +27,7 @@ import NuevaEntrada from './Components/Mascotas/NuevaEntrada.jsx';
 import Editar from './Components/Adopciones/Editar.jsx';
 import EditarHistoriaClinica from './Components/Mascotas/EditarHistoriaClinica.jsx';
 import EditarMascota from './Components/Mascotas/EditarMascota.jsx';
-import EditarPerfil from './Components/EditarPerfil.jsx';
+import EditarPerfil from './Components/Perfil/EditarPerfil.jsx';
 import EditarTurno from './Components/Turnos/EditarTurno.jsx'
 import AgendarTurno from './Components/Turnos/AgendarTurno.jsx';
 
@@ -71,10 +70,6 @@ const router = createBrowserRouter([
       {
         path: "perfil/:uid",
         element: <Perfil />
-      },
-      {
-        path: "tienda",
-        element: <Tienda />
       },
       {
         path: "adopciones",

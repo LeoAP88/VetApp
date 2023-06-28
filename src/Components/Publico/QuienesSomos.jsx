@@ -2,7 +2,7 @@ import { db } from "../firebaseConfig/firebase";
 import { collection, getDocs, doc } from "firebase/firestore";
 import React, { useEffect, useContext } from "react";
 import { getAuth } from "firebase/auth";
-import { AuthContext } from "../AuthProvider";
+import { AuthContext } from "../firebaseConfig/AuthProvider"
 import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";

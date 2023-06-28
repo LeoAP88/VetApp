@@ -11,16 +11,16 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase";
 import Calendario from "./Calendario";
-import { AuthContext } from "../AuthProvider"
+import { AuthContext } from "../firebaseConfig/AuthProvider"
 import {useNavigate, Link} from "react-router-dom";
 import "./AgendarTurno.css"
 import FechaDia from "./FechaDia";
 import SelecccionarHora from "./SeleccionarHora";
 import { horasDisponiblesParaTurno, getHorasReservadas } from "./utilidadesTurnos";
 
-/*SEGUIR CON EDITAR TURNO*/
+/*SEGUIR CON EDITAR TURNO
 
-/*
+
     Estructura de la base de turnos
     
 Turnos  (col)-

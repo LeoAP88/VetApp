@@ -6,7 +6,7 @@ import whitReactContent from "sweetalert2-react-content"
 import { db } from "../firebaseConfig/firebase";
 import { Link } from "react-router-dom";
 import { getAuth } from "firebase/auth";
-import { AuthContext } from "../AuthProvider";
+import { AuthContext } from "../firebaseConfig/AuthProvider"
 import "./Adopcion.css"
 import {
     FadeLoader

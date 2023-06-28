@@ -30,7 +30,7 @@ const Perfil = () => {
 
   return (
     <>
-      <h1 className="titulo_pagina">Editar Perfil</h1>
+      <h1 className="titulo_pagina">Perfil</h1>
       <div className="container_perfil">
         <BsFillFilePersonFill size={"10rem"} />
         <form action="">

@@ -12,7 +12,7 @@ import {
 import { db } from "../firebaseConfig/firebase";
 import Calendario from "./Calendario";
 import { AuthContext } from "../AuthProvider"
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 import "./AgendarTurno.css"
 import FechaDia from "./FechaDia";
 import SelecccionarHora from "./SeleccionarHora";
@@ -238,6 +238,9 @@ const AgendarTurno = ()=> {
         >
           Agendar Turno
         </button>
+        <Link to={"/turnos"}>
+            <button className="btn">Volver</button>
+        </Link>
     </div>
   );
 };

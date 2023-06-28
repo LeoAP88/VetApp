@@ -3,6 +3,9 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { getDoc, updateDoc, doc, getDocs, setDoc, deleteDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase"
 import { AuthContext } from "../AuthProvider";
+import SelecccionarHora from "./SeleccionarHora";
+import { horasDisponiblesParaTurno, getHorasReservadas } from "./utilidadesTurnos";
+import FechaDia from "./FechaDia";
 
 /*
     Estructura de la base de turnos
@@ -18,41 +21,7 @@ Turnos  (col)-
                                              -   diaocupado(bool)
 
 */
-
-/*revisar update e initNuevaFechaDocRef - fechas deberian estar siempre con T00:00:00.000*/
-
-const horasDisponibles = [  "08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30",
-"13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30",
-"18:00","18:30"               
-];
-
-const deFechaInputAISOString = fecha => {
-    console.log((new Date(fecha)).toISOString())
-    return (new Date(fecha)).toISOString();
-}
-//funciones para converir fecha tradicional (input) a ISOString (formato utilizado en la base) y viceversa.
-const deISOStringAFechaInput = ISOString => {
-    const date = new Date(ISOString);
-    const mes = (date.getMonth()+1).toString();
-    return `${date.getFullYear()}-${mes.length<2?"0"+mes:mes}-${date.getDate()}`;
-}
-
-const SelecccionarHora = ({horasDisponibles, className, horaSelec, setHoraSelec, name, id}) => {
-    
-    const changeHora = (e) => {
-        setHoraSelec(e.target.value);
-    }
-    console.log(horaSelec)
-    return(<select name={name} id={id} className={className} onChange={changeHora} value={horaSelec}>
-        {horasDisponibles.map(
-            (hora) => {
-                return(
-                    <option key={hora} value={hora}>{hora}</option>
-                );
-            }
-        )}
-    </select>);
-}
+/* FALTA CORREGIR BUG EN EDITAR TURNO: partiendo de un dia sin ocupar a un dia casi lleno (1 faltante), el turno no se pasa */
 
 const EditarTurno = () => {
     const User = useContext(AuthContext);
@@ -62,7 +31,8 @@ const EditarTurno = () => {
                                                     fecha: "",
                                                     hora: "",
                                                     ClienteID: "",
-                                                    ClienteNombre: ""
+                                                    ClienteNombre: "",
+                                                    horasOcupadas:[]
                                                     }); // <-- para meter todos los states aca
     
 
@@ -91,7 +61,7 @@ const EditarTurno = () => {
     }
 
     const initNuevaFechaDocRef = async () => {
-        const nuevaFecha = deFechaInputAISOString(datosForm.fecha);
+        const nuevaFecha = datosForm.fecha;
 
         const nuevaFechaDocRef = doc(db,`/Turnos/${nuevaFecha}`);
         const nuevaFechaDoc = await getDoc(nuevaFechaDocRef);
@@ -104,19 +74,19 @@ const EditarTurno = () => {
     const update = async (e) => {
         e.preventDefault();
         const nuevaFechaDocRef = await initNuevaFechaDocRef();
-        console.log()
         
-        if((await getDoc(nuevaFechaDocRef)).data().diaOcupado && (deFechaInputAISOString(datosForm.fecha)!==fechaTurno)){
-            console.error("Error! Dia completo!")
+        
+        if((await getDoc(nuevaFechaDocRef)).data().diaOcupado && (datosForm.fecha!==fechaTurno)){
+            console.error("Error! Dia completo!");
             return;
         }
 
         console.log("upss")
-        return;
+        
         await deleteTurno();
 
         
-        const nuevaHoraDocRef = doc(db,`Turnos/${datosForm.fecha}/TurnosDelDia/${datosForm.hora}`);
+        const nuevaHoraDocRef = doc(db,`Turnos/${datosForm.fecha}/TurnosDelDia`,`${datosForm.hora}`);
         const nuevaFechaTurnosCol = collection(db,`Turnos/${datosForm.fecha}/TurnosDelDia`);
         
         await setDoc(nuevaHoraDocRef,{
@@ -141,10 +111,12 @@ const EditarTurno = () => {
 
           let nuevoDatosForm = {...datosForm};
 
-          nuevoDatosForm.fecha = deISOStringAFechaInput(fechaDoc.id);
-          nuevoDatosForm.hora = (horaDoc.id);
+          nuevoDatosForm.fecha = fechaDoc.id;
+          nuevoDatosForm.hora = horaDoc.id;
           nuevoDatosForm.ClienteID = horaDoc.data().ClienteID;
           nuevoDatosForm.ClienteNombre = horaDoc.data().ClienteNombre;
+          const diaDoc = new FechaDia(FechaDia.fechaAMDAISOStringArg(...fechaDoc.id.split("-")));
+          nuevoDatosForm.horasOcupadas = await getHorasReservadas(diaDoc);
 
           setDatosForm(nuevoDatosForm);
 
@@ -152,10 +124,20 @@ const EditarTurno = () => {
           console.log("El archivo no existe");
         }
     }
-    
-    useEffect(() => {
-      getTurno();
-    }, []);
+
+    const cambioFecha = async e =>  {
+        const fecha = e.target.value;
+        
+        const diaSelec = new FechaDia(FechaDia.fechaAMDAISOStringArg(...fecha.split("-")))
+        const horasOcupadas = await getHorasReservadas(diaSelec);
+        
+        setDatosForm({...datosForm, fecha: fecha, horasOcupadas:horasOcupadas})
+    }
+
+    console.log(datosForm)
+    useEffect( ()=>{
+        getTurno();
+    } , []);
 
     if(!isAdmin){
         return(
@@ -172,11 +154,11 @@ const EditarTurno = () => {
             <form action="" method='POST'>
                 <div className="form-group">
                     <label htmlFor="fecha">Fecha</label>
-                    <input value={datosForm.fecha} className="form-control" type="date" name="fecha" id="fecha" required onChange={(e) => setDatosForm({...datosForm, fecha: e.target.value})}></input>
+                    <input value={datosForm.fecha} className="form-control" type="date" name="fecha" id="fecha" onChange={cambioFecha}></input>
                 </div>
                 <div className="form-group">
                     <label htmlFor="hora">Hora</label>
-                    <SelecccionarHora horaSelec={datosForm.hora} setHoraSelec={(h)=>setDatosForm({...datosForm,hora:h})} horasDisponibles={horasDisponibles} name="hora" id="hora" className="form-control"/>
+                    <SelecccionarHora horaSelec={datosForm.hora} setHoraSelec={(h)=>setDatosForm({...datosForm,hora:h})} horasDisponibles={horasDisponiblesParaTurno(datosForm.horasOcupadas)} name="hora" id="hora" className="form-control"/>
                 </div>
                 <div className="form-group">
                     

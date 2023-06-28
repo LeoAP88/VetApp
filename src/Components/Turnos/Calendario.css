@@ -18,6 +18,13 @@
     background-color: lightgray;
 }
 
+.dia-calendario.dias-anteriores{
+    color: lightgray;
+}
+
+.dia-calendario.dia-domingo{
+    color: lightgray;
+}
 
 .btn-calendario{
   width: 40px;
@@ -36,4 +43,8 @@
 
 .container_calendario{
     width: 100%;
+}
+#contenedor-calendario{
+    max-width: 700px;
+    font-size: 18px;
 }

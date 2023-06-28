@@ -1,23 +1,15 @@
-import "./Turnos.css";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../AuthProvider";
-import {
-  collection,
-  getDocs,
-  updateDoc,
-  query,
-  where,
-  doc,
-  deleteDoc,
-  collectionGroup,
-  getDoc,
-} from "firebase/firestore";
-import { useState, useEffect, useContext } from "react";
-import { db } from "../firebaseConfig/firebase";
-import Table from "react-bootstrap/Table";
-import withReactContent from "sweetalert2-react-content";
-import Swal from "sweetalert2";
-import { FadeLoader } from "react-spinners";
+import "./Turnos.css"
+import { Link } from "react-router-dom"
+import { AuthContext } from "../AuthProvider"
+import { collection, getDocs, updateDoc, query, where, doc, deleteDoc, collectionGroup, getDoc } from "firebase/firestore"
+import { useState, useEffect, useContext } from "react"
+import { db } from "../firebaseConfig/firebase"
+import Table from 'react-bootstrap/Table';
+import withReactContent from "sweetalert2-react-content"
+import Swal from "sweetalert2"
+import {FadeLoader} from 'react-spinners';
+import FechaDia from "./FechaDia"
+
 
 /*
     Estructura de la base de turnos
@@ -37,8 +29,10 @@ Turnos  (col)-
 const mySwal = withReactContent(Swal);
 
 //convierte la fecha desde un objeto Date al formato tradicional "dd/mm/aaaa"
-const parsearFecha = (date) =>
-  `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+const parsearFecha = date => {
+    const a = date.split("-");
+    return `${a[2]}/${a[1]}/${a[0]}`;
+}
 
 // Componente que se renderiza si el usuario es admin, con los controles de edicion y borrado
 const ControlesAdmin = ({ fechaTurno, horaTurno, getTurnos }) => {
@@ -111,61 +105,67 @@ const ControlesAdmin = ({ fechaTurno, horaTurno, getTurnos }) => {
 const Turnos = () => {
   const [loading, setLoading] = useState(true);
 
-  //La base utiliza el formato ISO de Date para las fechas, y el formato "hh:mm" para la hora.
-  const fechaActual = new Date();
-  const fechaActualParsed = fechaActual.toISOString();
-
-  const User = useContext(AuthContext);
-  const currentUser = User.currentUser;
-  const isAdmin = currentUser?.email === "admin@gmail.com";
+    //La base utiliza el formato ISO de Date para las fechas, y el formato "hh:mm" para la hora.
+    const fechaActual = new FechaDia();
+    
+    const User = useContext(AuthContext);
+    const currentUser = User.currentUser;
+    const isAdmin = currentUser?.email === 'admin@gmail.com'
 
   const [turnos, setTurnos] = useState([]);
 
   const getTurnos = async () => {
-    if (currentUser === null) {
-      return;
+    
+        if (currentUser === null) {
+          return;
+        }
+
+        const filtroFechaPosteriorAHoy = (doc) => {
+            const docPath = doc.ref.path.split("/");
+            const fechaDoc = new FechaDia(`${docPath[1]}T00:00:00.000-03:00`);
+            
+            return fechaActual.esAnteriorA(fechaDoc);
+        }
+
+        const mapHoraDocATurnosArray = async (doc) => {
+            const docPath = doc.ref.path.split("/");
+            
+            return { ...doc.data(), Hora: doc.id, Fecha: docPath[1]};
+        }
+
+        let q = null;
+        // si es admin, trae TODOS los turnos. Si no, solo los del usuario
+        
+        if(isAdmin){
+            //query utilizando como limite inferior la fecha actual, de esta manera trae solo los turnos futuros
+            q = query(collectionGroup(db, 'TurnosDelDia'))          
+        }else{
+            //igual que arriba, pero se le añade otra condicion para que matchee el cliente logeado con sus turnos
+            q = query(collectionGroup(db, 'TurnosDelDia'), where('ClienteID', '==', currentUser.uid));        
+        }
+
+        const data = await getDocs(q);
+
+        if(!data.empty){
+            const turnosArray = await Promise.all(
+                data.docs.filter(
+                    filtroFechaPosteriorAHoy
+                ).map(
+                    mapHoraDocATurnosArray
+                ));
+            setTurnos(turnosArray);
+        }
+        setLoading(false);
     }
 
-    const filtroFechaPosteriorAHoy = (doc) => {
-      const docPath = doc.ref.path.split("/");
-
-      return Date.parse(docPath[1]) >= Date.parse(fechaActualParsed);
-    };
-
-    const mapHoraDocATurnosArray = async (doc) => {
-      const docPath = doc.ref.path.split("/");
-
-      return { ...doc.data(), Hora: doc.id, Fecha: docPath[1] };
-    };
-
-    let q = null;
-    // si es admin, trae TODOS los turnos. Si no, solo los del usuario
-
-    if (isAdmin) {
-      //query utilizando como limite inferior la fecha actual, de esta manera trae solo los turnos futuros
-      q = query(collectionGroup(db, "TurnosDelDia"));
-    } else {
-      //igual que arriba, pero se le añade otra condicion para que matchee el cliente logeado con sus turnos
-      q = query(
-        collectionGroup(db, "TurnosDelDia"),
-        where("ClienteID", "==", currentUser.uid)
-      );
-    }
-
-    const data = await getDocs(q);
-
-    if (!data.empty) {
-      const turnosArray = await Promise.all(
-        data.docs.filter(filtroFechaPosteriorAHoy).map(mapHoraDocATurnosArray)
-      );
-      setTurnos(turnosArray);
-    }
-    setLoading(false);
-  };
 
   useEffect(() => {
     getTurnos();
   }, [currentUser]);
+
+  useEffect(() => {
+    getTurnos();
+  }, []);
 
   if (loading) {
     return (
@@ -203,7 +203,7 @@ const Turnos = () => {
 
         <tbody>
           {turnos.map((turno) => {
-            const fechaTurno = parsearFecha(new Date(turno.Fecha));
+            const fechaTurno = parsearFecha(turno.Fecha);
             const horaTurno = turno.Hora;
             return (
               <tr key={`${fechaTurno}-${horaTurno}`}>

@@ -1,8 +1,14 @@
-.txt {
+.navbar {
+    z-index: 2;
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+   
+.txt{
     margin-top: 550px;
-    padding-top: 80px;
+     padding-top: 80px;
     padding-left: 100px;
-    padding-right: 55px;
     font-size: 1.3rem;
     width: 170%;
     height: 800px;
@@ -10,32 +16,32 @@
     font-family: 'Overpass', sans-serif;
     font-weight: bold;
     /* color: rgb(93, 91, 91);  */
-    color: rgb(68, 66, 66);
+    color: rgb(114, 112, 112);
 }
 
-.pa {
+.pa{
     width: 100%;
     height: 350px;
     font-size: 1.3rem;
     font-family: 'Overpass', sans-serif;
     text-align: left;
     font-weight: bold;
-    color: whitesmoke
+    color: rgb(117, 114, 114);
+
 }
 
-.txt2 {
-
+.txt2{
+ 
     margin-top: 550px;
-    ;
-    padding-bottom: 280px;
+    padding-left: 700px;
     width: 250%;
     height: 200px;
     font-size: 1.3rem;
     line-height: 1.5;
     text-align: left;
-    font-family: 'Overpass', sans-serif;
     font-weight: bold;
-    color: rgb(47, 45, 45);
+    font-family: 'Overpass', sans-serif;
+    color: rgb(117, 114, 114);
 }
 
 
@@ -48,32 +54,30 @@
     display: center;
     align-items: center;
     margin-left: 35px;
-
-
+    
+    
 }
 
-.card-title {
+.card-title{
     font-family: 'Overpass', sans-serif;
     color: rgb(93, 91, 91);
     font-weight: bold;
 }
-
-.card-text {
+.card-text{
     font-family: 'Overpass', sans-serif;
     color: rgb(93, 91, 91);
-
+    
 }
-
-.card {
+.card{
+   
     margin: 30px 50px;
     border: 1px solid lightgray;
-    box-shadow: 2px 2px 2px 2px #d3d3d3d4;
+    box-shadow: 2px 2px 8px 4px #d3d3d3d4;
 }
-
-.logoblanco {
+.logoblanco{
     height: 35px;
 }
 
-.card-img-top {
-    height: 600px;
-}
+
+
+ 

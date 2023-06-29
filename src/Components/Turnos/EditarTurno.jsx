@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { getDoc, updateDoc, doc, getDocs, setDoc, deleteDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase"
-import { AuthContext } from "../AuthProvider";
+import { AuthContext } from "../firebaseConfig/AuthProvider"
 import SelecccionarHora from "./SeleccionarHora";
 import { horasDisponiblesParaTurno, getHorasReservadas } from "./utilidadesTurnos";
 import FechaDia from "./FechaDia";

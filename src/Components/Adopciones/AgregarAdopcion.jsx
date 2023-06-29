@@ -2,8 +2,8 @@ import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom"
 import { collection, addDoc } from "firebase/firestore"
 import { db } from "../firebaseConfig/firebase"
-import { AuthContext } from "../AuthProvider";
-import "./AgregarNuevaAdopcion.css"
+import { AuthContext } from "../firebaseConfig/AuthProvider"
+import "./AgregarAdopcion.css"
 
 const AgregarAdopcion = () => {
     const [Nombre, setNombre] = useState("")

@@ -1,5 +1,5 @@
 import "./Inicio.css";
-import { AuthContext } from "../AuthProvider";
+import { AuthContext } from "../firebaseConfig/AuthProvider"
 import Login from '../ManejoUsuarios/Login.jsx';
 import Turnos from '../Turnos/Turnos.jsx';
 import { useContext } from "react";

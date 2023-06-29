@@ -1,6 +1,6 @@
 import "./Turnos.css"
 import { Link } from "react-router-dom"
-import { AuthContext } from "../AuthProvider"
+import { AuthContext } from "../firebaseConfig/AuthProvider"
 import { collection, getDocs, updateDoc, query, where, doc, deleteDoc, collectionGroup, getDoc } from "firebase/firestore"
 import { useState, useEffect, useContext } from "react"
 import { db } from "../firebaseConfig/firebase"

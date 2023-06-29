@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./NavBar.css"
 import { BsInstagram, BsFacebook, CgProfile, MdOutlineLocalGroceryStore, GiHospitalCross } from 'react-icons/all';
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "./AuthProvider";
+import { AuthContext } from "./firebaseConfig/AuthProvider"
 import { getAuth } from "firebase/auth";
 
 const LogInLinks = () => {

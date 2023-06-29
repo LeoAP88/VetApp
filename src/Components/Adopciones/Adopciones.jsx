@@ -4,7 +4,7 @@ import whitReactContent from "sweetalert2-react-content"
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase";
 import { useState, useEffect, useContext } from "react"
-import { AuthContext } from "../AuthProvider";
+import { AuthContext } from "../firebaseConfig/AuthProvider"
 import { getAuth } from "firebase/auth";
 import "./Adopciones.css"
 import {

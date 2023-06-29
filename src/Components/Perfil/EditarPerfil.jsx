@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
-import { db } from "./firebaseConfig/firebase";
-import { AuthContext } from "./AuthProvider";
+import { db } from "../firebaseConfig/firebase";
+import { AuthContext } from "../firebaseConfig/AuthProvider"
 import { BsFillFilePersonFill } from "react-icons/bs";
 
 const EditarPerfil = () => {

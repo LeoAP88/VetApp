@@ -47,8 +47,6 @@ const AgendarTurno = ()=> {
 
     const fechaActual = new FechaDia();
 
-    console.log(fechaActual.fecha);
-
 
     const [turnos, setTurnos] = useState([]);
     const [cliente, setCliente] = useState({});

@@ -3,7 +3,6 @@ import "./Calendario.css";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import FechaDia from "./FechaDia";
 
-/* FALTA TERMINAR ESTILO*/
 
 const MESES = [
   "Enero",
@@ -20,8 +19,7 @@ const MESES = [
   "Diciembre",
 ];
 
-const esBisiesto = (year) =>
-  (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+const esBisiesto = (year) => (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
 
 
 //funcion que arma una matriz para el renderizado del calendario, toma como parametros el mes a visualizar (0-11) y el año (aaaa).
@@ -87,7 +85,7 @@ const DiaCalendario = ({ onClick, dia, children, propsEstilo }) => {
   
     //handler para elevar el objeto Date correspondiente al dia y manejar el deshabilitado
     const onClickOverride = (e) => {
-        if(propsEstilo.isInh || propsEstilo.isAntAHoy)
+        if(propsEstilo.isInh || propsEstilo.isAntAHoy || dia.getDay()===0)
             return;
         
         onClick(e,dia)
@@ -113,9 +111,7 @@ const Calendario = ({ diasInhabilitados = [], diaActivo, toggleDia }) => {
     
     //handler que recibe el dia como Date al clickear un dia del calendario, y actualiza el dia seleccionado.
     const clickDia = (e,diaClick)=>{
-        if(diaClick.getDay()===0){
-            diaClick = diaClick.getDiaHabilMasCercano();   
-        }
+        
         const mes = diaClick.getMonth()+1;
         const dia = diaClick.getDate();
         const anio = diaClick.getFullYear();

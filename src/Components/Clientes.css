@@ -8,12 +8,11 @@
     font-weight: bold;
     text-decoration: none;
     width: 150px;
-    margin-top: 20px;
 }
 
-.boton_editar {
-    background-color: rgb(107 107 226 / 72%);
+.boton_ver_mascotas_btn:hover {
+    background-color: purple;
+    border: 3px solid rgb(109, 0, 109);
+    color: white;
 }
-.boton_borrar{
-    background-color: #eb5757;
-}
+

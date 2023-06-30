@@ -84,18 +84,21 @@
 
 #boton-administrador:hover{
   background-color: rgb(141, 65, 141);
-  border-radius: 15px;
-  padding: 10px;
-  border: 1px solid lightgray;
+  border: 3px solid lightgray;
   color: white;
 }
 
 .botones{
   background-color: rgb(141, 65, 141);
-  border-radius: 15px;
-  padding: 10px;
-  border: 1px solid lightgray;
+  border-radius: 30px;
+  padding: 10px 20px;
+  border: 3px solid purple;
   color: white;
+}
+
+.botones:hover{
+  background-color: rgb(104, 48, 104);
+  border: 3px solid rgb(67, 31, 67);
 }
 
 #formulario{
@@ -130,12 +133,6 @@
   padding: 0;
 }
 
-.boton_editar{
-  background-color: rgb(107 107 226 / 72%);
-}
-.boton_borrar{
-  background-color: #eb5757;
-}
 
 .bot{
   display: flex;

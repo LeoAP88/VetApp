@@ -51,8 +51,8 @@ const LogInLinks = ({ id, getClientes }) => {
     if (isUserLoggedIn && user.email == 'admin@gmail.com') {
         return (
             <>
-                <Link to={`/editarPerfil/${id}`} className="boton_editar btn btn-primary">
-                    <i className="fa-solid fa-pencil"></i>
+                <Link to={`/editarPerfil/${id}`}>
+                    <button className="boton_editar btn btn-primary"><i className="fa-solid fa-pencil"></i></button>
                 </Link>
                 <button onClick={() => { confirmDelete() }} className="boton_borrar btn btn-danger">
                     <i className="fa-solid fa-trash"></i>
@@ -112,13 +112,13 @@ const Clientes = () => {
                         {clientes.map((cliente) => (
                             <tr key={cliente.id}>
                                 {/* <td>{cliente.id}</td> */}
-                                <td>{cliente.Nombre}</td>
-                                <td>{cliente.Apellido}</td>
-                                <td>{cliente.Email}</td>
-                                <td>
+                                <td className="align-middle">{cliente.Nombre}</td>
+                                <td className="align-middle">{cliente.Apellido}</td>
+                                <td className="align-middle">{cliente.Email}</td>
+                                <td className="align-middle">
                                     <Link to={`/misMascotas/${cliente.id}`}><button className="boton_ver_mascotas_btn btn-success">Ver Mascotas</button></Link>
                                 </td>
-                                <td>
+                                <td className="align-middle">
                                     <LogInLinks id={cliente.id} getClientes={getClientes}></LogInLinks>
                                 </td>
                             </tr>

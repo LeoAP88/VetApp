@@ -21,3 +21,40 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.btn-primary{
+  background-color: purple;
+}
+
+.btn-primary:hover{
+  background-color: rgb(96, 0, 96);
+}
+
+.btn-danger{
+  background-color: #eb5757;
+}
+
+.boton_editar {
+  border-radius: 30px;
+  padding: 10px 20px;
+  cursor: pointer;
+  overflow: hidden;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 5px;
+  /* width: 30%; */
+}
+
+.boton_borrar{
+  border-radius: 30px;
+  padding: 10px 20px;
+  cursor: pointer;
+  overflow: hidden;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 5px;
+}
+
+td {
+  
+}

@@ -87,7 +87,7 @@ const ControlesAdmin = ({ fechaTurno, horaTurno, getTurnos }) => {
     <>
       <Link
         to={`/editarTurno/${fechaTurno}/${horaTurno}`}
-        className="boton_editar btn"
+        className="boton_editar btn btn-primary"
       >
         <i className="fa-solid fa-pencil"></i>
       </Link>
@@ -95,7 +95,7 @@ const ControlesAdmin = ({ fechaTurno, horaTurno, getTurnos }) => {
         onClick={() => {
           confirmDelete(fechaTurno, horaTurno);
         }}
-        className="boton_borrar btn"
+        className="boton_borrar btn btn-danger"
       >
         <i className="fa-solid fa-trash"></i>
       </button>
@@ -207,11 +207,11 @@ const Turnos = () => {
             const horaTurno = turno.Hora;
             return (
               <tr key={`${fechaTurno}-${horaTurno}`}>
-                <td>{fechaTurno}</td>
-                <td>{horaTurno}</td>
-                <td>{turno.ClienteNombre}</td>
+                <td className="align-middle">{fechaTurno}</td>
+                <td className="align-middle">{horaTurno}</td>
+                <td className="align-middle">{turno.ClienteNombre}</td>
                 {isAdmin ? (
-                  <td>
+                  <td className="align-middle">
                     <ControlesAdmin
                       fechaTurno={turno.Fecha}
                       horaTurno={turno.Hora}

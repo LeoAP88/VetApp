@@ -13,6 +13,11 @@
   padding-bottom: 0;
 }
 
+.tarjeta_adopciones > .cuerpo{
+  overflow: hidden;
+  width: 100%;
+}
+
 .tarjeta_adopciones {
   width: 20%;
   display: flex;

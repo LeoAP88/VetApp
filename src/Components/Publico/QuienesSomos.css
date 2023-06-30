@@ -1,9 +1,4 @@
-.navbar {
-    z-index: 2;
-    position: sticky;
-    top: 0;
-    background-color: white;
-}
+
    
 .txt{
     margin-top: 550px;
@@ -16,7 +11,7 @@
     font-family: 'Overpass', sans-serif;
     font-weight: bold;
     /* color: rgb(93, 91, 91);  */
-    color: rgb(114, 112, 112);
+    color: rgb(37, 31, 31);
 }
 
 .pa{
@@ -26,7 +21,7 @@
     font-family: 'Overpass', sans-serif;
     text-align: left;
     font-weight: bold;
-    color: rgb(117, 114, 114);
+    color: rgb(37, 31, 31);
 
 }
 
@@ -41,7 +36,7 @@
     text-align: left;
     font-weight: bold;
     font-family: 'Overpass', sans-serif;
-    color: rgb(117, 114, 114);
+    color: rgb(37, 31, 31);
 }
 
 

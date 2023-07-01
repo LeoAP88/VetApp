@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap');
 
-.img_inicio {
+#img_inicio {
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,7 +13,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.img_text_inicio {
+#img_text_inicio {
     margin-top: 150px;
     padding-left: 100px;
     font-size: 1.3rem;
@@ -21,62 +21,65 @@
     height: 500px;
 }
 
-.titulo_inicio{
+#titulo_inicio{
     font-size: 4rem;
     font-weight: bolder;
     margin-bottom: 25px;
 }
 
-.especialidades {
+#div_inicio_especialidades {
     display: flex;
     align-self: center;
     margin-bottom: 25px;
 }
 
-.int{
+#div_inicio_int{
     padding: 30px;
 }
-.int_img{
+
+#div_inicio_int > img{
     height: 253px;
 }
-.int_titulo{
+
+#div_inicio_int > h4{
     font-size: 25.5px;
     color: black;
     font-weight: 300;
     font-family: 'Montserrat', sans-serif;
 }
 
-.esp{
+#div_inicio_esp{
     padding: 30px;
 }
-.esp_img{
+
+#div_inicio_esp > img{
     height: 230px;
     margin-bottom: 24px;
     padding-top: 10px;
 }
-.esp_titulo{
+#div_inicio_esp > h4{
     color: black;
     font-weight: 1;
     font-family: 'Montserrat', sans-serif;
 }
 
-.cirugia {
+#div_inicio_cirugia {
     padding: 30px;
 }
-.cir_img{
+#div_inicio_cirugia > img{
     height: 225px;
     padding-top: 20px;
     margin-bottom: 27px;
     margin-left: 24px;
 }
-.cir_titulo{
+#div_inicio_cirugia > h4{
     color: black;
     padding-left: 30px;
     font-weight: 300;
     font-family: 'Montserrat', sans-serif;
 }
 
-.btn-consulta-inicio {
+#btn-consulta-inicio {
     font-size: 1rem;
     color: white;
     border-radius: 25px;
@@ -90,11 +93,11 @@
     margin-top: 10px;
 }
 
-.btn-consulta-inicio:hover {
+#btn-consulta-inicio:hover {
     background-color: grey;
 }
 
-.titulo_secundario_inicio {
+#titulo_secundario_inicio {
     margin-top: 40px;
     margin-left: 40px;
     font-size: 50px;

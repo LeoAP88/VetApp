@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap');
 
-#img_inicio {
+#div_img_inicio {
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;

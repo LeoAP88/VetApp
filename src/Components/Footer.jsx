@@ -3,13 +3,24 @@ import './Footer.css'
 const Footer = () => {
     return (
         <>
-
             <div id="footer">
-                <div className="huellitasFooter">
+                <div id="div-footer-logo">
                     <div><img src="./src/assets/img/logoNegro.jpg" alt="" className="logoBlanco" /></div>
-                    <div>huellitas</div>
+                    <div>Huellitas</div>
                 </div>
-                <div className='text'>Av. Siempreviva 153, CABA<br />(011) 5050-5050 <br />huellitas@mail.com <br /> © 2023 VeterinariaX - Todos los derechos reservados.</div>
+                <div id='div-footer-contenido'>
+                    <div>
+                    <ul>
+                    <li>Contacto:&nbsp;&nbsp;&nbsp;</li>
+                    <li>Av. Siempreviva 153, CABA&nbsp;|</li>
+                    <li>&nbsp;&nbsp;(011) 5050-5050&nbsp;&nbsp;</li>
+                    <li>|&nbsp;huellitas@mail.com</li>
+                    </ul>
+                    </div>
+                    <div id='div-footer-copyright'>
+                        <p>© 2023 VeterinariaX - Todos los derechos reservados.</p>
+                    </div>
+                </div>
             </div>
 
             {/* <div>Seguinos en redes!</div> */}

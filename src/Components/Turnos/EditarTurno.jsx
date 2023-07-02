@@ -81,6 +81,9 @@ const EditarTurno = () => {
 
     const update = async (e) => {
         e.preventDefault();
+
+        const sinCambios = (datosForm.fecha === fechaTurno) && (datosForm.hora === horaTurno);
+
         const nuevaFechaDocRef = await initNuevaFechaDocRef();
         
         
@@ -89,9 +92,10 @@ const EditarTurno = () => {
             return;
         }
 
-        console.log("upss")
         
-        await deleteTurno();
+        if(!sinCambios){
+            await deleteTurno();
+        }
 
         
         const nuevaHoraDocRef = doc(db,`Turnos/${datosForm.fecha}/TurnosDelDia`,`${datosForm.hora}`);
@@ -102,7 +106,7 @@ const EditarTurno = () => {
             ClienteNombre: datosForm.ClienteNombre
         });
 
-        if((await getDocs(nuevaFechaTurnosCol)).size===22){
+        if((await getDocs(nuevaFechaTurnosCol)).size===22 && !sinCambios){
             await updateDoc(nuevaFechaDocRef, {
                 diaOcupado: true
             });
@@ -142,7 +146,6 @@ const EditarTurno = () => {
         setDatosForm({...datosForm,hora: horasDisponiblesParaTurno(horasOcupadas)[0], fecha: fecha, horasOcupadas:horasOcupadas})
     }
 
-    console.log(datosForm)
     useEffect( ()=>{
         getTurno();
     } , []);

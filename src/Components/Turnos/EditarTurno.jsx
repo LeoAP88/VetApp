@@ -92,7 +92,6 @@ const EditarTurno = () => {
             return;
         }
 
-        console.log("upss")
         
         if(!sinCambios){
             await deleteTurno();
@@ -147,7 +146,6 @@ const EditarTurno = () => {
         setDatosForm({...datosForm,hora: horasDisponiblesParaTurno(horasOcupadas)[0], fecha: fecha, horasOcupadas:horasOcupadas})
     }
 
-    console.log(datosForm)
     useEffect( ()=>{
         getTurno();
     } , []);

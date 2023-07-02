@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-.container_adopciones {
+#div_seccion_adopciones {
   min-height: 82vh;
   font-family: 'Montserrat', sans-serif;
 }
-.contenedor_adopciones {
+
+#contenedor_adopciones {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -13,7 +14,7 @@
   padding-bottom: 0;
 }
 
-.tarjeta_adopciones > .cuerpo{
+.tarjeta_adopciones > .tarjeta_adopciones_cuerpo{
   overflow: hidden;
   width: 100%;
 }
@@ -34,22 +35,22 @@
   padding: 10px;
 }
 
-.titulo {
+.tarjeta_adopciones_titulo {
   font-size: 24px;
   padding: 10px 10px 0 10px;
   ;
 }
 
-.cuerpo {
+.tarjeta_adopciones_cuerpo {
   padding: 10px;
 }
 
-.cuerpo img {
+.tarjeta_adopciones_cuerpo img {
   height: 220px;
   /* Establece una altura fija para las imágenes */
 }
 
-.pie {
+.tarjeta_adopciones_pie {
  
   border-radius: 15px;
   padding: 10px;
@@ -57,7 +58,7 @@
   margin: 10px;
 }
 
-.pie button {
+.tarjeta_adopciones_pie button {
   color: purple;
   border-radius: 30px;
   padding: 10px 20px;
@@ -69,7 +70,13 @@
   text-decoration: none;
 }
 
-#boton-administrador {
+.tarjeta_adopciones_pie button:hover{
+  background-color: rgb(141, 65, 141);
+  border: 3px solid lightgray;
+  color: white;
+}
+
+#boton-agregar-adopcion {
   margin: 50px;
   color: purple;
   border-radius: 30px;
@@ -82,13 +89,13 @@
   text-decoration: none;
 }
 
-#boton-administrador:hover{
+#boton-agregar-adopcion:hover{
   background-color: rgb(141, 65, 141);
   border: 3px solid lightgray;
   color: white;
 }
 
-.botones{
+.botones_adoptar{
   background-color: rgb(141, 65, 141);
   border-radius: 30px;
   padding: 10px 20px;
@@ -96,7 +103,7 @@
   color: white;
 }
 
-.botones:hover{
+.botones_adoptar:hover{
   background-color: rgb(104, 48, 104);
   border: 3px solid rgb(67, 31, 67);
 }
@@ -112,11 +119,11 @@
   margin: 40px 20px 20px 20px;
 }
 
-.intro{
+#intro_adopciones{
   margin: 20px;
   font-size: 1.2rem;
 }
-.intro p{
+#intro_adopciones p{
   margin: 0 100px;
 }
 
@@ -128,12 +135,6 @@
   font-size: 1.2rem;
 }
 
-.Link{
-  margin: 0;
-  padding: 0;
-}
-
-
-.bot{
+.tarjeta_adopciones_bot{
   display: flex;
 }

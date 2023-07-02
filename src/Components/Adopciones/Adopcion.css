@@ -1,18 +1,24 @@
-.volver {
-  background-color: rgb(141, 65, 141);
+.botones_seccion_adopcion {
+  background-color: purple;
   border-radius: 15px;
   padding: 10px;
-  border: 1px solid lightgray;
+  border: 3px solid darkmagenta;
   color: white;
-  padding: 10px;
+  padding: 5px 10px;
   margin: 10px;
 }
 
-.pieAdopcion {
+.botones_seccion_adopcion:hover{
+  background-color: rgb(141, 65, 141);
+  border: 3px solid lightgray;
+  color: white;
+}
+
+.tarjeta_adopcion_pie {
   background-color: white;
 }
 
-.container_adopcion {
+#container_adopcion {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,8 +26,14 @@
   min-height: 85vh;
 }
 
-.tarjeta {
+.tarjeta_adopcion p {
+  padding: 0;
+  margin: 0;
+}
+
+.tarjeta_adopcion {
   width: 20%;
+  min-width: 250px;
   display: flex;
   flex-direction: column;
   border: 1px solid lightgray;
@@ -34,4 +46,60 @@
   height: auto;
   margin-top: 30px;
   padding: 10px;
+}
+
+.tarjeta_adopcion_titulo {
+  font-size: 24px;
+  padding: 10px 10px 0 10px;
+}
+
+.tarjeta_adopcion_cuerpo {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.tarjeta_adopcion_cuerpo img {
+  height: 220px;
+  /* Establece una altura fija para las imágenes */
+}
+
+
+
+.tarjeta_adopcion_grupotags {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: wrap;
+  margin: 15px 5px 20px 5px;
+}
+
+.tarjeta_adopcion_tag{
+  margin: 7px 7px 0 0;
+  border-radius: 7px;
+  width: fit-content;
+  padding: 0 6px 0 6px;
+  background-color: black;
+  color: white;
+}
+
+
+.tag_violeta{
+  background-color: purple;
+}
+.tag_rojo{
+  background-color: red;
+}
+.tag_verde{
+  background-color: green;
+}
+.tag_azul{
+  background-color: darkblue;
+}
+
+.tarjeta_adopcion_bot{
+  display: flex;
 }

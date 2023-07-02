@@ -100,8 +100,8 @@ const Adopciones = () => {
 
     return (
         <>
-        <div className="container_adopciones">
-            <div className="intro">
+        <div id="div_seccion_adopciones">
+            <div id="intro_adopciones">
                 <h1 className="titulo_pagina">¡Suma a un nuevo integrante a tu familia!</h1>
                 <p>
                     Adoptando estas salvando la vida de un animal rescatado. 
@@ -116,23 +116,23 @@ const Adopciones = () => {
                 </p>
                 <Link to={"/formulario"}>
                     <div>
-                        <button className="botones" id="form_adop1">¡Quiero adoptar!</button>
+                        <button className="botones_adoptar" id="form_adop1">¡Quiero adoptar!</button>
                     </div>
                 </Link>
             </div>
-            <div className="contenedor_adopciones">
+            <div id="contenedor_adopciones">
                 {adopciones.map((adopcion) => (
                     <div className="tarjeta_adopciones" key={adopcion.id}>
-                        <div className="cuerpo">
+                        <div className="tarjeta_adopciones_cuerpo">
                             <div>
                                 <img src={`${adopcion.Foto}`} alt=""></img>
                             </div>
                         </div>
-                        <div className="titulo">{adopcion.Nombre}</div>
-                        <div className="pie">
+                        <div className="tarjeta_adopciones_titulo">{adopcion.Nombre}</div>
+                        <div className="tarjeta_adopciones_pie">
                             <Link to={`/adopcion/${adopcion.id}`}><button>Más información</button></Link>
                         </div>
-                        <div className="bot">
+                        <div className="tarjeta_adopciones_bot">
                             <LogInLinks isUserLoggedIn={isUserLoggedIn} id={adopcion.id} getAdopciones={getAdopciones}></LogInLinks>
                         </div>
                     </div>))}
@@ -140,14 +140,14 @@ const Adopciones = () => {
             
             {isAdmin && (
                 <Link to={"/agregarAdopcion"}>
-                    <button className="boton_nueva_adopcion" id="boton-administrador">Agregar nueva Adopción</button>
+                    <button id="boton-agregar-adopcion">Agregar nueva Adopción</button>
                 </Link>
             )}
 
             <div>
                 <Link to={"/formulario"}>
                     <div>
-                        <button className="botones" id="form_adop2">¡Quiero adoptar!</button>
+                        <button className="botones_adoptar" id="form_adop2">¡Quiero adoptar!</button>
                     </div>
                 </Link>
             </div>

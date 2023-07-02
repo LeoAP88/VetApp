@@ -94,34 +94,36 @@ const Adopcion = () => {
     }
 
     return (
-        <div className="container_adopcion">
-            <div className="tarjeta" key={adopcion.id}>
-                <div className="titulo">{adopcion.Nombre}</div>
-                <div className="cuerpo">
+        <div id="container_adopcion">
+            <div className="tarjeta_adopcion" key={adopcion.id}>
+                <div className="tarjeta_adopcion_titulo">{adopcion.Nombre}</div>
+                <div className="tarjeta_adopcion_cuerpo">
                     <div>
                         <img src={`${adopcion.Foto}`} alt=""></img>
                     </div>
-                    <p>{adopcion.Especie}</p>
-                    <p>{adopcion.Raza}</p>
-                    <p>{adopcion.Color}</p>
-                    <p>{adopcion.Sexo}</p>
-                    <p>{adopcion.Edad}</p>
+                    <div className="tarjeta_adopcion_grupotags">
+                    <div className="tarjeta_adopcion_tag tag_violeta"><p>{adopcion.Especie}</p></div>
+                    <div className="tarjeta_adopcion_tag tag_rojo"><p>{adopcion.Raza}</p></div>
+                    <div className="tarjeta_adopcion_tag"><p>{adopcion.Color}</p></div>
+                    <div className="tarjeta_adopcion_tag tag_verde"><p>{adopcion.Sexo}</p></div>
+                    <div className="tarjeta_adopcion_tag tag_azul"><p>{adopcion.Edad}</p></div>
+                    </div>
                     <p>{adopcion.Caracteristicas}</p>
                 </div>
-                <div className="bot">
+                <div className="tarjeta_adopcion_bot">
                     <LogInLinks isUserLoggedIn={isUserLoggedIn} id={id}></LogInLinks>
                 </div>
-                <div className="pieAdopcion">
+                <div className="tarjeta_adopcion_pie">
                     <Link to={"/formulario"}>
                         <div>
-                            <button type="button" className="volver">¡Quiero adoptar!</button>
+                            <button type="button" className="botones_seccion_adopcion">¡Quiero adoptar!</button>
                         </div>
-                    </Link>
-                    <Link to={"/adopciones"}>
-                        <button className="volver">Volver</button>
                     </Link>
                 </div>
             </div>
+            <Link to={"/adopciones"}>
+                <button className="botones_seccion_adopcion">Volver</button>
+            </Link>
         </div>
     )
 }

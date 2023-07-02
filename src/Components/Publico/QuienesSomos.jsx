@@ -78,7 +78,7 @@ const QuienesSomos = () => {
         <div>
 
           <h3 className="esp">
-            <img src="../src/assets/img/logoBlanco.jpg" alt="Responsive image" className="logoBlanco"/>
+            <img src="/logoBlanco.jpg" alt="Responsive image" className="logoBlanco"/>
             Nuestro equipo
           </h3>
       

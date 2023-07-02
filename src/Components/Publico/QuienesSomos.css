@@ -1,4 +1,6 @@
-
+.oscurecer {
+    filter: brightness(50%);    
+}
    
 .txt{
     margin-top: 550px;
@@ -11,7 +13,7 @@
     font-family: 'Overpass', sans-serif;
     font-weight: bold;
     /* color: rgb(93, 91, 91);  */
-    color: rgb(37, 31, 31);
+    color: white;
 }
 
 .pa{
@@ -21,12 +23,11 @@
     font-family: 'Overpass', sans-serif;
     text-align: left;
     font-weight: bold;
-    color: rgb(37, 31, 31);
+    color: white;
 
 }
 
 .txt2{
- 
     margin-top: 550px;
     padding-left: 700px;
     width: 250%;
@@ -34,9 +35,11 @@
     font-size: 1.3rem;
     line-height: 1.5;
     text-align: left;
+    color: white;
+}
+.txt2 > * {
     font-weight: bold;
     font-family: 'Overpass', sans-serif;
-    color: rgb(37, 31, 31);
 }
 
 

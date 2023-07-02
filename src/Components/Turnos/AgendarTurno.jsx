@@ -232,12 +232,12 @@ const AgendarTurno = ()=> {
 
         <button
           onClick={cargarTurno}
-          className="boton_agendar btn btn-outline-success"
+          className="volver btn btn-outline-success"
         >
           Agendar Turno
         </button>
         <Link to={"/turnos"}>
-            <button className="btn">Volver</button>
+            <button className="volver btn">Volver</button>
         </Link>
     </div>
   );

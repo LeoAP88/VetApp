@@ -175,8 +175,8 @@ const EditarTurno = () => {
                     <input value={datosForm.ClienteNombre} className="form-control" type="text" name="clienteNombre" id="clienteNombre" required onChange={(e) => setDatosForm({...datosForm, clienteNombre: e.target.value})}></input>
                 </div>
                 <Link to={`/turnos`}>
-                    <button className="btn" type="submit" onClick={update}>Guardar cambios</button>
-                    <button className="btn">Volver</button>
+                    <button className="volver btn" type="submit" onClick={update}>Guardar cambios</button>
+                    <button className="volver btn">Volver</button>
                 </Link>
             </form>
         </div>

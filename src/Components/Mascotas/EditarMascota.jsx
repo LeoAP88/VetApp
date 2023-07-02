@@ -128,7 +128,7 @@ const EditarMascota = () => {
               onChange={(e) => setEdad(e.target.value)}
             ></input>
           </div>
-          <button className="btn" type="submit" onClick={update}>
+          <button className="volver btn" type="submit" onClick={update}>
             Guardar cambios
           </button>
           <Link to={`/misMascotas/${idUsuario}`}>

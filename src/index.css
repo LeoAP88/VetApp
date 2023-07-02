@@ -54,3 +54,19 @@ body {
   text-decoration: none;
   margin: 5px;
 }
+
+/*Botones*/
+.volver{
+  background-color: purple;
+  border-radius: 15px;
+  padding: 10px;
+  border: 3px solid darkmagenta;
+  color: white;
+  padding: 5px 10px;
+  margin: 10px;
+}
+.volver:hover{
+  background-color: rgb(141, 65, 141);
+  border: 3px solid lightgray;
+  color: white;
+}

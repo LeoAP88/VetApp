@@ -3,10 +3,10 @@ import "./FormularioDeAdopciones.css"
 
 const FormularioDeAdopciones = () => {
     return (
-        <>
-            <h1 className="form_titulo">Formulario de adopción</h1>
-            <div className="container_form">
-                <form className="adopcion_form" action="mailto:veterinariaAdopciones@gmail.com" method='POST'>
+        <div id="wrapper_componente_form_adopciones">
+            <h1>Formulario de adopción</h1>
+            <div id="contenedor_formulario_adopciones">
+                <form id="adopcion_form" action="mailto:veterinariaAdopciones@gmail.com" method='POST'>
                     <div className="form-group">
                         <label htmlFor="nombre">Nombre y apellido</label>
                         <input type="text" className="form-control" name='nombre' id="nombre" placeholder="Nombre..." />
@@ -93,7 +93,7 @@ const FormularioDeAdopciones = () => {
 
 
             </div>
-        </>
+        </div>
     )
 }
 export default FormularioDeAdopciones;

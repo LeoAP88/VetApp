@@ -1,52 +1,76 @@
 .oscurecer {
     filter: brightness(50%);    
 }
+
+.carousel-item {
+  height: 80vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
    
 .txt{
-    margin-top: 550px;
-     padding-top: 80px;
+    margin-top: 580px;
+    padding-top: 280px;
     padding-left: 100px;
     font-size: 1.3rem;
     width: 170%;
     height: 800px;
     text-align: justify, right;
-    font-family: 'Overpass', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    /* color: rgb(93, 91, 91);  */
     color: white;
 }
 
+ .pa{
+
+    margin-top: 580px;
+    padding-top: 280px;
+    padding-left: 100px;
+    font-size: 1.3rem;
+    width: 170%;
+    height: 800px;
+    text-align: justify, right;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: white;
+   
+ }
+
+/*
 .pa{
     width: 100%;
     height: 350px;
     font-size: 1.3rem;
-    font-family: 'Overpass', sans-serif;
+    font-family: 'Montserrat', sans-serif;  
     text-align: left;
-    font-weight: bold;
+    font-weight: normal;
     color: white;
-
 }
+*/
 
 .txt2{
     margin-top: 550px;
-    padding-left: 700px;
+    padding-left: 750px;
     width: 250%;
     height: 200px;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.3rem;
     line-height: 1.5;
     text-align: left;
     color: white;
-}
-.txt2 > * {
-    font-weight: bold;
-    font-family: 'Overpass', sans-serif;
 }
 
 
 .esp {
     width: 70;
     font-weight: normal;
-    font-family: 'Overpass', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
     color: rgb(93, 91, 91);
     padding: 30px;
     display: center;
@@ -57,13 +81,14 @@
 }
 
 .card-title{
-    font-family: 'Overpass', sans-serif;
+    font-family:'Montserrat', sans-serif;
     color: rgb(93, 91, 91);
     font-weight: bold;
 }
 .card-text{
-    font-family: 'Overpass', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: rgb(93, 91, 91);
+    font-weight: bold;
     
 }
 .card{

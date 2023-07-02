@@ -4,7 +4,6 @@ import "./QuienesSomos.css"
 
 
 
-
 const QuienesSomos = () => {
 
     return(
@@ -24,14 +23,14 @@ const QuienesSomos = () => {
                 <Carousel.Caption>
                   <div className="txt">
                     <h1>Somos Huellitas</h1>
-                    <p>
+                    <h4>
                       Un centro médico de atención integral para mascotas.
-                      <br /> Desde el año 2019 ofrecemos el servicio de <br />
+                      <br /> Desde el año 2018 ofrecemos el servicio de <br />
                       "Historia Clínica Digital"
                       <br />
-                      para que puedas tener un registro de todas <br /> las
-                      consultas en un solo lugar
-                    </p> 
+                      para que puedas tener un registro de todas <br /> 
+                      las consultas médicas en un solo lugar
+                    </h4> 
                   </div>
                 </Carousel.Caption>
               </Carousel.Item>
@@ -45,14 +44,14 @@ const QuienesSomos = () => {
 
                 <Carousel.Caption>
                   <div className="pa">
-                    <p>
+                    <h4>
                       Contamos con profesionales calificados y<br /> equipamiento.
                       Sabemos que la tecnología
                       <br />
                       es fundamental para el crecimiento de <br />
                       las instituciones médicas y es una de <br />
                       nuestras fortalezas.
-                    </p>
+                    </h4>
                   </div>
                 </Carousel.Caption>
               </Carousel.Item>
@@ -77,10 +76,10 @@ const QuienesSomos = () => {
       
         <div>
 
-          <h3 className="esp">
+          <h2 className="esp">
             <img src="/logoBlanco.jpg" alt="Responsive image" className="logoBlanco"/>
             Nuestro equipo
-          </h3>
+          </h2>
       
           <div className="row row-cols-1 row-cols-md-2 g-4">
 

@@ -22,15 +22,15 @@ const QuienesSomos = () => {
                 />
                 <Carousel.Caption>
                   <div className="txt">
-                    <h1>Somos Huellitas</h1>
-                    <h4>
+                    <h2>Somos Huellitas</h2>
+                    <h5>
                       Un centro médico de atención integral para mascotas.
                       <br /> Desde el año 2018 ofrecemos el servicio de <br />
                       "Historia Clínica Digital"
                       <br />
                       para que puedas tener un registro de todas <br /> 
                       las consultas médicas en un solo lugar
-                    </h4> 
+                    </h5> 
                   </div>
                 </Carousel.Caption>
               </Carousel.Item>
@@ -44,14 +44,14 @@ const QuienesSomos = () => {
 
                 <Carousel.Caption>
                   <div className="pa">
-                    <h4>
+                    <h5>
                       Contamos con profesionales calificados y<br /> equipamiento.
                       Sabemos que la tecnología
                       <br />
                       es fundamental para el crecimiento de <br />
                       las instituciones médicas y es una de <br />
                       nuestras fortalezas.
-                    </h4>
+                    </h5>
                   </div>
                 </Carousel.Caption>
               </Carousel.Item>
@@ -64,10 +64,10 @@ const QuienesSomos = () => {
                 />  
                 <Carousel.Caption>
                   <div className="txt2">
-                    <h2>Nuestras especialidades son:</h2>
-                    <h4>Clínica Médica / Nutrición / Cirugía General</h4>
-                    <h4>Diagnóstico por imágenes / Laboratorio </h4>
-                    <h4>Oncologia / Vacunación</h4>
+                    <h3>Nuestras especialidades son:</h3>
+                    <h5>Clínica Médica / Nutrición / Cirugía General</h5>
+                    <h5>Diagnóstico por imágenes / Laboratorio </h5>
+                    <h5>Oncologia / Vacunación</h5>
                   </div>
                 </Carousel.Caption>
               </Carousel.Item>

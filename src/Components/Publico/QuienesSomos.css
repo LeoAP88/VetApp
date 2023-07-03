@@ -2,7 +2,7 @@
     filter: brightness(50%);    
 }
 
-.carousel-item {
+/*.carousel-item {
   height: 80vh;
   min-height: 300px;
   background: no-repeat center center scroll;
@@ -11,12 +11,12 @@
   -o-background-size: cover;
   background-size: cover;
 }
-
+*/
    
 .txt{
-    margin-top: 580px;
-    padding-top: 280px;
-    padding-left: 100px;
+    margin-top: 550px;
+    padding-top: 100px;
+    padding-left: 1px;
     font-size: 1.3rem;
     width: 170%;
     height: 800px;
@@ -26,11 +26,11 @@
     color: white;
 }
 
- .pa{
+ /*.pa{
 
     margin-top: 580px;
-    padding-top: 280px;
-    padding-left: 100px;
+    padding-top: 100px;
+    padding-left: 10px;
     font-size: 1.3rem;
     width: 170%;
     height: 800px;
@@ -41,7 +41,7 @@
    
  }
 
-/*
+*/
 .pa{
     width: 100%;
     height: 350px;
@@ -51,11 +51,11 @@
     font-weight: normal;
     color: white;
 }
-*/
+
 
 .txt2{
-    margin-top: 550px;
-    padding-left: 750px;
+    margin-top: 150px;
+    padding-left: 250px;
     width: 250%;
     height: 200px;
     font-family: 'Montserrat', sans-serif;

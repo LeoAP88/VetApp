@@ -1,76 +1,54 @@
+
 .oscurecer {
     filter: brightness(50%);    
 }
 
-/*.carousel-item {
-  height: 80vh;
-  min-height: 300px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-*/
-   
+
 .txt{
     margin-top: 550px;
-    padding-top: 100px;
-    padding-left: 1px;
+    padding-top: 80px;
+    padding-left: 100px;
+    padding-right: 55px;
     font-size: 1.3rem;
     width: 170%;
     height: 800px;
     text-align: justify, right;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Overpass', sans-serif;
     font-weight: bold;
+    /* color: rgb(93, 91, 91);  */
     color: white;
 }
 
- /*.pa{
-
-    margin-top: 580px;
-    padding-top: 100px;
-    padding-left: 10px;
-    font-size: 1.3rem;
-    width: 170%;
-    height: 800px;
-    text-align: justify, right;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    color: white;
-   
- }
-
-*/
 .pa{
     width: 100%;
     height: 350px;
     font-size: 1.3rem;
-    font-family: 'Montserrat', sans-serif;  
+    font-family: 'Overpass', sans-serif;
     text-align: left;
-    font-weight: normal;
-    color: white;
+    font-weight: bold;
+    color: whitesmoke   
+
 }
 
-
 .txt2{
-    margin-top: 150px;
-    padding-left: 250px;
+ 
+    margin-top: 550px;;
+    padding-bottom: 280px;
     width: 250%;
     height: 200px;
-    font-family: 'Montserrat', sans-serif;
     font-size: 1.3rem;
     line-height: 1.5;
     text-align: left;
-    color: white;
+    font-family: 'Overpass', sans-serif;
+    font-weight: bold;
+    color:white;
 }
 
 
 .esp {
     width: 70;
     font-weight: normal;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+    font-family: 'Overpass', sans-serif;
     color: rgb(93, 91, 91);
     padding: 30px;
     display: center;
@@ -81,26 +59,20 @@
 }
 
 .card-title{
-    font-family:'Montserrat', sans-serif;
+    font-family: 'Overpass', sans-serif;
     color: rgb(93, 91, 91);
     font-weight: bold;
 }
 .card-text{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Overpass', sans-serif;
     color: rgb(93, 91, 91);
-    font-weight: bold;
     
 }
 .card{
-   
-    margin: 30px 50px;
+    justify-content:space-between;
     border: 1px solid lightgray;
-    box-shadow: 2px 2px 8px 4px #d3d3d3d4;
+    box-shadow: 2px 2px 2px 2px #d3d3d3d4;
 }
 .logoblanco{
     height: 35px;
 }
-
-
-
- 

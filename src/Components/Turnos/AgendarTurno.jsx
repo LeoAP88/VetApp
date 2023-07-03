@@ -18,8 +18,7 @@ import FechaDia from "./FechaDia";
 import SelecccionarHora from "./SeleccionarHora";
 import { horasDisponiblesParaTurno, getHorasReservadas } from "./utilidadesTurnos";
 
-/*SEGUIR CON EDITAR TURNO
-
+/*
 
     Estructura de la base de turnos
     
@@ -62,7 +61,7 @@ const AgendarTurno = ()=> {
         const q = query(collection(db,"Turnos"), where('__name__',">=",fechaActual.getFecha()))
         
         const data = await getDocs(q);
-        console.log(data)
+        
         if(data.docs.length!==0){
             
             //guardamos los turnos como pares key:value en un objeto de la siguiente estructura:
@@ -119,12 +118,12 @@ const AgendarTurno = ()=> {
 
     useEffect(()=>{
         setHoraSelec(horasDisponiblesParaTurno(horasOcupadas)[0]);
-    },[horasOcupadas]); 
+    },[horasOcupadas]);
 
     //handler para la carga de turnos
     const cargarTurno = async ()=> {
         //fecha del turno
-        console.log(horaSelec)
+        
         const diaTurno = diaActivo.getFecha();
         
         //en el state turnos tenemos todas las fechas con turnos reservados, checkeamos existencia del doc aprovechando eso
@@ -180,7 +179,6 @@ const AgendarTurno = ()=> {
     }
     
 
-    //función para determinar si el día está inhabilitado, falta testear y mejorar
     const arrayDiasOcupados = ()=> {
         let diasInh = [];
         for (let [fechaTurno, estaOcupado] of Object.entries(turnos)){

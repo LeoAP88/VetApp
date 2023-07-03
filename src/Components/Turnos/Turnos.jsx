@@ -36,8 +36,6 @@ const parsearFecha = date => {
 
 // Componente que se renderiza si el usuario es admin, con los controles de edicion y borrado
 const ControlesAdmin = ({ fechaTurno, horaTurno, getTurnos }) => {
-  const User = useContext(AuthContext);
-  const user = User.currentUser;
 
   const deleteTurno = async (fechaTurno, horaTurno) => {
     const fechaDocRef = doc(db, `/Turnos/${fechaTurno}`);
@@ -106,7 +104,7 @@ const ControlesAdmin = ({ fechaTurno, horaTurno, getTurnos }) => {
 const Turnos = () => {
   const [loading, setLoading] = useState(true);
 
-    //La base utiliza el formato ISO de Date para las fechas, y el formato "hh:mm" para la hora.
+    //La base utiliza el formato YYYY-MM-DD para las fechas, y el formato "hh:mm" para la hora.
     const fechaActual = new FechaDia();
     
     const User = useContext(AuthContext);

@@ -50,4 +50,5 @@ class FechaDia extends Date{
 
 }
 
+
 export default FechaDia;

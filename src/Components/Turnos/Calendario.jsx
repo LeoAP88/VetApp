@@ -54,8 +54,8 @@ const construirMes = (mes, anio) => {
     let ultDiaMes = arrayDates.at(-1).at(-1).getDay();
 
     //para los casos borde de Enero y Dic
-    let anioMesAnt = mes==0?anio-1:anio;
-    let anioMesPost = mes==11?anio+1:anio;
+    let anioMesAnt = mes==1?anio-1:anio;
+    let anioMesPost = mes==12?anio+1:anio;
     
     if( primerDiaMes != 0 ||  ultDiaMes != 6 ){
 
@@ -63,6 +63,7 @@ const construirMes = (mes, anio) => {
         let diaMesAnt = cantDiasMeses.at(mes-2);
         for(let i = 0; i<primerDiaMes; i++){
             let dateStr = FechaDia.fechaAMDAISOStringArg(anioMesAnt, (mes-1)||12 , diaMesAnt);
+
             arrayDates[0].unshift(new FechaDia(dateStr));
             diaMesAnt--;
         }
@@ -70,7 +71,8 @@ const construirMes = (mes, anio) => {
         //misma idea que arriba pero a la inversa
         let diaMesSiguiente = 1;
         for(let i = 6; i>ultDiaMes; i--){
-            let dateStr = FechaDia.fechaAMDAISOStringArg(anioMesPost, (mes+1)%12||1 , diaMesSiguiente);
+            let dateStr = FechaDia.fechaAMDAISOStringArg(anioMesPost, (mes+1)%13||1 , diaMesSiguiente);
+            
             arrayDates.at(-1).push(new FechaDia(dateStr));
             diaMesSiguiente++;
         }
@@ -142,7 +144,6 @@ const Calendario = ({ diasInhabilitados = [], diaActivo, toggleDia }) => {
         toggleDia(new FechaDia(dateStr));
     }
 
-    console.log(diasDelMes)
     return(
         <div className="container" id="contenedor-calendario">
         <div className="container d-flex flex-direction-row align-items-center justify-content-center">

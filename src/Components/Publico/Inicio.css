@@ -5,7 +5,7 @@
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: linear-gradient(to bottom, #ff000000, rgb(63, 62, 62)), url(../../assets/img/img.jpg);
+    background-image: linear-gradient(to bottom, #ff000000, rgb(63, 62, 62)), url(../img.jpg);
     background-position: 10% 45%;
     display: block;
     color: white;
@@ -21,7 +21,7 @@
     height: 500px;
 }
 
-#titulo_inicio{
+#titulo_inicio {
     font-size: 4rem;
     font-weight: bolder;
     margin-bottom: 25px;
@@ -33,31 +33,32 @@
     margin-bottom: 25px;
 }
 
-#div_inicio_int{
+#div_inicio_int {
     padding: 30px;
 }
 
-#div_inicio_int > img{
+#div_inicio_int>img {
     height: 253px;
 }
 
-#div_inicio_int > h4{
+#div_inicio_int>h4 {
     font-size: 25.5px;
     color: black;
     font-weight: 300;
     font-family: 'Montserrat', sans-serif;
 }
 
-#div_inicio_esp{
+#div_inicio_esp {
     padding: 30px;
 }
 
-#div_inicio_esp > img{
+#div_inicio_esp>img {
     height: 230px;
     margin-bottom: 24px;
     padding-top: 10px;
 }
-#div_inicio_esp > h4{
+
+#div_inicio_esp>h4 {
     color: black;
     font-weight: 1;
     font-family: 'Montserrat', sans-serif;
@@ -66,13 +67,15 @@
 #div_inicio_cirugia {
     padding: 30px;
 }
-#div_inicio_cirugia > img{
+
+#div_inicio_cirugia>img {
     height: 225px;
     padding-top: 20px;
     margin-bottom: 27px;
     margin-left: 24px;
 }
-#div_inicio_cirugia > h4{
+
+#div_inicio_cirugia>h4 {
     color: black;
     padding-left: 30px;
     font-weight: 300;
@@ -104,4 +107,4 @@
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
-  }
+}

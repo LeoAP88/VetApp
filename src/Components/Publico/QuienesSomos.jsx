@@ -13,7 +13,7 @@ const QuienesSomos = () => {
           <Carousel.Item>
             <img
               className="img-fluid"
-              src="./src/assets/img/1.jpeg"
+              src="./1.jpeg"
               alt="Responsive image"
             />
             <Carousel.Caption>
@@ -36,7 +36,7 @@ const QuienesSomos = () => {
           <Carousel.Item>
             <img
               className="img-fluid"
-              src="./src/assets/img/2.jpeg"
+              src="./2.jpeg"
               alt="Responsive image"
             />
 
@@ -58,7 +58,7 @@ const QuienesSomos = () => {
           <Carousel.Item>
             <img
               className="img-fluid"
-              src="./src/assets/img/vetdog.jpg"
+              src="./vetdog.jpg"
               alt="Responsive image"
             />
             <Carousel.Caption>
@@ -80,7 +80,7 @@ const QuienesSomos = () => {
         <div class="row row-cols-1 row-cols-md-2 g-4">
           <div class="col">
             <div class="card">
-              <img src="./src/assets/img/5.jpeg" class="card-img-top" alt="Responsive image" />
+              <img src="./5.jpeg" class="card-img-top" alt="Responsive image" />
               <div class="card-body">
 
                 <h5 class="card-title"> Dra. Patricia Hernández y Dr. Nicolás Sáenz</h5>
@@ -91,7 +91,7 @@ const QuienesSomos = () => {
 
           <div class="col">
             <div class="card">
-              <img src="./src/assets/img/4.jpeg" class="card-img-top" alt="Responsive image" />
+              <img src="./4.jpeg" class="card-img-top" alt="Responsive image" />
               <div class="card-body">
                 <h5 class="card-title">Dra. Carla Sevilla</h5>
                 <p class="card-text">Especialista en Nutrición.</p>
@@ -101,7 +101,7 @@ const QuienesSomos = () => {
 
           <div class="col">
             <div class="card">
-              <img src="./src/assets/img/dx2.jpg" class="card-img-top" alt="Responsive image" />
+              <img src="./dx2.jpg" class="card-img-top" alt="Responsive image" />
               <div class="card-body">
                 <h5 class="card-title">Dr. Carlos Spina</h5>
                 <p class="card-text">Traumatología y Diagnóstico por Imagénes.</p>
@@ -111,7 +111,7 @@ const QuienesSomos = () => {
 
           <div class="col">
             <div class="card">
-              <img src="./src/assets/img/RV.jpg" class="card-img-top" alt="Responsive image" />
+              <img src="./RV.jpg" class="card-img-top" alt="Responsive image" />
               <div class="card-body">
                 <h5 class="card-title"> Dra. Andrea Diaz y Dr. Juan Goncalves</h5>
                 <p class="card-text">Cirugia General</p>

@@ -1,26 +1,26 @@
 .navbar {
-    z-index: 2; 
+    z-index: 2;
     position: sticky;
     top: 0;
-    background-color: white; 
+    background-color: white;
 }
 
 .oscurecer {
-    filter: brightness(50%);    
+    filter: brightness(50%);
 }
 
-.img-fluid{
+.img-fluid {
     width: 100%;
     height: 650px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-   }
+}
 
-.txt{
+.txt {
     margin-top: 550px;
-     padding-top: 80px;
+    padding-top: 80px;
     padding-left: 100px;
     font-size: 1.3rem;
     width: 170%;
@@ -31,22 +31,22 @@
     color: white;
 }
 
-.pa{
+.pa {
     width: 50%;
     height: 200px;
     font-size: 1.3rem;
-    text-align:left;
+    text-align: left;
     font-family: 'Overpass', sans-serif;
     font-weight: normal;
     color: white;
- 
+
 
 }
 
-.txt2{
- 
+.txt2 {
+
     margin-top: 550px;
-    padding-left: 700px;
+    padding-left: 600px;
     width: 250%;
     height: 200px;
     font-size: 1.3rem;
@@ -69,36 +69,40 @@
     margin-left: 35px;
     color: black;
     font-weight: bold;
-    
+
 }
 
-.card-title{
+.card-title {
     font-family: 'Overpass', sans-serif;
     color: black;
     font-weight: bold;
 }
-.card-text{
-  
+
+.card-text {
+
     font-family: 'Overpass', sans-serif;
     color: black;
     font-weight: bold;
 
-    
+
 }
-.card{
-   
+
+.card {
+
     display: block;
-     max-width: 80%;
-      height: auto;
-      margin: 30px 50px;
-      border: 1px solid lightgray;
-      box-shadow: 2px 2px 8px 4px #d3d3d3d4;
+    max-width: 80%;
+    height: auto;
+    margin: 30px 50px;
+    border: 1px solid lightgray;
+    box-shadow: 2px 2px 8px 4px #d3d3d3d4;
 }
-.logoblanco{
+
+.logoblanco {
     height: 35px;
 }
 
-.card-img-top{
-    display: block; max-width: 100%; height: auto; 
+.card-img-top {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
-
